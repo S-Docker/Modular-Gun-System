@@ -6,6 +6,7 @@ public abstract class Bullet : MonoBehaviour
 {
     [SerializeField] protected BulletData bulletData;
     Vector3 startPosition;
+    int bulletDamage; public int BulletDamage { set => bulletDamage = value; }
 
     protected virtual void Start(){
         startPosition = this.transform.position;
@@ -33,14 +34,13 @@ public abstract class Bullet : MonoBehaviour
     }
 
     protected virtual void OnTriggerEnter(Collider other) {
-        Debug.Log("Target Hit");
         IHealthComponent healthComponent = other.GetComponent<IHealthComponent>();
         if (healthComponent == null) return;
 
         if (bulletData.HasBulletEffect){
             bulletData.BulletEffect.OnEndEffect();
         }
-        healthComponent.TakeDamage();
+        healthComponent.TakeDamage(bulletDamage);
         Destroy(this.gameObject);
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
 {
-    [SerializeField] GameObject gunHoldPosition;
     [SerializeField] GameObject gunNozzlePosition; public GameObject GunNozzlePosition => gunNozzlePosition;
     [SerializeField] GunData gunData; public GunData GunData => gunData;
 
@@ -12,8 +11,9 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] GunAbilityComponent ability;
     [SerializeField] GunReloadComponent reload;
 
-    public void Equip(){
-        Debug.Log("Picked up");
+    [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
+
+    public void Equip(GameObject gunHoldPosition){
         this.transform.parent = gunHoldPosition.transform;
         transform.localPosition = Vector3.zero;
     }
@@ -23,7 +23,9 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void Fire(){
-        fire.Action(this);
+        if (bulletsInMagazine > 0 && !reload.IsReloading()){
+            fire.Action(this);
+        }
     }
 
     public void Ability(){
@@ -31,6 +33,16 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void Reload(){
-        reload.Action(this);
+        if (bulletsInMagazine < gunData.MagazineSize && !reload.IsReloading()){
+            reload.Action(this);
+        }
+    }
+
+    public void IncreaseMagazine(int amount){
+        bulletsInMagazine += amount;
+    }
+
+    public void DecrementMagazine(){
+        bulletsInMagazine--;
     }
 }

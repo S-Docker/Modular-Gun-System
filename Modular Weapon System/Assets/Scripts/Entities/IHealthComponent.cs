@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHealthComponent
 {
-    void TakeDamage();
+    void TakeDamage(int amount);
 }

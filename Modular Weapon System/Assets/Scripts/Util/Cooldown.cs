@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cooldown : MonoBehaviour
+public class Cooldown
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    bool isCooldown = false; public bool IsCooldown => isCooldown;
+    float currentCooldownTime;
+    float maxCooldownTime;
+
+    public void StartCooldownTimer(float maxCooldownTime){
+        this.maxCooldownTime = maxCooldownTime;
+        isCooldown = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void IncrementCooldownTimer(float amount) {
+        if (isCooldown){
+            currentCooldownTime += amount;
+            
+            if (currentCooldownTime >= maxCooldownTime){
+                isCooldown = false;
+                currentCooldownTime = 0;
+            }
+        }
     }
 }

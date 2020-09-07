@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] GameObject gunHoldPosition;
     public Gun heldGun;
 
     void Start() {
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     public void Test(){
         if (Input.GetKeyDown(KeyCode.Space)){
-            heldGun.Equip();
+            heldGun.Equip(gunHoldPosition);
         }
 
         if (Input.GetKeyDown(KeyCode.F)){
@@ -25,6 +26,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)){
             heldGun.Fire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R)){
+            heldGun.Reload();
         }
     }
 

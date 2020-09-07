@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GunFireComponent : MonoBehaviour, IGunComponent
+public abstract class GunFireComponent : GunComponent
 {
-    [SerializeField] protected Animation fireAnim;
+    public override void Action(Gun gun){
+        if (cooldown.IsCooldown) return;
 
-    public void Action(Gun gun){
+        cooldown.StartCooldownTimer((float)60 / gun.GunData.RoundsPerMinute);
+
         GameObject bullet = Instantiate(gun.GunData.BulletPrefab, gun.GunNozzlePosition.transform.position, transform.rotation);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.BulletDamage = gun.GunData.BaseDamage;
+        
+        PlayAudio();
+        gun.DecrementMagazine();
     }
 }
