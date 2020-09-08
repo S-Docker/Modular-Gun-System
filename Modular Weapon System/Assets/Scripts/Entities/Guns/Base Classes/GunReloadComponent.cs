@@ -4,16 +4,9 @@ using UnityEngine;
 
 public abstract class GunReloadComponent : GunComponent
 {
+    [SerializeField] protected Animation reloadAnim;
     [SerializeField] AmmoStorage playerAmmoStorage;
     [SerializeField] float reloadTime;
-
-    protected override void Start() {
-        base.Start();
-
-        if (componentAnim != null){
-            reloadTime = componentAnim.clip.length;
-        }
-    }
 
     public override void Action(Gun gun){
         AmmoCategory category = gun.GunData.AmmoCategory;
@@ -26,8 +19,8 @@ public abstract class GunReloadComponent : GunComponent
     }
 
     IEnumerator ReloadGun(Gun gun, AmmoCategory category, int availableAmmo){
-        PlayAnimation();
         PlayAudio();
+        gun.GunAnimator.SetTrigger("IsReload");
         yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
 
         int maximumReloadAmount = Mathf.Min(availableAmmo, gun.GunData.MagazineSize - gun.BulletsInMagazine); // maximum amount should never exceed magazine size

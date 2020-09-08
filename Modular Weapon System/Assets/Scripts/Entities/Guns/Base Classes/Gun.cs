@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] GameObject gunNozzlePosition; public GameObject GunNozzlePosition => gunNozzlePosition;
     [SerializeField] GunData gunData; public GunData GunData => gunData;
+    Animator gunAnimator; public Animator GunAnimator => gunAnimator;
 
     [SerializeField] GunFireComponent fire;
     [SerializeField] GunAbilityComponent ability;
     [SerializeField] GunReloadComponent reload;
 
     [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
+
+    void Start() {
+        gunAnimator = GetComponent<Animator>();
+    }
 
     public void Equip(GameObject gunHoldPosition){
         this.transform.parent = gunHoldPosition.transform;
