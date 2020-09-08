@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class GunReloadComponent : GunComponent
 {
     [SerializeField] protected AnimationClip reloadAnimClip;
-    [SerializeField] AmmoStorage playerAmmoStorage;
-    [SerializeField] float reloadTime;
+    [SerializeField] protected AmmoStorage playerAmmoStorage;
+    [SerializeField] protected float reloadTime;
 
     protected override void Start() {
         base.Start();

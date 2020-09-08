@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
-  reloadAnim: {fileID: 0}
+  reloadAnimClip: {fileID: 7400000, guid: 60ec6363b06d8f94a9d0651c595799a8, type: 2}
   playerAmmoStorage: {fileID: 1213348956}
-  reloadTime: 1.5
+  reloadTime: 0
 --- !u!114 &289224038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingAmmoCategories: 000000000100000002000000
-  startingAmmoAmounts: 080000000000000000000000
+  startingAmmoAmounts: 640000000000000000000000
 --- !u!1 &1928083524
 GameObject:
   m_ObjectHideFlags: 0

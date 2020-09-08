@@ -18,4 +18,11 @@ public abstract class GunFireComponent : GunComponent
         PlayAudio();
         gun.DecrementMagazine();
     }
+
+    protected override void PlayAudio()
+    {
+        if (componentAudio != null){
+            audioSource.PlayOneShot(componentAudio);
+        }
+    }
 }
