@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class GunFireComponent : GunComponent
 {
+
     public override void Action(Gun gun){
         if (cooldown.IsCooldown) return;
 
@@ -13,6 +14,7 @@ public abstract class GunFireComponent : GunComponent
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.BulletDamage = gun.GunData.BaseDamage;
         
+        gun.GunAnimator.SetTrigger("IsFire");
         PlayAudio();
         gun.DecrementMagazine();
     }

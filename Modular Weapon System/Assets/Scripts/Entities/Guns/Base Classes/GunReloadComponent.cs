@@ -4,9 +4,14 @@ using UnityEngine;
 
 public abstract class GunReloadComponent : GunComponent
 {
-    [SerializeField] protected Animation reloadAnim;
+    [SerializeField] protected AnimationClip reloadAnimClip;
     [SerializeField] AmmoStorage playerAmmoStorage;
     [SerializeField] float reloadTime;
+
+    protected override void Start() {
+        base.Start();
+        reloadTime = reloadAnimClip.length;
+    }
 
     public override void Action(Gun gun){
         AmmoCategory category = gun.GunData.AmmoCategory;
