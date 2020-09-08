@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Cooldown
+﻿public class Cooldown
 {
     bool isCooldown = false; public bool IsCooldown => isCooldown;
     float currentCooldownTime;

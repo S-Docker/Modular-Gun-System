@@ -13,7 +13,7 @@ public abstract class GunComponent : MonoBehaviour
     
     protected virtual void PlayAnimation(){
         if (componentAnim != null){
-
+            componentAnim.Play();
         }
     }
 
