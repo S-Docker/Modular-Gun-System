@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class GunComponent : MonoBehaviour
 {
     [SerializeField] protected Animation componentAnim;
+    protected AudioSource audioSource;
     [SerializeField] protected AudioClip componentAudio;
 
     protected Cooldown cooldown = new Cooldown();
@@ -19,8 +20,13 @@ public abstract class GunComponent : MonoBehaviour
 
     protected virtual void PlayAudio(){
         if (componentAudio != null){
-            AudioSource.PlayClipAtPoint(componentAudio, this.transform.position);
+            audioSource.clip = componentAudio;
+            audioSource.Play();
         }
+    }
+
+    protected virtual void Start(){
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
     
     protected virtual void Update() {

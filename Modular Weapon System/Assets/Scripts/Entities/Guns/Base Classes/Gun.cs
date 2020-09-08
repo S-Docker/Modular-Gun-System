@@ -20,6 +20,7 @@ public abstract class Gun : MonoBehaviour
 
     public void Unequip(){
         this.transform.parent = null;
+        reload.StopAudio();
     }
 
     public void Fire(){

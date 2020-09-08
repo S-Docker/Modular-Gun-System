@@ -7,7 +7,9 @@ public abstract class GunReloadComponent : GunComponent
     [SerializeField] AmmoStorage playerAmmoStorage;
     [SerializeField] float reloadTime;
 
-    void Start() {
+    protected override void Start() {
+        base.Start();
+
         if (componentAnim != null){
             reloadTime = componentAnim.clip.length;
         }
@@ -25,6 +27,7 @@ public abstract class GunReloadComponent : GunComponent
 
     IEnumerator ReloadGun(Gun gun, AmmoCategory category, int availableAmmo){
         PlayAnimation();
+        PlayAudio();
         yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
 
         int maximumReloadAmount = Mathf.Min(availableAmmo, gun.GunData.MagazineSize - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
@@ -34,5 +37,11 @@ public abstract class GunReloadComponent : GunComponent
 
     public bool IsReloading(){
         return cooldown.IsCooldown;
+    }
+
+    public void StopAudio(){
+        if (audioSource.isPlaying){
+            audioSource.Stop();
+        }
     }
 }

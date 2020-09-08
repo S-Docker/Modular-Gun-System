@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     }
 
     public void Test(){
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Alpha1)){
             heldGun.Equip(gunHoldPosition);
         }
 
-        if (Input.GetKeyDown(KeyCode.F)){
+        if (Input.GetKeyDown(KeyCode.Alpha2)){
             heldGun.Unequip();
         }
 
