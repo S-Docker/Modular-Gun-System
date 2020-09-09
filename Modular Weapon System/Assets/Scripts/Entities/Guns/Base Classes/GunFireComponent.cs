@@ -4,13 +4,14 @@ using UnityEngine;
 
 public abstract class GunFireComponent : GunComponent
 {
+    [SerializeField] protected GameObject gunNozzlePosition;
 
     public override void Action(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
         cooldown.StartCooldownTimer((float)60 / gunData.RoundsPerMinute);
 
-        GameObject bullet = Instantiate(gunData.BulletPrefab, gun.GunNozzlePosition.transform.position, transform.rotation);
+        GameObject bullet = Instantiate(gunData.BulletPrefab, gunNozzlePosition.transform.position, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.BulletDamage = gunData.BaseDamage;
         

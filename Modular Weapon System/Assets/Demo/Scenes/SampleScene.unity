@@ -247,7 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ebb2ef46688b43bbb26c6bf211020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunNozzlePosition: {fileID: 1984214338}
   gunData: {fileID: 11400000, guid: bf4361c93cb3ed64b8e3b19b21d7e3fd, type: 2}
   fire: {fileID: 289224039}
   ability: {fileID: 289224038}
@@ -295,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 1a6905612c6f2a441b680d64605cf2fb, type: 3}
+  gunNozzlePosition: {fileID: 1984214338}
 --- !u!4 &289224040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4487492164278536, guid: 4b4193be53e751147ac305034c03fe35, type: 3}

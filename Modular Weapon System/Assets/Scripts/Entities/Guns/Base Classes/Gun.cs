@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour
 {
-    [SerializeField] GameObject gunNozzlePosition; public GameObject GunNozzlePosition => gunNozzlePosition;
     [SerializeField] GunData gunData;
 
     [SerializeField] GunFireComponent fire;
