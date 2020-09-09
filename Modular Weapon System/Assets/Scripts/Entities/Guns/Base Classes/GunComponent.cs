@@ -4,12 +4,13 @@ using UnityEngine;
 
 public abstract class GunComponent : MonoBehaviour
 {
+    protected Animator animator;
     protected AudioSource audioSource;
     [SerializeField] protected AudioClip componentAudio;
 
     protected Cooldown cooldown = new Cooldown();
 
-    public abstract void Action(Gun gun);
+    public abstract void Action(Gun gun, GunData gunData);
 
     protected virtual void PlayAudio(){
         if (componentAudio != null){
@@ -20,6 +21,7 @@ public abstract class GunComponent : MonoBehaviour
 
     protected virtual void Start(){
         audioSource = gameObject.AddComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
     
     protected virtual void Update() {

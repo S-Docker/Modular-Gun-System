@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GunAbilityComponent : GunComponent
 {
-    public override void Action(Gun gun){
+    public override void Action(Gun gun, GunData gunData){
         
     }
 }
