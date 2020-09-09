@@ -17,11 +17,14 @@ public class Player : MonoBehaviour
 
     public void Test(){
         if (Input.GetKeyDown(KeyCode.Alpha1)){
-            heldGun.Equip(gunHoldPosition);
+            heldGun.transform.parent = gunHoldPosition.transform;
+            heldGun.transform.localPosition = Vector3.zero;
+            heldGun.OnEquipped();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)){
-            heldGun.Unequip();
+            heldGun.transform.parent = null;
+            heldGun.OnUnequipped();
         }
 
         if (Input.GetMouseButtonDown(0)){

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public abstract class Gun : MonoBehaviour
+public abstract class Gun : MonoBehaviour, IEquippable
 {
     [SerializeField] GunData gunData;
 
@@ -13,15 +13,15 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
 
-    public void Equip(GameObject gunHoldPosition){
-        this.transform.parent = gunHoldPosition.transform;
-        transform.localPosition = Vector3.zero;
+    public void OnEquipped(){
+
     }
 
-    public void Unequip(){
-        this.transform.parent = null;
+    public void OnUnequipped(){
+        Animator animator = GetComponent<Animator>();
+        animator.SetTrigger("IsUnequipped");
         reload.StopAudio();
-    }
+    }  
 
     public void Fire(){
         if (bulletsInMagazine > 0 && !reload.IsReloading()){
