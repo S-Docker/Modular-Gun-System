@@ -11,9 +11,9 @@ public abstract class GunFireComponent : GunComponent
 
         cooldown.StartCooldownTimer((float)60 / gunData.RoundsPerMinute);
 
-        GameObject bullet = Instantiate(gunData.BulletPrefab, gunNozzlePosition.transform.position, transform.rotation);
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.BulletDamage = gunData.BaseDamage;
+        GameObject projectile = Instantiate(gunData.PprojectilePrefab, gunNozzlePosition.transform.position, transform.rotation);
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        projectileScript.ProjectileDamage = gunData.BaseDamage;
         
         animator.SetTrigger("IsFire");
         PlayAudio();

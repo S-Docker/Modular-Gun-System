@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 305978ae8e5e4864b92cf027c9f6119b, type: 3}
-  m_Name: DefaultBulletData
+  m_Script: {fileID: 11500000, guid: 0d2df9d2fb2507b45878cca25bad4d2b, type: 3}
+  m_Name: DefaultProjectileData
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  maxBulletTravel: 100
-  hasBulletEffect: 0
-  bulletEffect: {fileID: 0}
+  projectileSpeed: 20
+  maxProjectileTravel: 100
+  hasProjectileEffect: 0
+  projectileEffect: {fileID: 0}

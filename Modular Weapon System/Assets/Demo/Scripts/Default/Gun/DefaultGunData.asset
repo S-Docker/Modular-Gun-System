@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefaultGunData
   m_EditorClassIdentifier: 
   fireMode: 0
-  bulletPrefab: {fileID: 4237456998717013383, guid: 76e24ca913b5a9b43b26815d4ba091c9, type: 3}
+  projectilePrefab: {fileID: 4237456998717013383, guid: 76e24ca913b5a9b43b26815d4ba091c9, type: 3}
   ammoCategory: 0
   baseDamage: 0
   magazineSize: 7

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Gun Data", menuName = "Game Data/Gun Data", order = 1)]
 public class GunData : ScriptableObject {
     [SerializeField] private FireMode fireMode = default; public FireMode FireMode => fireMode;
-    [SerializeField] private GameObject bulletPrefab = default; public GameObject BulletPrefab => bulletPrefab;
+    [SerializeField] private GameObject projectilePrefab = default; public GameObject PprojectilePrefab => projectilePrefab;
     [SerializeField] private AmmoCategory ammoCategory = default; public AmmoCategory AmmoCategory => ammoCategory;
     [SerializeField] private int baseDamage = default; public int BaseDamage => baseDamage;
     [SerializeField] private int magazineSize = default; public int MagazineSize => magazineSize;

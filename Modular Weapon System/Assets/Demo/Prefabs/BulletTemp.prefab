@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8484604896367623430}
   - component: {fileID: 6757223114447603784}
   - component: {fileID: 251295765856957774}
-  - component: {fileID: 109234470664902917}
+  - component: {fileID: 1079368811502171137}
   m_Layer: 0
   m_Name: BulletTemp
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &109234470664902917
+--- !u!114 &1079368811502171137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4237456998717013383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ff019b3c8b14a45ab30c0010df8601, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a12f0c1f010d244191d3107a4165e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletData: {fileID: 11400000, guid: 9c2d4858a1931ca4ca3ba89ab581c59d, type: 2}
+  projectileData: {fileID: 11400000, guid: efe3813a14f25174bb6d3e819c767daf, type: 2}
