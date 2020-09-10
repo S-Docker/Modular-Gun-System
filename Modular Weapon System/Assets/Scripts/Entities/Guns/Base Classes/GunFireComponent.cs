@@ -11,7 +11,7 @@ public abstract class GunFireComponent : GunComponent
 
         cooldown.StartCooldownTimer((float)60 / gunData.RoundsPerMinute);
 
-        GameObject projectile = Instantiate(gunData.PprojectilePrefab, gunNozzlePosition.transform.position, transform.rotation);
+        GameObject projectile = Instantiate(gunData.ProjectilePrefab, gunNozzlePosition.transform.position, transform.rotation);
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         projectileScript.ProjectileDamage = gunData.BaseDamage;
         
