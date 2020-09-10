@@ -10,5 +10,4 @@ public class GunData : ScriptableObject {
     [SerializeField] private int baseDamage = default; public int BaseDamage => baseDamage;
     [SerializeField] private int magazineSize = default; public int MagazineSize => magazineSize;
     [SerializeField] private int roundsPerMinute = default; public int RoundsPerMinute => roundsPerMinute;
-    [SerializeField] private int maxBulletTravel = default; public int MaxBulletTravel => maxBulletTravel;
 }
