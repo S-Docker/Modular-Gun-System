@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour, IEquippable
 {
+    [SerializeField] GameObject gunNozzlePosition; public GameObject GunNozzlePosition => gunNozzlePosition;
     [SerializeField] GunData gunData;
 
     [SerializeField] GunFireComponent fire;
@@ -21,7 +22,6 @@ public abstract class Gun : MonoBehaviour, IEquippable
         Animator animator = GetComponent<Animator>();
         animator.SetTrigger("IsUnequipped");
         reload.StopReload();
-        reload.StopAudio();
     }  
 
     public void Fire(){
