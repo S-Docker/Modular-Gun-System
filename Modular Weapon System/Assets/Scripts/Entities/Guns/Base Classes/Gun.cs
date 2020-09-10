@@ -20,6 +20,7 @@ public abstract class Gun : MonoBehaviour, IEquippable
     public void OnUnequipped(){
         Animator animator = GetComponent<Animator>();
         animator.SetTrigger("IsUnequipped");
+        reload.StopReload();
         reload.StopAudio();
     }  
 

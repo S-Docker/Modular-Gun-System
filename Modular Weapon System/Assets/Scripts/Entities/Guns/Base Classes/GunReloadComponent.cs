@@ -7,6 +7,7 @@ public abstract class GunReloadComponent : GunComponent
     [SerializeField] protected AnimationClip reloadAnimClip;
     [SerializeField] protected AmmoStorage playerAmmoStorage;
     [SerializeField] protected float reloadTime;
+    protected Coroutine reloadCoroutine;
 
     protected override void Start() {
         base.Start();
@@ -21,7 +22,7 @@ public abstract class GunReloadComponent : GunComponent
 
         if (availableAmmo > 0){
             cooldown.StartCooldownTimer(reloadTime);
-            StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo));
+            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo));
         }
     }
 
@@ -33,13 +34,18 @@ public abstract class GunReloadComponent : GunComponent
         int maximumReloadAmount = Mathf.Min(availableAmmo, gunData.MagazineSize - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
         gun.IncreaseMagazine(maximumReloadAmount);
         playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
+        reloadCoroutine = null;
     }
 
     public bool IsReloading(){
         return cooldown.IsCooldown;
     }
 
-    public void StopAudio(){
+    public void StopReload(){
+        if (reloadCoroutine != null){
+            StopCoroutine(reloadCoroutine);
+        }
+
         if (audioSource.isPlaying){
             audioSource.Stop();
         }
