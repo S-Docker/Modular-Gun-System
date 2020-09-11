@@ -19,4 +19,9 @@
             }
         }
     }
+
+    public void StopCooldownTimer(){
+        isCooldown = false;
+        currentCooldownTime = 0;        
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour, IEquippable
 {
-    [SerializeField] GameObject gunNozzlePosition; public GameObject GunNozzlePosition => gunNozzlePosition;
+    [SerializeField] GameObject gunMuzzlePosition; public GameObject GunMuzzlePosition => gunMuzzlePosition;
     [SerializeField] GunData gunData;
 
     [SerializeField] GunFireComponent fire;
@@ -13,6 +13,10 @@ public abstract class Gun : MonoBehaviour, IEquippable
     [SerializeField] GunReloadComponent reload;
 
     [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
+
+    void Start(){
+        gunData = Instantiate(gunData); // make a copy so any changes made do not persist
+    }
 
     public void OnEquipped(){
 

@@ -43,6 +43,7 @@ public abstract class GunReloadComponent : GunComponent
 
     public void StopReload(){
         if (reloadCoroutine != null){
+            cooldown.StopCooldownTimer();
             StopCoroutine(reloadCoroutine);
         }
 

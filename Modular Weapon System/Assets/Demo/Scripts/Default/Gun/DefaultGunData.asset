@@ -18,4 +18,3 @@ MonoBehaviour:
   baseDamage: 0
   magazineSize: 7
   roundsPerMinute: 360
-  maxBulletTravel: 100
