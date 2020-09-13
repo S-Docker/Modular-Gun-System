@@ -15,12 +15,12 @@ public enum AmmoCategory {
     Heavy
 }
 
-public enum GunModType {
+public enum GunModCategory {
     Positive,
     Negative
 }
 
-public enum GunModCategory {
+public enum GunModType {
     Damage,
     Rpm,
     MagSize,
