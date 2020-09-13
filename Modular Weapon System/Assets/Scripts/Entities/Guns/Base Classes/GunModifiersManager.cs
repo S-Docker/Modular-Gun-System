@@ -21,18 +21,21 @@ public class GunModifiersManager : ScriptableObject
 
     public void AddModifier(GunModifier mod){
         modifiers.Add(mod);
-        GunModType modType = mod.ModifierType();
     }
 
     public float GetModifierValueByType(GunModType type){
         float value = 0;
 
         foreach (GunModifier mod in modifiers){
-            GunModType modType = mod.ModifierType();
+            GunModType modType = mod.GetModType();
 
             if (modType == type){
-                value += mod.ModifierValue();
-                // switch case using Op enum to allow for negative traits
+                GunModCategory gunModCategory = mod.GetModCategory();
+
+                switch(gunModCategory) {
+                    case GunModCategory.Positive: value += mod.GetModValue() ; break;
+                    case GunModCategory.Negative: value -= mod.GetModValue() ; break;
+                }
             }
         }
     return value;

@@ -16,6 +16,11 @@ public enum AmmoCategory {
 }
 
 public enum GunModType {
+    Positive,
+    Negative
+}
+
+public enum GunModCategory {
     Damage,
     Rpm,
     MagSize,
