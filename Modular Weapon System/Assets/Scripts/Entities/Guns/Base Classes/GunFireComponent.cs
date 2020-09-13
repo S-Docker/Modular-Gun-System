@@ -12,7 +12,7 @@ public abstract class GunFireComponent : GunComponent
 
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, transform.rotation);
         Projectile projectileScript = projectile.GetComponent<Projectile>();
-        projectileScript.ProjectileDamage = gunData.BaseDamage;
+        projectileScript.ProjectileDamage = gunData.Damage;
         
         animator.SetTrigger("IsFire");
         PlayAudio();

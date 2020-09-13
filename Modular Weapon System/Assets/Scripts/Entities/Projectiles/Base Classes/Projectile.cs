@@ -6,7 +6,7 @@ public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] protected ProjectileData projectileData;
     Vector3 startPosition;
-    int projectileDamage; public int ProjectileDamage { set => projectileDamage = value; }
+    float projectileDamage; public float ProjectileDamage { set => projectileDamage = value; }
 
     protected virtual void Start(){
         startPosition = this.transform.position;
