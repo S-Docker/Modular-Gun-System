@@ -7,7 +7,7 @@ public class GunModifiersManager : ScriptableObject
 {
     [SerializeField] GunModifier[] startingModifiers;
 
-    List<GunModifier> modifiers;
+    List<GunModifier> modifiers = new List<GunModifier>();
 
     void Awake(){
         InitializeModifierLists(startingModifiers);
@@ -23,9 +23,8 @@ public class GunModifiersManager : ScriptableObject
         modifiers.Add(mod);
     }
 
-    public float GetModifierValueByType(GunModType type){
+    float GetModifierValueByType(GunModType type){
         float value = 0;
-
         foreach (GunModifier mod in modifiers){
             GunModType modType = mod.GetModType();
 
@@ -39,5 +38,10 @@ public class GunModifiersManager : ScriptableObject
             }
         }
     return value;
+    }
+
+    public float GetModifierPercentByType(GunModType type){
+        float value = GetModifierValueByType(type);
+        return 1 + (value / 100);
     }
 }
