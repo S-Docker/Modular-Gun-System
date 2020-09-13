@@ -14,3 +14,10 @@ public enum AmmoCategory {
     Medium,
     Heavy
 }
+
+public enum GunModType {
+    Damage,
+    Rpm,
+    MagSize,
+    ReloadSpeed
+}
