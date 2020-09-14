@@ -5,14 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour, IEquippable
 {
+    [Header("Gun Object Settings")]
+    [Tooltip("Assign a GameObject to represent the gun muzzle position of the gun model.")]
     [SerializeField] GameObject gunMuzzlePosition; public GameObject GunMuzzlePosition => gunMuzzlePosition;
+
+    [Header("Gun Data")]
+    [Tooltip("Assign a GunData ScriptableObject containing the default gun values and behaviours")]
     [SerializeField] GunData gunData;
 
+    [Tooltip("Number of bullets contained inside the gun magazine at creation.")]
+    [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
+
+    [Header("Gun Components")]
     [SerializeField] GunFireComponent fire;
     [SerializeField] GunAbilityComponent ability;
     [SerializeField] GunReloadComponent reload;
-
-    [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
 
     void Start(){
         gunData = Instantiate(gunData); // make a copy so any changes made do not persist
