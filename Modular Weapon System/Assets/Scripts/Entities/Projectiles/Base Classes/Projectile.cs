@@ -44,7 +44,8 @@ public abstract class Projectile : MonoBehaviour
 
 
     protected virtual bool MaxDistanceTravelled(){
-        return (int)Vector3.Distance(startPosition, transform.position) > projectileData.MaxProjectileTravel;
+         // faster than Vector3.Distance and Mathf.Sqrt
+        return (startPosition - transform.position).sqrMagnitude > (projectileData.MaxProjectileTravel * projectileData.MaxProjectileTravel);
     }
 
     protected virtual void DestroyProjectile(){
