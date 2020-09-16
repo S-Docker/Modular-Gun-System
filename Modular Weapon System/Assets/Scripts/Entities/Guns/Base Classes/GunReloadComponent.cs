@@ -11,6 +11,9 @@ public abstract class GunReloadComponent : GunComponent
 
     [SerializeField] protected AmmoStorage playerAmmoStorage;
 
+    [Header("Reload Delegates")]
+    public OnGunAction onReload;
+
     protected override void Start()
     {
         base.Start();
@@ -43,6 +46,8 @@ public abstract class GunReloadComponent : GunComponent
         gun.IncreaseMagazine(maximumReloadAmount);
         playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
         reloadCoroutine = null;
+
+        onReload?.Invoke(gun);
     }
 
     public bool IsReloading(){

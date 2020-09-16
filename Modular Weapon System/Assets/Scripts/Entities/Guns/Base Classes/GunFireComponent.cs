@@ -2,6 +2,9 @@
 
 public abstract class GunFireComponent : GunComponent
 {
+    [Header("Fire Delegates")]
+    public OnGunAction onFire;
+
     public override void Action(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
@@ -18,6 +21,8 @@ public abstract class GunFireComponent : GunComponent
         animator.SetTrigger("IsFire");
         PlayAudio();
         gun.DecrementMagazine();
+
+        onFire?.Invoke(gun);
     }
 
     protected override void PlayAudio()
