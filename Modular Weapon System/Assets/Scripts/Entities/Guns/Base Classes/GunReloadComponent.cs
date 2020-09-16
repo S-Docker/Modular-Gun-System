@@ -28,12 +28,12 @@ public abstract class GunReloadComponent : GunComponent
 
         if (availableAmmo > 0){
             float reloadMultiplier = gunData.ReloadTimeMultiplier.Value;
-            float reloadTime = this.reloadTime * reloadMultiplier;
+            float reloadTimeAdjusted = this.reloadTime / reloadMultiplier;
 
             animator.SetFloat("reloadTimeMultiplier", reloadMultiplier);
 
-            cooldown.StartCooldownTimer(reloadTime);
-            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo, reloadTime));
+            cooldown.StartCooldownTimer(reloadTimeAdjusted);
+            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo, reloadTimeAdjusted));
         }
     }
 
