@@ -247,13 +247,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ebb2ef46688b43bbb26c6bf211020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAmmoStorage: {fileID: 1213348956}
   mods: []
-  gunMuzzlePosition: {fileID: 1984214338}
   gunData: {fileID: 11400000, guid: bf4361c93cb3ed64b8e3b19b21d7e3fd, type: 2}
-  bulletsInMagazine: 10
   fireComponent: {fileID: 289224039}
   reloadComponent: {fileID: 289224036}
   abilityComponent: {fileID: 289224038}
+  gunMuzzlePosition: {fileID: 1984214338}
+  bulletsInMagazine: 10
 --- !u!114 &289224036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
   reloadAnimClip: {fileID: 7400000, guid: 60ec6363b06d8f94a9d0651c595799a8, type: 2}
-  playerAmmoStorage: {fileID: 1213348956}
 --- !u!114 &289224038
 MonoBehaviour:
   m_ObjectHideFlags: 0

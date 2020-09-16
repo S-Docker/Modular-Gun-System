@@ -32,6 +32,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     [Header("Gun Action Delegates")]
     public OnGunAction onUpdate;
+    public OnGunAction onEquip;
     public OnGunAction onUnequip;
 
     protected void Start(){
@@ -48,7 +49,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void OnEquipped(){
-
+        onEquip?.Invoke(this);
     }
 
     public void OnUnequipped(){
