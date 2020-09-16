@@ -9,8 +9,6 @@ public abstract class GunReloadComponent : GunComponent
     protected float reloadTime;
     protected Coroutine reloadCoroutine;
 
-    [SerializeField] protected AmmoStorage playerAmmoStorage;
-
     [Header("Reload Delegates")]
     public OnGunAction onReload;
 
@@ -24,7 +22,7 @@ public abstract class GunReloadComponent : GunComponent
         if (cooldown.IsCooldown) return;
 
         AmmoCategory category = gunData.AmmoCategory;
-        int availableAmmo = playerAmmoStorage.GetAmmoAmount(category);
+        int availableAmmo = gun.PlayerAmmoStorage.GetAmmoAmount(category);
 
         if (availableAmmo > 0){
             float reloadMultiplier = gunData.ReloadTimeMultiplier.Value;
@@ -46,7 +44,7 @@ public abstract class GunReloadComponent : GunComponent
 
         int maximumReloadAmount = Mathf.Min(availableAmmo, magazineSizeAdjusted - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
         gun.IncreaseMagazine(maximumReloadAmount);
-        playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
+        gun.PlayerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
         reloadCoroutine = null;
 
         onReload?.Invoke(gun);

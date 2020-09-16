@@ -6,26 +6,29 @@ public delegate void OnGunAction(Gun target);
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
-    Animator animator; public Animator Animator => animator;
+    Animator animator;
+
+    [Header("Player Ammo Storage Script")]
+    [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
 
     [Header("Gun Modifiers")]
     [SerializeField] List<GunModifier> mods; 
-
-    [Header("Gun Object Settings")]
-    [Tooltip("Assign a GameObject to represent the gun muzzle position of the gun model.")]
-    [SerializeField] GameObject gunMuzzlePosition; public GameObject GunMuzzlePosition => gunMuzzlePosition;
 
     [Header("Gun Data")]
     [Tooltip("Assign a GunData ScriptableObject containing the default gun values and behaviours")]
     [SerializeField] GunData gunData; public GunData GunData => gunData;
 
-    [Tooltip("Number of bullets contained inside the gun magazine at creation.")]
-    [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
-
     [Header("Gun Components")]
     [SerializeField] GunFireComponent fireComponent; public GunFireComponent FireComponent => fireComponent;
     [SerializeField] GunReloadComponent reloadComponent; public GunReloadComponent ReloadComponent => reloadComponent;
     [SerializeField] GunAbilityComponent abilityComponent; public GunAbilityComponent AbilityComponent => abilityComponent;
+
+    [Header("Gun Object Settings")]
+    [Tooltip("Assign a GameObject to represent the gun muzzle position of the gun model.")]
+    [SerializeField] GameObject gunMuzzlePosition; public GameObject GunMuzzlePosition => gunMuzzlePosition;
+
+    [Tooltip("Number of bullets contained inside the gun magazine at creation.")]
+    [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
 
     [Header("Gun Action Delegates")]
     public OnGunAction onUpdate;
