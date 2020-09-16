@@ -3,12 +3,16 @@ using UnityEngine;
 
 public abstract class GunReloadComponent : GunComponent
 {
+    [Header("Reload Settings")]
+    [Tooltip("the reload anim used for gun.")]
     [SerializeField] protected AnimationClip reloadAnimClip;
-    [SerializeField] protected AmmoStorage playerAmmoStorage;
-    [SerializeField] protected float reloadTime;
+    protected float reloadTime;
     protected Coroutine reloadCoroutine;
 
-    protected override void Start() {
+    [SerializeField] protected AmmoStorage playerAmmoStorage;
+
+    protected override void Start()
+    {
         base.Start();
         reloadTime = reloadAnimClip.length;
     }
@@ -20,17 +24,22 @@ public abstract class GunReloadComponent : GunComponent
         int availableAmmo = playerAmmoStorage.GetAmmoAmount(category);
 
         if (availableAmmo > 0){
+            float reloadMultiplier = gunData.ReloadTimeMultiplier.Value;
+            float reloadTime = this.reloadTime * reloadMultiplier;
+
+            animator.SetFloat("reloadTimeMultiplier", reloadMultiplier);
+
             cooldown.StartCooldownTimer(reloadTime);
-            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo));
+            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo, reloadTime));
         }
     }
 
-    IEnumerator ReloadGun(Gun gun, GunData gunData, AmmoCategory category, int availableAmmo){
+    IEnumerator ReloadGun(Gun gun, GunData gunData, AmmoCategory category, int availableAmmo, float reloadTime){
         PlayAudio();
         animator.SetTrigger("IsReload");
         yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
 
-        int maximumReloadAmount = Mathf.Min(availableAmmo, gunData.MagazineSize - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
+        int maximumReloadAmount = Mathf.Min(availableAmmo, gunData.MagazineSize.Value - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
         gun.IncreaseMagazine(maximumReloadAmount);
         playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
         reloadCoroutine = null;

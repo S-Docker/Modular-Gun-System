@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7471c247740aa71448e1b39f9a2e9235, type: 3}
   m_Name: DefaultGunData
   m_EditorClassIdentifier: 
-  gunModifiersManager: {fileID: 11400000, guid: 9affc29810566934694bc0da18c01ff9, type: 2}
-  fireMode: 0
+  fireMode: 2
   projectilePrefab: {fileID: 4237456998717013383, guid: 76e24ca913b5a9b43b26815d4ba091c9, type: 3}
   ammoCategory: 0
-  damage: 0
-  magazineSize: 7
-  roundsPerMinute: 360
+  damage: 100
+  baseMagazineSize: 15
+  reloadTime: 1.5
+  baseRoundsPerMinute: 360
+  baseCritChance: 0
+  baseCritMultiplier: 0
+  baseStunChance: 0

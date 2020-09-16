@@ -17,14 +17,6 @@ public class ModifiableAttribute<T>
                 modifiedValue = mod.Value.Invoke(modifiedValue);
             }
 
-            // if generic is of type int, convert modified value to a float and round up
-            Type valueType = typeof(T);
-            if (valueType == typeof(int)){
-                float tempValue = Convert.ToSingle(modifiedValue);
-                Math.Ceiling(tempValue);
-                modifiedValue = (T)Convert.ChangeType(tempValue, typeof(T));
-            }
-
             return modifiedValue;
         }
     }

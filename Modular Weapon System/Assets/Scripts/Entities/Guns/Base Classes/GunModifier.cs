@@ -1,2 +1,2 @@
 ﻿[System.Serializable]
-public abstract class GunModifier : Modifier<GunModifier>{}
+public abstract class GunModifier : Modifier<Gun>{}
