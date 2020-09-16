@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Enums{}
+﻿public class Enums{}
 
 public enum FireMode {
     Single,
@@ -13,16 +9,4 @@ public enum AmmoCategory {
     Light,
     Medium,
     Heavy
-}
-
-public enum GunModCategory {
-    Positive,
-    Negative
-}
-
-public enum GunModType {
-    Damage,
-    Rpm,
-    MagSize,
-    ReloadSpeed
 }

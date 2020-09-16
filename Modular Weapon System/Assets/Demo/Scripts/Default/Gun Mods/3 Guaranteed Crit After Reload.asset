@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9a659065ac6ecd4eaf3aa347dfd655c, type: 3}
-  m_Name: DefaultGunModifierManager
+  m_Script: {fileID: 11500000, guid: 93b53a51f59da664d996f26708116dca, type: 3}
+  m_Name: Guaranteed Crit After Reload
   m_EditorClassIdentifier: 
-  startingModifiers: []
