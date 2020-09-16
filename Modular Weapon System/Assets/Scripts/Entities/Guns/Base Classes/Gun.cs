@@ -32,6 +32,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     [Header("Gun Action Delegates")]
     public OnGunAction onUpdate;
+    public OnGunAction onUnequip;
 
     protected void Start(){
         // Make instance of gun data so runtime changes are unique per-gun application
@@ -53,6 +54,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void OnUnequipped(){
         animator.SetTrigger("IsUnequipped");
         reloadComponent.StopReload();
+        onUnequip?.Invoke(this);
     }  
 
     public void Fire(){
