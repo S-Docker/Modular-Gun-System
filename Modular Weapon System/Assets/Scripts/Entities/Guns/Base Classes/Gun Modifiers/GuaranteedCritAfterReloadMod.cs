@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Guaranteed Crit After Reload", menuName = "Gun Mods/GuaranteedCritAfterReload")]
 public class GuaranteedCritAfterReloadMod : GunModifier

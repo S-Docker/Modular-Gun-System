@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Increase Damage After Reload", menuName = "Gun Mods/IncreasedDamageAfterReload")]
 public class IncreaseDamageAfterReloadMod : GunModifier
@@ -10,7 +8,7 @@ public class IncreaseDamageAfterReloadMod : GunModifier
     [SerializeField] float maxDuration;
     [Tooltip("Guns damage multiplier as a percentage in decimal form before modifiers.")]
     [SerializeField] float damageIncreaseMultiplier;
-    
+
     bool CanIncreaseDamage() => elapsedTime < maxDuration;
 
     float IncreaseDamageMultiplier(float currentMultiplier){
