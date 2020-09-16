@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Increase Crit Multiplier", menuName = "Gun Mods/IncreaseCritMultiplier")]
-public class IncreaseCritMultiplierMod : GunModifier
+[CreateAssetMenu(fileName = "New Crit Multiplier", menuName = "Gun Mods/Generic/CritMultiplier")]
+public class CritMultiplierMod : GunModifier
 {
     [Tooltip("Crit multiplier as a percentage in decimal form before modifiers.")]
     [SerializeField] float critMultiplier;
 
-    float IncreaseCritMultiplier(float currentMultiplier){
+    float AdjustCritMultiplier(float currentMultiplier){
         return currentMultiplier + critMultiplier;
     }
 
     public override void ApplyTo(Gun target){
-        target.GunData.CritMultiplier.AddMod(this.GetInstanceID(), IncreaseCritMultiplier);
+        target.GunData.CritMultiplier.AddMod(this.GetInstanceID(), AdjustCritMultiplier);
     }
 
     public override void RemoveFrom(Gun target){
