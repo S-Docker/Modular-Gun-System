@@ -28,12 +28,12 @@ public abstract class GunReloadComponent : GunComponent
 
         if (availableAmmo > 0){
             float reloadMultiplier = gunData.ReloadTimeMultiplier.Value;
-            float reloadTime = this.reloadTime * reloadMultiplier;
+            float reloadTimeAdjusted = this.reloadTime / reloadMultiplier;
 
             animator.SetFloat("reloadTimeMultiplier", reloadMultiplier);
 
-            cooldown.StartCooldownTimer(reloadTime);
-            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo, reloadTime));
+            cooldown.StartCooldownTimer(reloadTimeAdjusted);
+            reloadCoroutine = StartCoroutine(ReloadGun(gun, gunData, category, availableAmmo, reloadTimeAdjusted));
         }
     }
 
@@ -42,7 +42,9 @@ public abstract class GunReloadComponent : GunComponent
         animator.SetTrigger("IsReload");
         yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
 
-        int maximumReloadAmount = Mathf.Min(availableAmmo, gunData.MagazineSize.Value - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
+        int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
+
+        int maximumReloadAmount = Mathf.Min(availableAmmo, magazineSizeAdjusted - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
         gun.IncreaseMagazine(maximumReloadAmount);
         playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
         reloadCoroutine = null;

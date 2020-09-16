@@ -8,7 +8,7 @@ public abstract class GunFireComponent : GunComponent
     public override void Action(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
-        cooldown.StartCooldownTimer((float)60 / gunData.RoundsPerMinute.Value);
+        cooldown.StartCooldownTimer((float)60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));
 
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, transform.rotation);
         Projectile projectileScript = projectile.GetComponent<Projectile>();

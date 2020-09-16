@@ -63,7 +63,9 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void Reload(){
-        if (bulletsInMagazine < gunData.MagazineSize.Value){
+        int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
+        
+        if (bulletsInMagazine < magazineSizeAdjusted){
             reloadComponent.Action(this, gunData);
         }
     }

@@ -14,7 +14,6 @@ public class AmmoStorage : MonoBehaviour
 
         for (int i = 0; i < startingAmmoCategories.Length; i++){
             ammoTypeAndAmount.Add(startingAmmoCategories[i], startingAmmoAmounts[i]);
-            Debug.Log("Type " + startingAmmoCategories[i] + ", Amount " + startingAmmoAmounts[i]);
         }
     }
 
