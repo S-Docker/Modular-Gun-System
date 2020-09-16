@@ -63,7 +63,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void Reload(){
-        if (bulletsInMagazine < gunData.MagazineSize.Value){
+        if (bulletsInMagazine < gunData.MagazineSize){
             reloadComponent.Action(this, gunData);
         }
     }

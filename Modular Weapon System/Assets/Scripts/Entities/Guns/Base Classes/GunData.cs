@@ -12,10 +12,10 @@ public class GunData : ScriptableObject {
     [SerializeField][MinAttribute(0)] private int damage; public int Damage => damage;
 
     [Tooltip("Guns magazine size as a value before modifiers.")]
-    [SerializeField][MinAttribute(1)] private int baseMagazineSize;
+    [SerializeField][MinAttribute(1)] private int magazineSize; public int MagazineSize => magazineSize;
 
     [Tooltip("Guns RPM as a value before modifiers.")]
-    [SerializeField][MinAttribute(1)] private int baseRoundsPerMinute;
+    [SerializeField][MinAttribute(1)] private int roundsPerMinute; public int RoundsPerMinute => roundsPerMinute;
 
     [Tooltip("Guns crit chance as a percentage before modifiers.")]
     [SerializeField][MinAttribute(0)] private int baseCritChance;
@@ -28,19 +28,19 @@ public class GunData : ScriptableObject {
 
     [Header("Modifiable Attributes")]
     private ModifiableAttribute<float> damageMultiplier; public ModifiableAttribute<float> DamageMultiplier => damageMultiplier;
-    private ModifiableAttribute<int> magazineSize; public ModifiableAttribute<int> MagazineSize => magazineSize;
+    private ModifiableAttribute<float> magazineSizeMultiplier; public ModifiableAttribute<float> MagazineSizeMultiplier => magazineSizeMultiplier;
     private ModifiableAttribute<float> reloadTimeMultiplier; public ModifiableAttribute<float> ReloadTimeMultiplier => reloadTimeMultiplier;
-    private ModifiableAttribute<int> roundsPerMinute; public ModifiableAttribute<int> RoundsPerMinute => roundsPerMinute;
-    private ModifiableAttribute<int> critChance; public ModifiableAttribute<int> CritChance => critChance;
     private ModifiableAttribute<float> critMultiplier; public ModifiableAttribute<float> CritMultiplier => critMultiplier;
+    private ModifiableAttribute<float> roundsPerMinuteMultiplier; public ModifiableAttribute<float> RoundsPerMinuteMultiplier => roundsPerMinuteMultiplier;
+    private ModifiableAttribute<int> critChance; public ModifiableAttribute<int> CritChance => critChance;
     private ModifiableAttribute<int> stunChance; public ModifiableAttribute<int> StunChance => stunChance;
 
 
     void Awake(){
         damageMultiplier = new ModifiableAttribute<float>(1f);
-        magazineSize = new ModifiableAttribute<int>(baseMagazineSize);
+        magazineSizeMultiplier = new ModifiableAttribute<float>(1f);
         reloadTimeMultiplier = new ModifiableAttribute<float>(1f);
-        roundsPerMinute = new ModifiableAttribute<int>(baseRoundsPerMinute);
+        roundsPerMinuteMultiplier = new ModifiableAttribute<float>(1f);
         critChance = new ModifiableAttribute<int>(baseCritChance);
         critMultiplier = new ModifiableAttribute<float>(baseCritMultiplier);
         stunChance = new ModifiableAttribute<int>(baseStunChance);

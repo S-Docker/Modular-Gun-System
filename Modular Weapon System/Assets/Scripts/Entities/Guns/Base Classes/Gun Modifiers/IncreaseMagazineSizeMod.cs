@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Increase Magazine Size", menuName = "Gun Mods/IncreaseMagazineSize")]
+[CreateAssetMenu(fileName = "New Increase Magazine Size Multiplier", menuName = "Gun Mods/IncreaseMagazineSizeMultiplier")]
 public class IncreaseMagazineSizeMod : GunModifier
 {
-    [Tooltip("Amount to increase magazine size by.")]
-    [SerializeField] int additionalMagazineSpace;
+    [Tooltip("Magazine size multiplier as a percentage in decimal form before modifiers.")]
+    [SerializeField] int magazineSizeMultiplier;
 
-    int IncreaseMagazineSize(int currentMagazineSpace){
-        return currentMagazineSpace + additionalMagazineSpace;
+    float IncreaseMagazineSize(float currentMagazineSpace){
+        return currentMagazineSpace + magazineSizeMultiplier;
     }
 
     public override void ApplyTo(Gun target){
-        target.GunData.MagazineSize.AddMod(this.GetInstanceID(), IncreaseMagazineSize);
+        target.GunData.MagazineSizeMultiplier.AddMod(this.GetInstanceID(), IncreaseMagazineSize);
     }
 
     public override void RemoveFrom(Gun target){
-        target.GunData.MagazineSize.RemoveMod(this.GetInstanceID());
+        target.GunData.MagazineSizeMultiplier.RemoveMod(this.GetInstanceID());
     }
 }

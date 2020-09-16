@@ -42,7 +42,9 @@ public abstract class GunReloadComponent : GunComponent
         animator.SetTrigger("IsReload");
         yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
 
-        int maximumReloadAmount = Mathf.Min(availableAmmo, gunData.MagazineSize.Value - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
+        int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
+
+        int maximumReloadAmount = Mathf.Min(availableAmmo, magazineSizeAdjusted - gun.BulletsInMagazine); // maximum amount should never exceed magazine size
         gun.IncreaseMagazine(maximumReloadAmount);
         playerAmmoStorage.ReduceAmmoAmount(category, maximumReloadAmount);
         reloadCoroutine = null;
