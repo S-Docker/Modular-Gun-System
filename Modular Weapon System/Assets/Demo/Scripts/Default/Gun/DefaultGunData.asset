@@ -16,9 +16,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4237456998717013383, guid: 76e24ca913b5a9b43b26815d4ba091c9, type: 3}
   ammoCategory: 0
   damage: 100
-  baseMagazineSize: 15
-  reloadTime: 1.5
-  baseRoundsPerMinute: 360
-  baseCritChance: 0
-  baseCritMultiplier: 0
+  magazineSize: 10
+  roundsPerMinute: 360
+  baseCritChance: 50
+  baseCritMultiplier: 1.5
   baseStunChance: 0
