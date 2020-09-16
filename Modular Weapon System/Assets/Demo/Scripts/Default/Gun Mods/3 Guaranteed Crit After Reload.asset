@@ -10,5 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93b53a51f59da664d996f26708116dca, type: 3}
-  m_Name: Guaranteed Crit After Reload
+  m_Name: 3 Guaranteed Crit After Reload
   m_EditorClassIdentifier: 
+  maxCritBullets: 3

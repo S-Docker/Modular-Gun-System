@@ -14,9 +14,6 @@ public class GunData : ScriptableObject {
     [Tooltip("Guns magazine size as a value before modifiers.")]
     [SerializeField][MinAttribute(1)] private int baseMagazineSize;
 
-    [Tooltip("Guns reload speed as a value before modifiers.")]
-    [SerializeField][MinAttribute(0)] private float reloadTime; public float ReloadTime => reloadTime;
-
     [Tooltip("Guns RPM as a value before modifiers.")]
     [SerializeField][MinAttribute(1)] private int baseRoundsPerMinute;
 
