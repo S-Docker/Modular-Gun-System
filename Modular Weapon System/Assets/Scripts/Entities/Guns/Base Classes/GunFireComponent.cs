@@ -14,7 +14,6 @@ public abstract class GunFireComponent : GunComponent
         Projectile projectileScript = projectile.GetComponent<Projectile>();
 
         float damage = gunData.Damage * gunData.DamageMultiplier.Value;
-
         bool isCrit = IsCrit(gunData);
         projectileScript.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
         

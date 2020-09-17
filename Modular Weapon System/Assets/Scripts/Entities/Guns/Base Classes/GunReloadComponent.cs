@@ -15,7 +15,9 @@ public abstract class GunReloadComponent : GunComponent
     protected override void Start()
     {
         base.Start();
-        reloadTime = reloadAnimClip.length;
+        if (reloadAnimClip != null){
+            reloadTime = reloadAnimClip.length;
+        }
     }
 
     public override void Action(Gun gun, GunData gunData){
