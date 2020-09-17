@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public abstract class GunFireComponent : GunComponent
 {
     [Header("Fire Delegates")]
@@ -26,7 +27,7 @@ public abstract class GunFireComponent : GunComponent
 
     protected override void PlayAudio()
     {
-        if (componentAudio != null){
+        if (!componentAudio.Equals(null)){
             audioSource.PlayOneShot(componentAudio);
         }
     }

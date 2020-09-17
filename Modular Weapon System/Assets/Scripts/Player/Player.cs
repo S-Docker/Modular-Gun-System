@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] GameObject gunHoldPosition;
     public Gun heldGun;
+    bool fireHeld;
 
     void Start() {
 
@@ -26,11 +27,22 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)){
+            if (heldGun.GunData.FireMode == FireMode.Automatic){
+                fireHeld = true;
+            }
             heldGun.Fire();
+        }
+
+        if (Input.GetMouseButtonUp(0)){
+            fireHeld = false;
         }
 
         if (Input.GetKeyDown(KeyCode.R)){
             heldGun.Reload();
+        }
+
+        if (fireHeld){
+            heldGun.Fire();
         }
     }
 

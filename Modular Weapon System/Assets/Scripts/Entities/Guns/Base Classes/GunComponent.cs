@@ -10,11 +10,12 @@ public abstract class GunComponent : MonoBehaviour
 
     public abstract void Action(Gun gun, GunData gunData);
 
-    protected virtual void PlayAudio(){
-        if (componentAudio != null){
-            audioSource.clip = componentAudio;
-            audioSource.Play();
-        }
+    protected virtual void PlayAudio()
+    {
+        if (componentAudio.Equals(null)) return;
+        
+        audioSource.clip = componentAudio;
+        audioSource.Play();
     }
 
     protected virtual void Start(){

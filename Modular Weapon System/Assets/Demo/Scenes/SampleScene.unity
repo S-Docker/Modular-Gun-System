@@ -208,14 +208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
-    - target: {fileID: 1701868865917179874, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3130587029617546872, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
-      propertyPath: reloadAnimClip
-      value: 
-      objectReference: {fileID: 7400000, guid: 0294ff2cfed2bb246b6d2722ac89d331, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
 --- !u!1 &705507993
@@ -632,10 +624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rifle
       objectReference: {fileID: 0}
-    - target: {fileID: 6721142343288732491, guid: a68b874a02e27b44aa85fd44fe9a98d3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a68b874a02e27b44aa85fd44fe9a98d3, type: 3}
 --- !u!1 &1928083524
@@ -760,10 +748,6 @@ PrefabInstance:
     - target: {fileID: 62048590246468424, guid: 7a1de40a808a75744a0b97c0bd866e96, type: 3}
       propertyPath: m_Name
       value: Heavy
-      objectReference: {fileID: 0}
-    - target: {fileID: 62048590246468424, guid: 7a1de40a808a75744a0b97c0bd866e96, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 373933541857321131, guid: 7a1de40a808a75744a0b97c0bd866e96, type: 3}
       propertyPath: m_LocalPosition.x

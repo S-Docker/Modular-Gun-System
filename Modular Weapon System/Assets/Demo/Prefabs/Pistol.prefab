@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3783212cb7728094089e75fd815c0f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentAudio: {fileID: 8300000, guid: 1a6905612c6f2a441b680d64605cf2fb, type: 3}
+  componentAudio: {fileID: 8300000, guid: a97a06a911df6a741a99832b9887775f, type: 3}
 --- !u!114 &3130587029617546872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
-  reloadAnimClip: {fileID: 0}
+  reloadAnimClip: {fileID: 7400000, guid: 0294ff2cfed2bb246b6d2722ac89d331, type: 2}
 --- !u!114 &6654439762706728387
 MonoBehaviour:
   m_ObjectHideFlags: 0

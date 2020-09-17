@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public abstract class GunReloadComponent : GunComponent
 {
     [Header("Reload Settings")]

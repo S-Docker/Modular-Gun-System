@@ -97,11 +97,12 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         }
     }
 
-    public void AddMod(GunModifier mod){
-        if (!mods.Contains(mod)){
-            mods.Add(mod);
-            mod.ApplyTo(this);
-        }
+    public void AddMod(GunModifier mod)
+    {
+        if (mods.Contains(mod)) return;
+        
+        mods.Add(mod);
+        mod.ApplyTo(this);
     }
 
     public void RemoveMod(GunModifier mod){

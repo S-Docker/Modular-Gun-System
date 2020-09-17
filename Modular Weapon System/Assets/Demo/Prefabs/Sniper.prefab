@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3783212cb7728094089e75fd815c0f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentAudio: {fileID: 8300000, guid: 1a6905612c6f2a441b680d64605cf2fb, type: 3}
+  componentAudio: {fileID: 8300000, guid: a97a06a911df6a741a99832b9887775f, type: 3}
 --- !u!114 &1049301064901674973
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   ammoCategory: 1
   damage: 100
   magazineSize: 30
-  roundsPerMinute: 360
+  roundsPerMinute: 400
   baseCritChance: 0
   baseCritMultiplier: 0
   baseStunChance: 0
