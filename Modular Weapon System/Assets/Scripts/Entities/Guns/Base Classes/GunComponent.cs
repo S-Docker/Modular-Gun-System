@@ -6,7 +6,7 @@ public abstract class GunComponent : MonoBehaviour
     protected AudioSource audioSource;
     [SerializeField] protected AudioClip componentAudio;
 
-    protected Cooldown cooldown = new Cooldown();
+    protected readonly Cooldown cooldown = new Cooldown();
 
     public abstract void Action(Gun gun, GunData gunData);
 

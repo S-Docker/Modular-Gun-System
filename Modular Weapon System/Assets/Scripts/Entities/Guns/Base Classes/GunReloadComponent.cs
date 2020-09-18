@@ -7,8 +7,8 @@ public abstract class GunReloadComponent : GunComponent
     [Header("Reload Settings")]
     [Tooltip("the reload anim used for gun.")]
     [SerializeField] protected AnimationClip reloadAnimClip;
-    protected float reloadTime;
-    protected Coroutine reloadCoroutine;
+    float reloadTime;
+    Coroutine reloadCoroutine;
 
     [Header("Reload Delegates")]
     public OnGunAction onReload;

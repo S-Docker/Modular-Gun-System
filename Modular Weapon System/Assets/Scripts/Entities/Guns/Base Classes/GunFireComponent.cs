@@ -27,12 +27,12 @@ public abstract class GunFireComponent : GunComponent
 
     protected override void PlayAudio()
     {
-        if (!componentAudio.Equals(null)){
-            audioSource.PlayOneShot(componentAudio);
-        }
+        if (componentAudio.Equals(null)) return;
+        
+        audioSource.PlayOneShot(componentAudio);
     }
 
-    bool IsCrit(GunData gunData){
+    static bool IsCrit(GunData gunData){
         int critChance = gunData.CritChance.Value;
 
         return Random.Range(1, 100) <= critChance;

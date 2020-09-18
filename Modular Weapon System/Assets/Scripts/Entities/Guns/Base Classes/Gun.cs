@@ -84,19 +84,6 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         bulletsInMagazine--;
     }
 
-    protected void InitializeAttachedMods(){
-        if(mods == null) { 
-            mods = new List<GunModifier>(); 
-        } else {
-            for(int i = 0; i < mods.Count; i++){
-                // Make instance of mod so runtime changes are unique per-mod application
-                mods[i] = ScriptableObject.Instantiate<GunModifier>(mods[i]);
-
-                mods[i].ApplyTo(this);
-            }
-        }
-    }
-
     public void AddMod(GunModifier mod)
     {
         if (mods.Contains(mod)) return;
@@ -108,5 +95,18 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void RemoveMod(GunModifier mod){
         mods.Remove(mod);
         mod.RemoveFrom(this);
+    }
+    
+    void InitializeAttachedMods(){
+        if(mods == null) { 
+            mods = new List<GunModifier>(); 
+        } else {
+            for(int i = 0; i < mods.Count; i++){
+                // Make instance of mod so runtime changes are unique per-mod application
+                mods[i] = ScriptableObject.Instantiate<GunModifier>(mods[i]);
+
+                mods[i].ApplyTo(this);
+            }
+        }
     }
 }

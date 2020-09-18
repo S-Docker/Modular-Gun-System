@@ -24,7 +24,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected virtual void MoveProjectile(){
-        transform.position += Vector3.forward * projectileData.ProjectileSpeed * Time.deltaTime;
+        transform.position += (projectileData.ProjectileSpeed * Time.deltaTime) * Vector3.forward;
 
         if (projectileData.HasProjectileEffect){
             projectileData.ProjectileEffect.ContinuousEffect();
