@@ -9,7 +9,7 @@ public class AmmoStorage : MonoBehaviour
 
     Dictionary<AmmoCategory, int> ammoTypeAndAmount;
 
-    void Start() {
+    void Start(){
         ammoTypeAndAmount = new Dictionary<AmmoCategory, int>();
 
         for (int i = 0; i < startingAmmoCategories.Length; i++){
@@ -21,11 +21,15 @@ public class AmmoStorage : MonoBehaviour
         return ammoTypeAndAmount[category];
     }
 
+    public void AddAmmoAmount(AmmoCategory category, int amount){
+        ammoTypeAndAmount[category] += amount;
+    }
+
     public void ReduceAmmoAmount(AmmoCategory category, int amount){
         ammoTypeAndAmount[category] -= amount;
     }
 
-    void OnValidate() {
+    void OnValidate(){
         int[] temp = startingAmmoAmounts;
         InitialiseArraysInInspector();
         startingAmmoAmounts = temp; // needed to stop old values set in inspector from being overwritten on validation

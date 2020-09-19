@@ -25,8 +25,7 @@ public abstract class GunFireComponent : GunComponent
         onFire?.Invoke(gun);
     }
 
-    protected override void PlayAudio()
-    {
+    protected override void PlayAudio(){
         if (componentAudio.Equals(null)) return;
         
         audioSource.PlayOneShot(componentAudio);

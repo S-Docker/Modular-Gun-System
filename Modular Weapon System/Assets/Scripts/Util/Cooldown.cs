@@ -9,7 +9,7 @@
         isCooldown = true;
     }
 
-    public void IncrementCooldownTimer(float amount) {
+    public void IncrementCooldownTimer(float amount){
         if (isCooldown){
             currentCooldownTime += amount;
             

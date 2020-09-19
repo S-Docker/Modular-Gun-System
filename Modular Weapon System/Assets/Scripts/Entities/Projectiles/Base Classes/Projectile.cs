@@ -14,8 +14,7 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    protected virtual void Update()
-    {
+    protected virtual void Update(){
         MoveProjectile();
 
         if (MaxDistanceTravelled()){
@@ -31,7 +30,7 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    protected virtual void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other){
         IHealthComponent healthComponent = other.GetComponent<IHealthComponent>();
         if (healthComponent == null) return;
 

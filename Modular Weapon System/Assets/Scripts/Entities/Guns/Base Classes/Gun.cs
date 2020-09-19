@@ -84,8 +84,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         bulletsInMagazine--;
     }
 
-    public void AddMod(GunModifier mod)
-    {
+    public void AddMod(GunModifier mod){
         if (mods.Contains(mod)) return;
         
         mods.Add(mod);

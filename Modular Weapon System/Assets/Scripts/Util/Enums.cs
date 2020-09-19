@@ -1,11 +1,11 @@
 ﻿public class Enums{}
 
-public enum FireMode {
+public enum FireMode{
     Single,
     Burst,
     Automatic
 }
-public enum AmmoCategory {
+public enum AmmoCategory{
     Light,
     Medium,
     Heavy

@@ -10,8 +10,7 @@ public abstract class GunComponent : MonoBehaviour
 
     public abstract void Action(Gun gun, GunData gunData);
 
-    protected virtual void PlayAudio()
-    {
+    protected virtual void PlayAudio(){
         if (componentAudio.Equals(null)) return;
         
         audioSource.clip = componentAudio;
@@ -23,7 +22,7 @@ public abstract class GunComponent : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     
-    protected virtual void Update() {
+    protected virtual void Update(){
         if (cooldown.IsCooldown){
             cooldown.IncrementCooldownTimer(Time.deltaTime);
         }

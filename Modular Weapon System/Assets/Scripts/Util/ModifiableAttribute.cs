@@ -8,7 +8,7 @@ public class ModifiableAttribute<T>
     Dictionary<int, Func<T,T>> modifiers;
     T baseValue;
 
-    public T Value {
+    public T Value{
         get {
             var modifiedValue = baseValue;
 
