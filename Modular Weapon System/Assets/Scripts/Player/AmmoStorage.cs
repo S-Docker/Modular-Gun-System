@@ -32,8 +32,11 @@ public class AmmoStorage : MonoBehaviour
     void OnValidate(){
         int[] temp = startingAmmoAmounts;
         InitialiseArraysInInspector();
-        startingAmmoAmounts = temp; // needed to stop old values set in inspector from being overwritten on validation
-    }
+
+        if (temp == null) return;
+        // needed to stop old values set in inspector from being overwritten on validation
+        startingAmmoAmounts = temp;
+        }
 
     /**
     * Used to initialise two equal length arrays based on ammo categories available and set
