@@ -10,6 +10,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     
     public void ProjectileSetup(Vector3 dir){
         startPosition = this.transform.position;
+        transform.LookAt(dir);
         this.GetComponent<Rigidbody>().velocity = dir.normalized * projectileData.ProjectileSpeed;
     }
 
