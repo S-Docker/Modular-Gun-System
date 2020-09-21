@@ -6,6 +6,8 @@ public delegate void OnGunAction(Gun target);
 [RequireComponent(typeof(Animator))]
 public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
+// Remove value is never used warning from inspector
+#pragma warning disable 0649
     Animator animator;
 
     [Header("Player Ammo Storage Script")]
@@ -29,7 +31,8 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     [Tooltip("Number of bullets contained inside the gun magazine at creation.")]
     [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
-
+#pragma warning restore 0649
+    
     [Header("Gun Action Delegates")]
     public OnGunAction onUpdate;
     public OnGunAction onEquip;

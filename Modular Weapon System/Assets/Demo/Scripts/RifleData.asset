@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RifleData
   m_EditorClassIdentifier: 
   fireMode: 2
-  projectilePrefab: {fileID: 2680436800922527051, guid: 80a699a1efac05b499fd93f66f88c66e, type: 3}
+  projectilePrefab: {fileID: 633841073768002512, guid: 338589b16620eb64b8b8e2c537fa6a7f, type: 3}
   ammoCategory: 1
   damage: 100
   magazineSize: 30

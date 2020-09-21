@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultProjectile : Projectile
+public class DefaultProjectileBehaviour : ProjectileBehaviour
 {
-    
 }

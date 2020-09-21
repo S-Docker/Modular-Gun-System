@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6416920975597014472}
   - component: {fileID: 1068109912037604598}
   - component: {fileID: 5347166243979153471}
-  - component: {fileID: 1194480085434854680}
+  - component: {fileID: 8980077424259736258}
+  - component: {fileID: 5602643419692593814}
+  - component: {fileID: 584072388120243842}
   m_Layer: 0
   m_Name: P_Bullet
   m_TagString: Untagged
@@ -82,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1194480085434854680
+--- !u!114 &8980077424259736258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +93,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098698860248261284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a12f0c1f010d244191d3107a4165e9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 171e75b3614913244a488df3aed9307a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: efe3813a14f25174bb6d3e819c767daf, type: 2}
+--- !u!64 &5602643419692593814
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098698860248261284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3866609084552516401, guid: a3cd29d4d93a69a4fbcc115cb0801fb7, type: 3}
+--- !u!54 &584072388120243842
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098698860248261284}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
