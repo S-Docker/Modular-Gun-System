@@ -14,27 +14,33 @@ public abstract class ProjectileBehaviour : MonoBehaviour
         this.GetComponent<Rigidbody>().velocity = dir.normalized * projectileData.ProjectileSpeed;
     }
 
-    void FixedUpdate(){
+    protected void FixedUpdate(){
         if (MaxDistanceTravelled()){
             Destroy(this.gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision collision){
+    protected void OnCollisionEnter(Collision collision){
+        if (ProjectileData.ProjectileEffect != null){
+            InitialiseEffect(collision);
+        }
+        
         ApplyDamage(collision.gameObject);
         
         Destroy(this.gameObject);
     }
 
-    void ApplyDamage(GameObject other){
-        IHealthComponent healthComponent = other.GetComponent<IHealthComponent>();
-        healthComponent?.TakeDamage(projectileDamage);
-    }
-    
+    protected virtual void InitialiseEffect(Collision collision){}
+
     protected virtual bool MaxDistanceTravelled(){
         float maxDistance = projectileData.MaxProjectileTravel;
         
         // faster than Vector3.Distance and Mathf.Sqrt
         return (startPosition - transform.position).sqrMagnitude > (maxDistance * maxDistance);
+    }
+    
+    void ApplyDamage(GameObject other){
+        IHealthComponent healthComponent = other.GetComponent<IHealthComponent>();
+        healthComponent?.TakeDamage(projectileDamage);
     }
 }
