@@ -7,6 +7,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
 {   Vector3 startPosition;
     [SerializeField] protected ProjectileData projectileData; public ProjectileData ProjectileData => projectileData;
     float projectileDamage; public float ProjectileDamage { set => projectileDamage = value; }
+    int collisionCount = 0;
     
     public void ProjectileSetup(Vector3 dir){
         startPosition = this.transform.position;
@@ -26,8 +27,11 @@ public abstract class ProjectileBehaviour : MonoBehaviour
         }
         
         ApplyDamage(collision.gameObject);
-        
-        Destroy(this.gameObject);
+        collisionCount++;
+
+        if (collisionCount == ProjectileData.MaxCollisions){
+            Destroy(this.gameObject);
+        }
     }
 
     protected virtual void InitialiseEffect(Collision collision){}
