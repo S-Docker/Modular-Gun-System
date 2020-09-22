@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 2853457107133669990}
   - component: {fileID: 5440219187084561232}
   - component: {fileID: 6743480937606096583}
-  - component: {fileID: -4514939590598930920}
+  - component: {fileID: 8359263620277304856}
+  - component: {fileID: 2127628263}
+  - component: {fileID: 2127628258}
+  - component: {fileID: 2127628262}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: BouncyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +67,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4514939590598930920
+--- !u!114 &8359263620277304856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,10 +76,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 633841073768002512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171e75b3614913244a488df3aed9307a, type: 3}
+  m_Script: {fileID: 11500000, guid: a52403a6fe3785247a3d0b3c3647cbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: efe3813a14f25174bb6d3e819c767daf, type: 2}
+  projectileSpeed: 20
+  maxProjectileTravel: 100
+--- !u!114 &2127628263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633841073768002512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0f42a5feb5000458fed2f4c926d739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCollisions: 1
+  canBounce: 1
+  hasOnHitEffect: 0
+  onHitEffect: {fileID: 0}
+--- !u!114 &2127628258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633841073768002512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0420cd80fd7158548b49423fbac96427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2127628262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633841073768002512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5e4a7afcaca1544837a8cdefe0c09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounciness: 1
+  maxBounces: 3
+  bounceLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &3657273626274544519
 GameObject:
   m_ObjectHideFlags: 0

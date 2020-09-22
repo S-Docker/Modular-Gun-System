@@ -18,16 +18,17 @@ public abstract class GunFireComponent : GunComponent
         if (cooldown.IsCooldown) return;
 
         cooldown.StartCooldownTimer(60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));
-
-        GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, Quaternion.identity);
-        ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
-
-        float maxProjectileDistance = projectileBehaviour.ProjectileData.MaxProjectileTravel;
-        projectileBehaviour.ProjectileSetup(GetProjectileDir(maxProjectileDistance));
         
+        GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, Quaternion.identity);
+        
+        ProjectileMoveComponent projectileMove = projectile.GetComponent<ProjectileMoveComponent>();
+        float maxProjectileDistance = projectileMove.MaxProjectileTravel;
+        projectileMove.InitialiseMovement(GetProjectileDir(maxProjectileDistance));
+
+        ProjectileDamageComponent projectileDamage = projectile.GetComponent<ProjectileDamageComponent>();
         float damage = gunData.Damage * gunData.DamageMultiplier.Value;
         bool isCrit = IsCrit(gunData);
-        projectileBehaviour.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
+        projectileDamage.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
         
         animator.SetTrigger("IsFire");
         PlayAudio();

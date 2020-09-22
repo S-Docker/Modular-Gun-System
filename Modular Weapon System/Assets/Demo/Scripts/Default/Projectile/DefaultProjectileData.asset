@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: DefaultProjectileData
   m_EditorClassIdentifier: 
   projectileSpeed: 20
+  useGravity: 0
+  bounciness: 0
+  maxBounces: 0
+  maxCollisions: 1
   maxProjectileTravel: 100
-  hasProjectileEffect: 0
-  projectileEffect: {fileID: 3857768353347351338, guid: 9f53e944af25d0c47bfeba1455716d96, type: 3}
+  hasOnHitEffect: 0
+  onHitEffect: {fileID: 0}
