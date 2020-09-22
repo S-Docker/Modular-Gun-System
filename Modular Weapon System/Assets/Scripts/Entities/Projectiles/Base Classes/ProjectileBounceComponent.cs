@@ -11,7 +11,7 @@ public class ProjectileBounceComponent : MonoBehaviour
     int bounceCount = 0;
 
     [Header("Bounce Collision Settings")] 
-    [SerializeField] LayerMask bounceLayer;
+    [SerializeField] LayerMask bounceLayers;
 
     void Start()
     {
@@ -28,6 +28,7 @@ public class ProjectileBounceComponent : MonoBehaviour
         rb.useGravity = true;
     }
     void OnCollisionEnter(Collision collision){
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
         
         bounceCount++;

@@ -18,12 +18,13 @@ public abstract class GunFireComponent : GunComponent
         if (cooldown.IsCooldown) return;
 
         cooldown.StartCooldownTimer(60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));
-        
-        GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, Quaternion.identity);
+
+        Vector3 muzzlePosition = gun.GunMuzzlePosition.transform.position;
+        GameObject projectile = Instantiate(gunData.ProjectilePrefab, muzzlePosition, Quaternion.identity);
         
         ProjectileMoveComponent projectileMove = projectile.GetComponent<ProjectileMoveComponent>();
         float maxProjectileDistance = projectileMove.MaxProjectileTravel;
-        projectileMove.InitialiseMovement(GetProjectileDir(maxProjectileDistance));
+        projectileMove.InitialiseMovement(GetProjectileDir(maxProjectileDistance) - muzzlePosition);
 
         ProjectileDamageComponent projectileDamage = projectile.GetComponent<ProjectileDamageComponent>();
         float damage = gunData.Damage * gunData.DamageMultiplier.Value;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 723317855401003653}
   - component: {fileID: 7653566323052117694}
   - component: {fileID: 1838031482900584556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_FusionCore1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 9147012264646056092}
   - component: {fileID: 7653843984117057360}
   - component: {fileID: 7354863125754948472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_FusionCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 1572108059510574466}
   - component: {fileID: 5689916827519689955}
   - component: {fileID: 4877267609766379061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 867497780234302674}
   - component: {fileID: 1049301064901674973}
   - component: {fileID: 8765298065196536934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911411193965774900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 2467624971585717374}
   - component: {fileID: 981181888296851507}
   - component: {fileID: 7555699936368808925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 4837501591322915939}
   - component: {fileID: 8473157977305668230}
   - component: {fileID: 8066977379472769315}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 1965492265928059209}
   - component: {fileID: 7775546718200348992}
   - component: {fileID: 2452338460867918732}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   - component: {fileID: 5951410514365787071}
   - component: {fileID: 5025865640227899758}
   - component: {fileID: 6898419652429761027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Clip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 4227766328073570753}
   - component: {fileID: 6070547166940480062}
   - component: {fileID: 257723436031993877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 4434479728681840313}
   - component: {fileID: 7265044330400698363}
   - component: {fileID: 1338450893765723500}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 4393654634531841665}
   - component: {fileID: 2771760285552201543}
   - component: {fileID: 3441112712094541780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: S_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

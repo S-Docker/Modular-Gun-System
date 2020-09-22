@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2127628263}
   - component: {fileID: 2127628258}
   - component: {fileID: 2127628262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BouncyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8359263620277304856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 553233993345007331}
   - component: {fileID: 8751073101598433716}
   - component: {fileID: 313600188439584571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5006,7 +5006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7792985797295584243}
   - component: {fileID: 8801499784271479314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
