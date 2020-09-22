@@ -2,6 +2,8 @@
 
 [CreateAssetMenu(fileName = "New Gun Data", menuName = "Game Data/Gun Data", order = 0)]
 public class GunData : ScriptableObject {
+// Remove value is never used warning from inspector
+#pragma warning disable 0649
     [Header("Base Gun Settings")]
     [SerializeField] private FireMode fireMode; public FireMode FireMode => fireMode;
     [SerializeField] private GameObject projectilePrefab; public GameObject ProjectilePrefab => projectilePrefab;
@@ -25,7 +27,8 @@ public class GunData : ScriptableObject {
 
     [Tooltip("Guns stun chance as a percentage before modifiers.")]
     [SerializeField][MinAttribute(0)] private int baseStunChance;
-
+#pragma warning restore 0649
+    
     [Header("Modifiable Attributes")]
     private ModifiableAttribute<float> damageMultiplier; public ModifiableAttribute<float> DamageMultiplier => damageMultiplier;
     private ModifiableAttribute<float> magazineSizeMultiplier; public ModifiableAttribute<float> MagazineSizeMultiplier => magazineSizeMultiplier;
