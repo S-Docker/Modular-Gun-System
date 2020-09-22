@@ -17,13 +17,13 @@ public abstract class GunFireComponent : GunComponent
     public override void Action(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
-        cooldown.StartCooldownTimer((float)60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));
+        cooldown.StartCooldownTimer(60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));
 
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, gun.GunMuzzlePosition.transform.position, Quaternion.identity);
         ProjectileBehaviour projectileBehaviour = projectile.GetComponent<ProjectileBehaviour>();
 
-        float maxProjectilDistance = projectileBehaviour.ProjectileData.MaxProjectileTravel;
-        projectileBehaviour.ProjectileSetup(GetProjectileDir(maxProjectilDistance));
+        float maxProjectileDistance = projectileBehaviour.ProjectileData.MaxProjectileTravel;
+        projectileBehaviour.ProjectileSetup(GetProjectileDir(maxProjectileDistance));
         
         float damage = gunData.Damage * gunData.DamageMultiplier.Value;
         bool isCrit = IsCrit(gunData);

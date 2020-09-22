@@ -15,4 +15,4 @@ MonoBehaviour:
   projectileSpeed: 20
   maxProjectileTravel: 100
   hasProjectileEffect: 0
-  projectileEffect: {fileID: 0}
+  projectileEffect: {fileID: 3857768353347351338, guid: 9f53e944af25d0c47bfeba1455716d96, type: 3}

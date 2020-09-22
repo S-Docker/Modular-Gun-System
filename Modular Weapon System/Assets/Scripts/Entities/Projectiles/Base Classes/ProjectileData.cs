@@ -5,6 +5,6 @@ public class ProjectileData : ScriptableObject
 {
     [SerializeField] private float projectileSpeed = default; public float ProjectileSpeed => projectileSpeed;
     [SerializeField] private float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
-    [SerializeField] private bool hasProjectileEffect = false; public bool HasProjectileEffect => hasProjectileEffect;
-    [SerializeField] private GameObject projectileEffect = null; public GameObject ProjectileEffect => projectileEffect;
+    [SerializeField] private bool hasOnHitEffect = false; public bool HasOnHitEffect => hasOnHitEffect;
+    [SerializeField] private GameObject onHitEffect = null; public GameObject OnHitEffect => onHitEffect;
 }

@@ -21,7 +21,7 @@ public abstract class ProjectileBehaviour : MonoBehaviour
     }
 
     protected void OnCollisionEnter(Collision collision){
-        if (ProjectileData.ProjectileEffect != null){
+        if (ProjectileData.HasOnHitEffect){
             InitialiseEffect(collision);
         }
         

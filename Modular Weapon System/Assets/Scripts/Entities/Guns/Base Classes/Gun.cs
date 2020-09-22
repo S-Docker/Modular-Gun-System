@@ -62,12 +62,16 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }  
 
     public void Fire(){
-        if (bulletsInMagazine > 0 && !reloadComponent.IsReloading()){
+        if (reloadComponent.IsReloading()) return;
+        
+        if (bulletsInMagazine > 0){
             fireComponent.Action(this, gunData);
         }
     }
 
     public void Ability(){
+        if (reloadComponent.IsReloading()) return;
+        
         abilityComponent.Action(this, gunData);
     }
 
