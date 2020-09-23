@@ -1043,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1300875942242333761, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5493e8e1faea6cc4da93cbb4295e322c, type: 2}
     - target: {fileID: 1390148402325485058, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
       propertyPath: gunData
       value: 
