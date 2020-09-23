@@ -28,7 +28,6 @@ public class ProjectileBounceComponent : MonoBehaviour
         rb.useGravity = true;
     }
     void OnCollisionEnter(Collision collision){
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
         
         bounceCount++;

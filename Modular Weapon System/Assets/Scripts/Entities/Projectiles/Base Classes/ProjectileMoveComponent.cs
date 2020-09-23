@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileMoveComponent : MonoBehaviour
+public class ProjectileMoveComponent : ProjectileComponent
 {
     [SerializeField] float projectileSpeed = default;
     Vector3 startPosition;
     [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
+    
+    [Header("Projectile Effect Settings")]
+    [SerializeField] bool hasMaxOnReachedEffect = false;
+    [SerializeField] GameObject maxDistReachedEffect = null;
     
     public void InitialiseMovement(Vector3 dir){
         startPosition = this.transform.position;
@@ -18,8 +22,11 @@ public class ProjectileMoveComponent : MonoBehaviour
     
     void FixedUpdate(){
         if (MaxDistanceTravelled()){
-            // perform OnHit
-            Destroy(this.gameObject);
+            if (hasMaxOnReachedEffect){
+                InitialiseEffect(maxDistReachedEffect, transform.position);
+            }
+            
+            Destroy(gameObject);
         }
     }
     
@@ -27,6 +34,6 @@ public class ProjectileMoveComponent : MonoBehaviour
         float maxDistance = maxProjectileTravel;
         
         // faster than Vector3.Distance and Mathf.Sqrt
-        return (startPosition - transform.position).sqrMagnitude > (maxDistance * maxDistance);
+        return (startPosition - transform.position).sqrMagnitude > maxDistance * maxDistance;
     }
 }
