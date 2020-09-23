@@ -13,7 +13,7 @@ public class GunFireComponent : GunComponent
         base.Start();
         
         cam = Camera.main;
-        masksToIgnore = ~(1 << 9 | 10); // ignore player, weapons and projectile layers
+        masksToIgnore = ~(1 << 9 |1 << 10); // ignore player, weapons and projectile layers
     }
 
     public override void Action(Gun gun, GunData gunData){
