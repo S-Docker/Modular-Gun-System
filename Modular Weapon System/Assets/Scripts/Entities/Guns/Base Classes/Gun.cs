@@ -9,7 +9,9 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
     Animator animator;
-
+    [Header("Type of Gun")]
+    [SerializeField] private GunType gunType; public GunType GunType => gunType;
+    
     [Header("Player Ammo Storage Script")]
     [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
 

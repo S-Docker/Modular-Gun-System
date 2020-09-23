@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileDamageComponent : MonoBehaviour
+public class ProjectileDamageComponent : ProjectileComponent
 {
     [Header("Projectile Damage Settings")]
     float projectileDamage; public float ProjectileDamage { set => projectileDamage = value; }

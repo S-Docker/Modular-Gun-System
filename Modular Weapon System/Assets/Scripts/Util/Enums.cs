@@ -10,3 +10,8 @@ public enum AmmoCategory{
     Medium,
     Heavy
 }
+
+public enum GunType{
+    Projectile,
+    Hitscan
+}
