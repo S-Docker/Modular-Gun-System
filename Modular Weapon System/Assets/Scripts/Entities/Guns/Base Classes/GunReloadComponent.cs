@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public abstract class GunReloadComponent : GunComponent
+public class GunReloadComponent : GunComponent
 {
     [Header("Reload Settings")]
     [Tooltip("the reload anim used for gun.")]

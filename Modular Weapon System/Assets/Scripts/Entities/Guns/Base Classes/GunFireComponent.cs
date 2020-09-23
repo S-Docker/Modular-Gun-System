@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [DisallowMultipleComponent]
-public abstract class GunFireComponent : GunComponent
+public class GunFireComponent : GunComponent
 {
     Camera cam;
     int masksToIgnore;
