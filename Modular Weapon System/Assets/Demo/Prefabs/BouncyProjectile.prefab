@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5440219187084561232}
   - component: {fileID: 6743480937606096583}
   - component: {fileID: 8359263620277304856}
-  - component: {fileID: 2127628263}
+  - component: {fileID: 7007215099393238780}
   - component: {fileID: 2127628258}
   - component: {fileID: 2127628262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BouncyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8359263620277304856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +81,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   maxProjectileTravel: 100
---- !u!114 &2127628263
+  hasMaxOnReachedEffect: 0
+  maxDistReachedEffect: {fileID: 0}
+--- !u!114 &7007215099393238780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,13 +92,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 633841073768002512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0f42a5feb5000458fed2f4c926d739, type: 3}
+  m_Script: {fileID: 11500000, guid: 22dd3505c53a139499c954137bb20f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
   maxCollisions: 1
   canBounce: 1
-  hasOnHitEffect: 0
-  onHitEffect: {fileID: 0}
 --- !u!114 &2127628258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,9 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounciness: 1
   maxBounces: 3
-  bounceLayer:
+  bounceLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
 --- !u!1 &3657273626274544519
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ GameObject:
   - component: {fileID: 553233993345007331}
   - component: {fileID: 8751073101598433716}
   - component: {fileID: 313600188439584571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5006,7 +5008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7792985797295584243}
   - component: {fileID: 8801499784271479314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

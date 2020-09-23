@@ -4,12 +4,14 @@ using System.Collections.Generic;
 public delegate void OnGunAction(Gun target);
 
 [RequireComponent(typeof(Animator))]
-public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
+public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
     Animator animator;
-
+    [Header("Type of Gun")]
+    [SerializeField] private GunType gunType; public GunType GunType => gunType;
+    
     [Header("Player Ammo Storage Script")]
     [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
 
@@ -38,7 +40,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public OnGunAction onEquip;
     public OnGunAction onUnequip;
 
-    protected void Start(){
+    void Start(){
         // Make instance of gun data so runtime changes are unique per-gun application
         gunData = Instantiate(gunData);
 
@@ -47,7 +49,7 @@ public abstract class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         animator = GetComponent<Animator>();
     }
 
-    protected void Update(){
+    void Update(){
         onUpdate?.Invoke(this);
     }
 

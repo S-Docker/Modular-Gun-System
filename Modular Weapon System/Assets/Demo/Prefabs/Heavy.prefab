@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 373933541857321131}
   - component: {fileID: 5179192756491086073}
-  - component: {fileID: 528320303743972084}
-  - component: {fileID: 4518800768687139293}
-  - component: {fileID: 4337006278555638482}
+  - component: {fileID: 7437870452083582194}
+  - component: {fileID: 8862635605156276830}
+  - component: {fileID: 5257071061744309471}
   - component: {fileID: 5412026989104105833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &528320303743972084
+--- !u!114 &7437870452083582194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,18 +70,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 62048590246468424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45ebb2ef46688b43bbb26c6bf211020, type: 3}
+  m_Script: {fileID: 11500000, guid: 268c2a006ae776146b82476b53296cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunType: 0
   playerAmmoStorage: {fileID: 0}
   mods: []
   gunData: {fileID: 11400000, guid: f4c3310d82e62554987099514bc5c59c, type: 2}
-  fireComponent: {fileID: 4518800768687139293}
-  reloadComponent: {fileID: 4337006278555638482}
+  fireComponent: {fileID: 8862635605156276830}
+  reloadComponent: {fileID: 5257071061744309471}
   abilityComponent: {fileID: 5412026989104105833}
   gunMuzzlePosition: {fileID: 2927981984626177026}
   bulletsInMagazine: 80
---- !u!114 &4518800768687139293
+--- !u!114 &8862635605156276830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,11 +91,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 62048590246468424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3783212cb7728094089e75fd815c0f8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ddd3d67687e6ee4aa2df5459c20501f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: abadf2bf4bc7aba4584565d2c6b1c856, type: 3}
---- !u!114 &4337006278555638482
+--- !u!114 &5257071061744309471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 62048590246468424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf12a1cc88ca97f43bdcbec1dd5334a3, type: 3}
+  m_Script: {fileID: 11500000, guid: e7addcc4d52b649409ee2b803133a6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
@@ -132,7 +133,7 @@ GameObject:
   - component: {fileID: 7565902516737253906}
   - component: {fileID: 4325135991429592973}
   - component: {fileID: 2232150839952214890}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_MainBattery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +214,7 @@ GameObject:
   - component: {fileID: 4083770580416185163}
   - component: {fileID: 7140877713791644175}
   - component: {fileID: 7656846951772511574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9095861594590412289}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +325,7 @@ GameObject:
   - component: {fileID: 3120048268743827789}
   - component: {fileID: 7690089119209864841}
   - component: {fileID: 6463779538117288165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_BeamBattery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +406,7 @@ GameObject:
   - component: {fileID: 8650097895986615526}
   - component: {fileID: 8762464614991421249}
   - component: {fileID: 7464951764323462675}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +487,7 @@ GameObject:
   - component: {fileID: 2145787955245564812}
   - component: {fileID: 2575160971221484167}
   - component: {fileID: 3532861678801488083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +568,7 @@ GameObject:
   - component: {fileID: 611736144676044124}
   - component: {fileID: 6279799775053018872}
   - component: {fileID: 8800721130877634756}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: C_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}

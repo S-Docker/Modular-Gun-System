@@ -11,7 +11,7 @@ public class ProjectileBounceComponent : MonoBehaviour
     int bounceCount = 0;
 
     [Header("Bounce Collision Settings")] 
-    [SerializeField] LayerMask bounceLayer;
+    [SerializeField] LayerMask bounceLayers;
 
     void Start()
     {

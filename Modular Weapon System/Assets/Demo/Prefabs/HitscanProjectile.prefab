@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 2853457107133669990}
   - component: {fileID: 5440219187084561232}
   - component: {fileID: 6743480937606096583}
-  - component: {fileID: 2926531369953738383}
+  - component: {fileID: 6910205334221774153}
   - component: {fileID: 5617502295809448611}
   - component: {fileID: 1083021339420342274}
   m_Layer: 10
-  m_Name: Projectile
+  m_Name: HitscanProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &2926531369953738383
+--- !u!114 &6910205334221774153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,13 +75,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 633841073768002512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52403a6fe3785247a3d0b3c3647cbba, type: 3}
+  m_Script: {fileID: 11500000, guid: 1606f3bbd090a5e4a9847b40a71bf4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 20
-  maxProjectileTravel: 100
-  hasMaxOnReachedEffect: 0
-  maxDistReachedEffect: {fileID: 0}
 --- !u!114 &5617502295809448611
 MonoBehaviour:
   m_ObjectHideFlags: 0

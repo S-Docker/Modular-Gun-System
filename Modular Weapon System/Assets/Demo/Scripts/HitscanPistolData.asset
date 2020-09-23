@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7471c247740aa71448e1b39f9a2e9235, type: 3}
-  m_Name: DefaultGunData
+  m_Name: HitscanPistolData
   m_EditorClassIdentifier: 
   fireMode: 2
-  projectilePrefab: {fileID: 633841073768002512, guid: 338589b16620eb64b8b8e2c537fa6a7f, type: 3}
+  projectilePrefab: {fileID: 633841073768002512, guid: eb445cc1d185e7d4f9361c11c956927c, type: 3}
   ammoCategory: 0
-  damage: 100
-  magazineSize: 10
+  damage: 40
+  magazineSize: 15
   roundsPerMinute: 360
-  baseCritChance: 50
-  baseCritMultiplier: 1.5
+  baseCritChance: 0
+  baseCritMultiplier: 0
   baseStunChance: 0

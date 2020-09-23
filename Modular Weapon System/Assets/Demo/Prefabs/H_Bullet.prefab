@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 4541954160778409081}
   - component: {fileID: 3304948689588608425}
   - component: {fileID: 215079523958016291}
-  - component: {fileID: 2101068262597132430}
   - component: {fileID: 4585365077156478617}
   - component: {fileID: 7052135824074475838}
-  m_Layer: 0
+  - component: {fileID: 6134922475009630578}
+  - component: {fileID: 7762394856009065142}
+  - component: {fileID: 1150379613387024933}
+  m_Layer: 10
   m_Name: H_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2101068262597132430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818119452171187687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171e75b3614913244a488df3aed9307a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileData: {fileID: 11400000, guid: efe3813a14f25174bb6d3e819c767daf, type: 2}
 --- !u!64 &4585365077156478617
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -127,3 +116,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6134922475009630578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818119452171187687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52403a6fe3785247a3d0b3c3647cbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 20
+  maxProjectileTravel: 100
+  hasMaxOnReachedEffect: 0
+  maxDistReachedEffect: {fileID: 0}
+--- !u!114 &7762394856009065142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818119452171187687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dd3505c53a139499c954137bb20f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
+  maxCollisions: 1
+  canBounce: 0
+--- !u!114 &1150379613387024933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818119452171187687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0420cd80fd7158548b49423fbac96427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
