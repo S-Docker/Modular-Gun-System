@@ -98,7 +98,7 @@ MonoBehaviour:
   hasEffect: 0
   effect: {fileID: 0}
   maxCollisions: 1
-  canBounce: 0
+  canBounce: 1
 --- !u!114 &2127628258
 MonoBehaviour:
   m_ObjectHideFlags: 0
