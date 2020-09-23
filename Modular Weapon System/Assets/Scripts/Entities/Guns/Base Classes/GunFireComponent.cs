@@ -4,6 +4,7 @@
 public abstract class GunFireComponent : GunComponent
 {
     Camera cam;
+    int masksToIgnore;
 
     [Header("Fire Delegates")]
     public OnGunAction onFire;
@@ -12,6 +13,7 @@ public abstract class GunFireComponent : GunComponent
         base.Start();
         
         cam = Camera.main;
+        masksToIgnore = (1 << 9 | 10); // ignore player, weapons and projectile layers
     }
 
     public override void Action(Gun gun, GunData gunData){
@@ -54,6 +56,6 @@ public abstract class GunFireComponent : GunComponent
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         
-        return Physics.Raycast(ray, out hit, maxDistance) ? hit.point : ray.GetPoint(maxDistance);
+        return Physics.Raycast(ray, out hit, maxDistance, masksToIgnore) ? hit.point : ray.GetPoint(maxDistance);
     }
 }
