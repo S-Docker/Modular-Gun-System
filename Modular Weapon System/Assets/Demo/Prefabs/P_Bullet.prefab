@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5602643419692593814}
   - component: {fileID: 584072388120243842}
   - component: {fileID: 4056120265991408656}
-  - component: {fileID: 1596775600825708798}
+  - component: {fileID: 1092826427286150145}
   - component: {fileID: 2932663265361037034}
   m_Layer: 10
   m_Name: P_Bullet
@@ -130,7 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   maxProjectileTravel: 100
---- !u!114 &1596775600825708798
+  hasMaxOnReachedEffect: 0
+  maxDistReachedEffect: {fileID: 0}
+--- !u!114 &1092826427286150145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,13 +141,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098698860248261284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0f42a5feb5000458fed2f4c926d739, type: 3}
+  m_Script: {fileID: 11500000, guid: 22dd3505c53a139499c954137bb20f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
   maxCollisions: 1
   canBounce: 0
-  hasOnHitEffect: 0
-  onHitEffect: {fileID: 0}
 --- !u!114 &2932663265361037034
 MonoBehaviour:
   m_ObjectHideFlags: 0
