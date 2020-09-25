@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public abstract class ProjectileCollisionComponent : ProjectileComponent
 {
     protected ProjectileDamageComponent damageComponent;

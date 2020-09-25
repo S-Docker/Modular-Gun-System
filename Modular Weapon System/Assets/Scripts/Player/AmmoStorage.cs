@@ -36,7 +36,7 @@ public class AmmoStorage : MonoBehaviour
         if (temp == null) return;
         // needed to stop old values set in inspector from being overwritten on validation
         startingAmmoAmounts = temp;
-        }
+    }
 
     /**
     * Used to initialise two equal length arrays based on ammo categories available and set

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ProjectileDamageComponent : ProjectileComponent
 {
     [Header("Projectile Damage Settings")]

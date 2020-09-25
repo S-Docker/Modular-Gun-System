@@ -6,6 +6,7 @@ public class ProjectileStickyCollisionComponent : ProjectileCollisionComponent
 {
     Transform projectileTransform; // reduce transform. calls
     [Header("Explosion Delay Settings")] 
+    [Tooltip("Which layers cause the projectile to explode on contact")]
     [SerializeField] LayerMask explodeOnTouchLayers;
     [Tooltip("Maximum radius to check for nearby enemies.")]
     [SerializeField] float maxRadiusForDetection;

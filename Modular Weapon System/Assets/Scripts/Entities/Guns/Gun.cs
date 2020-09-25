@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public delegate void OnGunAction(Gun target);
 
-[RequireComponent(typeof(Animator))]
+[DisallowMultipleComponent][RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
 // Remove value is never used warning from inspector

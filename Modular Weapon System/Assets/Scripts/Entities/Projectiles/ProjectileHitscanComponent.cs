@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ProjectileHitscanComponent : ProjectileComponent
 {
     public void InitialiseHitscan(Vector3 pointOfImpact){

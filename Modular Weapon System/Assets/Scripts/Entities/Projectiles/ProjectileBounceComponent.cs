@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ProjectileBounceComponent : MonoBehaviour
 {
     [Header("Bounce Settings")]
     [Range(0, 1)]
     [SerializeField] float bounciness = 0;
+    [Range(1, 5)]
     [SerializeField] int maxBounces = 3;
     int bounceCount = 0;
-
-    [Header("Bounce Collision Settings")] 
-    [SerializeField] LayerMask bounceLayers;
 
     void Start()
     {

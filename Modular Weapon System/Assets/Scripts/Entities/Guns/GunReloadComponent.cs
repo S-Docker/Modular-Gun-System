@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunReloadComponent : GunComponent
 {
     [Header("Reload Settings")]
-    [Tooltip("the reload anim used for gun.")]
+    [Tooltip("Reload animation used for the selected gun.")]
     [SerializeField] protected AnimationClip reloadAnimClip;
     float reloadTime;
     Coroutine reloadCoroutine;

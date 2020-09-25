@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class ProjectileMoveComponent : ProjectileComponent
 {
-    [SerializeField] float projectileSpeed = default;
+    [Header("Projectile Movement Settings")]
     Vector3 startPosition;
+    [Range(1, 25)]
+    [SerializeField] float projectileSpeed = default;
+    [Range(1, 100)]
     [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
     
     [Header("Projectile Effect Settings")]
