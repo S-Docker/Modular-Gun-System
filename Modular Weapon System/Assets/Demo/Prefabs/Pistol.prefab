@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1329207275469696001}
   - component: {fileID: 5810206698418431059}
-  - component: {fileID: 2219531973781939496}
-  - component: {fileID: 1037544466683673776}
-  - component: {fileID: 830850382065151992}
+  - component: {fileID: 3222707270696849898}
+  - component: {fileID: 1573575704403255662}
+  - component: {fileID: 9134265160153052053}
   - component: {fileID: 6654439762706728387}
   m_Layer: 10
   m_Name: Pistol
@@ -62,7 +62,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2219531973781939496
+--- !u!114 &3222707270696849898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,19 +71,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701868865917179874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268c2a006ae776146b82476b53296cf2, type: 3}
+  m_Script: {fileID: 11500000, guid: a02a6795d2019e5499ecd6703b2ae3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gunType: 0
   playerAmmoStorage: {fileID: 0}
   mods: []
   gunData: {fileID: 11400000, guid: b364378b20065a44ba86bbaedaec2996, type: 2}
-  fireComponent: {fileID: 1037544466683673776}
-  reloadComponent: {fileID: 830850382065151992}
+  fireComponent: {fileID: 1573575704403255662}
+  reloadComponent: {fileID: 9134265160153052053}
   abilityComponent: {fileID: 6654439762706728387}
   gunMuzzlePosition: {fileID: 5542251227284466022}
   bulletsInMagazine: 15
---- !u!114 &1037544466683673776
+--- !u!114 &1573575704403255662
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,11 +92,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701868865917179874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddd3d67687e6ee4aa2df5459c20501f, type: 3}
+  m_Script: {fileID: 11500000, guid: e2a8e0c718d5453458357ba5d14918be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: abadf2bf4bc7aba4584565d2c6b1c856, type: 3}
---- !u!114 &830850382065151992
+--- !u!114 &9134265160153052053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1701868865917179874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7addcc4d52b649409ee2b803133a6ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 53870505bcf7adb419f385ba3326f807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
