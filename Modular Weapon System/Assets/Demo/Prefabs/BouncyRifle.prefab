@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 4912248076444906449}
   - component: {fileID: 1113645940305911508}
   - component: {fileID: 5048943717684086433}
-  - component: {fileID: 6846973093513416095}
   m_Layer: 10
   m_Name: BouncyRifle
   m_TagString: Untagged
@@ -242,7 +241,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: b786e0764513c6244a915247ddd8fbaf, type: 2}
   fireComponent: {fileID: 1113645940305911508}
   reloadComponent: {fileID: 5048943717684086433}
-  abilityComponent: {fileID: 6846973093513416095}
+  ability: {fileID: 11400000, guid: a4fe217e4365bfc45a3ffad82fbbcaea, type: 2}
   gunMuzzlePosition: {fileID: 6178587534755681426}
   bulletsInMagazine: 30
 --- !u!114 &1113645940305911508
@@ -272,19 +271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
   reloadAnimClip: {fileID: 7400000, guid: d5294b4d207d4fb43abb667226a4c268, type: 2}
---- !u!114 &6846973093513416095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495833626750918590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f2b2872f1842c845b414679392cb43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentAudio: {fileID: 0}
 --- !u!1 &3299091718481543507
 GameObject:
   m_ObjectHideFlags: 0

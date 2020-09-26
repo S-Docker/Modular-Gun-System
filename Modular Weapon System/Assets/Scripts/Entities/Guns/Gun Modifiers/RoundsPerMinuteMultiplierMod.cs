@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Rounds Per Minute Multiplier", menuName = "Gun Mods/Generic/RoundsPerMinuteMultiplier")]
+[CreateAssetMenu(fileName = "New Rounds Per Minute Multiplier", menuName = "Gun Mods/Generic/Rounds Per Minute Multiplier")]
 public class RoundsPerMinuteMultiplierMod : GunModifier
 {
     [Tooltip("Rounds per minute multiplier as a percentage in decimal form before modifiers.")]

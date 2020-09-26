@@ -25,7 +25,9 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     [Header("Gun Components")]
     [SerializeField] GunFireComponent fireComponent; public GunFireComponent FireComponent => fireComponent;
     [SerializeField] GunReloadComponent reloadComponent; public GunReloadComponent ReloadComponent => reloadComponent;
-    [SerializeField] GunAbilityComponent abilityComponent; public GunAbilityComponent AbilityComponent => abilityComponent;
+    
+    [Header("Gun Ability")]
+    [SerializeField] GunAbility ability;
 
     [Header("Gun Object Settings")]
     [Tooltip("Assign a GameObject to represent the gun muzzle position of the gun model.")]
@@ -74,7 +76,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void Ability(){
         if (reloadComponent.IsReloading()) return;
         
-        abilityComponent.Action(this, gunData);
+        ability.Action(this, gunData);
     }
 
     public void Reload(){
@@ -103,6 +105,20 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void RemoveMod(GunModifier mod){
         mods.Remove(mod);
         mod.RemoveFrom(this);
+    }
+
+    public void SetupGun(GunData gunData, GunAbility ability){
+        InitializeGunData(gunData);
+        InitializeGunComponents();
+        this.ability = ability;
+    }
+    
+    void InitializeGunData(GunData gunData){
+        this.gunData = gunData;
+    }
+    void InitializeGunComponents(){
+        fireComponent = GetComponent<GunFireComponent>();
+        reloadComponent = GetComponent<GunReloadComponent>();
     }
     
     void InitializeAttachedMods(){

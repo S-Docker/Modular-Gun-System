@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Gun Damage Multiplier", menuName = "Gun Mods/Generic/GunDamageMultiplier")]
+[CreateAssetMenu(fileName = "New Gun Damage Multiplier", menuName = "Gun Mods/Generic/Gun Damage Multiplier")]
 public class GunDamageMultiplierMod : GunModifier
 {
     [Tooltip("Damage multiplier as a percentage in decimal form before modifiers.")]

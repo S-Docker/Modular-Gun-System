@@ -256,7 +256,6 @@ GameObject:
   - component: {fileID: 8546975765903760623}
   - component: {fileID: 5896903725068885182}
   - component: {fileID: 5677957116567223672}
-  - component: {fileID: 8593350361980819877}
   m_Layer: 10
   m_Name: Sniper
   m_TagString: Untagged
@@ -326,7 +325,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 40cd74cf9bb51d54997d635f98a1ed7b, type: 2}
   fireComponent: {fileID: 5896903725068885182}
   reloadComponent: {fileID: 5677957116567223672}
-  abilityComponent: {fileID: 8593350361980819877}
+  ability: {fileID: 11400000, guid: a4fe217e4365bfc45a3ffad82fbbcaea, type: 2}
   gunMuzzlePosition: {fileID: 3801107514549961429}
   bulletsInMagazine: 5
 --- !u!114 &5896903725068885182
@@ -356,19 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
   reloadAnimClip: {fileID: 7400000, guid: 49a7f273bd98b184d82547c5f703d31e, type: 2}
---- !u!114 &8593350361980819877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3630896513282049607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f2b2872f1842c845b414679392cb43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentAudio: {fileID: 0}
 --- !u!1 &3801107514549961429
 GameObject:
   m_ObjectHideFlags: 0

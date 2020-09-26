@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Magazine Size Multiplier", menuName = "Gun Mods/Generic/MagazineSizeMultiplier")]
+[CreateAssetMenu(fileName = "New Magazine Size Multiplier", menuName = "Gun Mods/Generic/Magazine Size Multiplier")]
 public class MagazineSizeMod : GunModifier
 {
     [Tooltip("Magazine size multiplier as a percentage in decimal form before modifiers.")]
