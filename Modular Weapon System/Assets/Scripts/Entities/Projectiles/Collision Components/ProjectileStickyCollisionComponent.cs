@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileStickyCollisionComponent : ProjectileCollisionComponent
@@ -69,4 +68,10 @@ public class ProjectileStickyCollisionComponent : ProjectileCollisionComponent
         StopAllCoroutines();
         Destroy(gameObject);
     }
+
+    #if UNITY_EDITOR
+    void OnDrawGizmos(){
+        Gizmos.DrawWireSphere(transform.position, maxRadiusForDetection);
+    }
+    #endif
 }

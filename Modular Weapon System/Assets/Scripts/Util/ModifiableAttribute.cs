@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 
-[System.Serializable]
+[Serializable]
 public class ModifiableAttribute<T>
 {
     //Each entry holds a uniqueID and a function that takes this attribute type as a parameter and returns a modified value
