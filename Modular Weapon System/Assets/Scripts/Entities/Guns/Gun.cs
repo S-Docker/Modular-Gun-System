@@ -6,11 +6,12 @@ public delegate void OnGunAction(Gun target);
 [DisallowMultipleComponent][RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
+    Animator animator;
+    
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
-    Animator animator;
     [Header("Type of Gun")]
-    [SerializeField] private GunType gunType; public GunType GunType => gunType;
+    [SerializeField] private GunType gunType = GunType.Projectile; public GunType GunType => gunType;
     
     [Header("Player Ammo Storage Script")]
     [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
@@ -75,6 +76,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     public void Ability(){
         if (reloadComponent.IsReloading()) return;
+        if (ability == null) return;
         
         ability.Action(this, gunData);
     }
@@ -94,6 +96,29 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void DecrementMagazine(){
         bulletsInMagazine--;
     }
+    
+    /**
+     * used to initialise new gun prefabs created within the gun creator tool
+     */
+    public void InitializeGun(GunData gunData, bool isHitscan, GunAbility ability){
+        InitializeGunComponents();
+        this.gunData = gunData;
+        
+        if (isHitscan){
+            gunType = GunType.Hitscan;
+        }
+        
+        if (ability == null) return;
+        this.ability = ability;
+    }
+    
+    /**
+     * used to initialise new gun prefabs created within the gun creator tool
+     */
+    void InitializeGunComponents(){
+        fireComponent = GetComponent<GunFireComponent>();
+        reloadComponent = GetComponent<GunReloadComponent>();
+    }
 
     public void AddMod(GunModifier mod){
         if (mods.Contains(mod)) return;
@@ -107,20 +132,6 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         mod.RemoveFrom(this);
     }
 
-    public void SetupGun(GunData gunData, GunAbility ability){
-        InitializeGunData(gunData);
-        InitializeGunComponents();
-        this.ability = ability;
-    }
-    
-    void InitializeGunData(GunData gunData){
-        this.gunData = gunData;
-    }
-    void InitializeGunComponents(){
-        fireComponent = GetComponent<GunFireComponent>();
-        reloadComponent = GetComponent<GunReloadComponent>();
-    }
-    
     void InitializeAttachedMods(){
         if(mods == null) { 
             mods = new List<GunModifier>(); 

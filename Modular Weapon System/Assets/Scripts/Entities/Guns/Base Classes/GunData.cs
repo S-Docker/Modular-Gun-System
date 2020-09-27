@@ -48,4 +48,19 @@ public class GunData : ScriptableObject {
         critMultiplier = new ModifiableAttribute<float>(baseCritMultiplier);
         stunChance = new ModifiableAttribute<int>(baseStunChance);
     }
+
+    /**
+     * used to initialise new GunData assets created within the gun creator tool
+     */
+    public void InitialiseGunData(FireMode fireMode, AmmoCategory ammoCategory, GameObject projectilePrefab, int damage, int magazineSize, int roundsPerMinute, int baseCritChance, float baseCritMultiplier, int baseStunChance){
+        this.fireMode = fireMode;
+        this.ammoCategory = ammoCategory;
+        this.projectilePrefab = projectilePrefab;
+        this.damage = damage;
+        this.magazineSize = magazineSize;
+        this.roundsPerMinute = roundsPerMinute;
+        this.baseCritChance = baseCritChance;
+        this.baseCritMultiplier = baseCritMultiplier;
+        this.baseStunChance = baseStunChance;
+    }
 }
