@@ -10,6 +10,8 @@ public class GunCreationTool : EditorWindow
     Vector2 scrollPosition = Vector2.zero;
 
     [Header("Gun Settings")] 
+    GameObject createdGun;
+    
     readonly string gunPrefabPath = "Assets/Prefabs/Guns/";
     string gunName;
     GameObject selectedGunModel;
@@ -17,7 +19,7 @@ public class GunCreationTool : EditorWindow
     GunData selectedGunData;
     bool useExistingGunData, hasAbility, isHitscan;
     GunAbility selectedAbility;
-    bool CanCreateNewGun => !String.IsNullOrEmpty(gunName) && selectedGunModel != null;
+    bool GunExists => createdGun != null;
 
     [Header("Gun Data Settings")] 
     FireMode fireMode;
@@ -29,9 +31,9 @@ public class GunCreationTool : EditorWindow
     float baseCritMultiplier;
     int baseStunChance;
 
-    GameObject createdGun;
-
     [Header("Projectile Settings")] 
+    GameObject createdProjectile;
+    
     readonly string projectilePrefabPath = "Assets/Prefabs/Projectiles/";
     string projectileName;
     GameObject selectedExistingProjectile;
@@ -41,8 +43,7 @@ public class GunCreationTool : EditorWindow
     bool useExistingProjectile, isSticky, isBouncy;
     bool CanUseExistingProjectile => useExistingProjectile && selectedExistingProjectile != null;
     bool CanCreateNewProjectile => !String.IsNullOrEmpty(projectileName) && selectedProjectileModel != null;
-
-    GameObject createdProjectile;
+    bool ProjectileExists => createdProjectile != null || (useExistingProjectile && selectedExistingProjectile != null);
 
     [Header("Gun and Projectile Previews")]
     Editor gunPreviewEditor;
@@ -64,11 +65,32 @@ public class GunCreationTool : EditorWindow
 
     }
 
+    void OnDisable(){
+        if (GunExists){
+            DestroyImmediate(createdGun);
+        }
+        
+        if (ProjectileExists){
+            DestroyImmediate(createdProjectile);
+        }
+    }
+
     void SetupArea(){
         GUILayout.BeginVertical();
 
         EditorGUILayout.LabelField("Gun Setup", EditorStyles.boldLabel);
-        GunSetup();
+        GunAppearanceSettings();
+        
+        if (GunExists){
+            GunBehaviourSettings();
+            GunDataSettings();
+        }
+
+        if (ProjectileExists){
+            NewProjectileBehaviourSettings();
+            NewProjectileDataSettings();
+        }
+
         BuildGunAndProjectile();
 
         GUILayout.EndVertical();
@@ -79,38 +101,35 @@ public class GunCreationTool : EditorWindow
     void PreviewArea(){
         GUILayout.BeginVertical();
 
-        GunPreview();
-        ProjectilePreview();
+        if (GunExists){
+            GunPreview();
+        }
+
+        if (ProjectileExists){
+            ProjectilePreview();
+        }
 
         GUILayout.EndVertical();
     }
 
     void GunPreview(){
         if (gunPreviewEditor == null){
-            gunPreviewEditor = Editor.CreateEditor(selectedGunModel);
-        }
-
-        if (selectedGunModel == null) return;
-
-        if (gunPreviewEditor.target != selectedGunModel){
-            gunPreviewEditor = Editor.CreateEditor(selectedGunModel);
+            gunPreviewEditor = Editor.CreateEditor(createdGun);
         }
 
         gunPreviewEditor.OnPreviewGUI(GUILayoutUtility.GetRect(Screen.width / 2, Screen.height),
-            EditorStyles.whiteLabel);
+        EditorStyles.whiteLabel);
     }
 
     void ProjectilePreview(){
         if (projectilePreviewEditor == null){
-            projectilePreviewEditor = Editor.CreateEditor(selectedProjectileModel);
+            projectilePreviewEditor = Editor.CreateEditor(useExistingProjectile ? selectedExistingProjectile : createdProjectile);
+        } else if (useExistingProjectile && projectilePreviewEditor.target != selectedExistingProjectile){
+            projectilePreviewEditor = Editor.CreateEditor(selectedExistingProjectile);
+        } else if (!useExistingProjectile && projectilePreviewEditor.target != selectedProjectileModel){
+            projectilePreviewEditor = Editor.CreateEditor(createdProjectile);
         }
-
-        if (selectedProjectileModel == null) return;
-
-        if (projectilePreviewEditor.target != selectedProjectileModel){
-            projectilePreviewEditor = Editor.CreateEditor(selectedProjectileModel);
-        }
-
+        
         projectilePreviewEditor.OnPreviewGUI(GUILayoutUtility.GetRect(Screen.width / 2, Screen.height),
             EditorStyles.whiteLabel);
     }
@@ -119,16 +138,48 @@ public class GunCreationTool : EditorWindow
 
     #region Gun setup methods
 
-    void GunSetup(){
+    void GunAppearanceSettings(){
         EditorGUILayout.LabelField("Unique Gun Name:");
+        EditorGUI.BeginChangeCheck();
         gunName = EditorGUILayout.TextField(gunName);
+        if (EditorGUI.EndChangeCheck()){
+            if (GunExists){
+                createdGun.name = gunName;
+            }
+        }
 
         EditorGUILayout.LabelField("Gun Model:");
-        selectedGunModel = (GameObject) EditorGUILayout.ObjectField(selectedGunModel, typeof(GameObject), false);
+        EditorGUI.BeginChangeCheck();
+        using (new EditorGUI.DisabledScope(String.IsNullOrEmpty(gunName))){
+            selectedGunModel = (GameObject) EditorGUILayout.ObjectField(selectedGunModel, typeof(GameObject), false);
+        }
+        if (EditorGUI.EndChangeCheck()){
+            if (GunExists){
+                DestroyImmediate(createdGun);
+            }
 
+            if (selectedGunModel != null){
+                createdGun = Instantiate(selectedGunModel, Vector3.zero, Quaternion.identity);
+                createdGun.name = gunName;
+            }
+            else{
+                selectedGunMaterial = null;
+            }
+        }
+        
         EditorGUILayout.LabelField("Gun Material:");
-        selectedGunMaterial = (Material) EditorGUILayout.ObjectField(selectedGunMaterial, typeof(Material), false);
-
+        EditorGUI.BeginChangeCheck();
+        using (new EditorGUI.DisabledScope(selectedGunModel == null)){
+            selectedGunMaterial = (Material) EditorGUILayout.ObjectField(selectedGunMaterial, typeof(Material), false);
+        }
+        if (EditorGUI.EndChangeCheck()){
+            if (selectedGunMaterial != null){
+                ApplyMaterial(createdGun, selectedGunMaterial);
+            }
+        }
+    }
+    
+    void GunBehaviourSettings(){
         isHitscan = EditorGUILayout.Toggle("Hitscan?", isHitscan);
 
         if (hasAbility = EditorGUILayout.Toggle("Has Gun Ability?", hasAbility)){
@@ -138,18 +189,25 @@ public class GunCreationTool : EditorWindow
         else{
             selectedAbility = null;
         }
+    }
 
+    void GunDataSettings(){
         if (useExistingGunData = EditorGUILayout.Toggle("Use Existing Gun Data?", useExistingGunData)){
             SelectExistingGunData();
         }
         else{
             SetNewGunData();
             
+            EditorGUILayout.LabelField("Projectile Setup", EditorStyles.boldLabel);
             if (useExistingProjectile = EditorGUILayout.Toggle("Use Existing Projectile?", useExistingProjectile)){
+                if (ProjectileExists){
+                    DestroyImmediate(createdProjectile);
+                    selectedProjectileModel = null;
+                }
                 SelectExistingProjectile();
             }
             else{
-                CreateNewProjectile();
+                NewProjectileAppearanceSettings();
             }
         }
     }
@@ -183,30 +241,53 @@ public class GunCreationTool : EditorWindow
 
     void SelectExistingProjectile(){
         EditorGUILayout.LabelField("Projectile:");
+        
+        EditorGUI.BeginChangeCheck();
         selectedExistingProjectile = EditorGUILayout.ObjectField(selectedExistingProjectile, typeof(GameObject), false) as GameObject;
+        if (EditorGUI.EndChangeCheck()){
+            if (ProjectileExists){
+                DestroyImmediate(createdProjectile);
+            }
+        }
     }
 
-    void CreateNewProjectile(){
-        EditorGUILayout.LabelField("New Projectile Settings", EditorStyles.boldLabel);
-
+    void NewProjectileAppearanceSettings(){
         EditorGUILayout.LabelField("Unique Projectile Name:");
+        EditorGUI.BeginChangeCheck();
         projectileName = EditorGUILayout.TextField(projectileName);
-
-        EditorGUILayout.LabelField("Projectile Model:");
-        selectedProjectileModel =
-            EditorGUILayout.ObjectField(selectedProjectileModel, typeof(GameObject), false) as GameObject;
-        
-        EditorGUILayout.LabelField("Projectile Material:");
-        selectedProjectileMaterial = (Material) EditorGUILayout.ObjectField(selectedProjectileMaterial, typeof(Material), false);
-
-        if (!isHitscan){
-            projectileSpeed = EditorGUILayout.Slider("Projectile Speed: ", projectileSpeed, 1, 25);
-            projectileSpeed = (float) System.Math.Round(projectileSpeed, 2);
-            
-            maxProjectileTravel = EditorGUILayout.Slider("Max Projectile Distance: ", maxProjectileTravel, 1, 100);
-            maxProjectileTravel = (float) System.Math.Round(maxProjectileTravel, 2);
+        if (EditorGUI.EndChangeCheck()){
+            if (ProjectileExists){
+                createdProjectile.name = projectileName;
+            }
         }
         
+        EditorGUILayout.LabelField("Projectile Model:");
+        EditorGUI.BeginChangeCheck();
+        using (new EditorGUI.DisabledScope(String.IsNullOrEmpty(projectileName))){
+            selectedProjectileModel =
+                EditorGUILayout.ObjectField(selectedProjectileModel, typeof(GameObject), false) as GameObject;
+        }
+        if (EditorGUI.EndChangeCheck()){
+            if (ProjectileExists){
+                DestroyImmediate(createdProjectile);
+            }
+
+            if (selectedProjectileModel != null){
+                createdProjectile = Instantiate(selectedProjectileModel, Vector3.zero, Quaternion.identity);
+                createdProjectile.name = projectileName;
+            }
+            else{
+                selectedGunMaterial = null;
+            }
+        }
+        EditorGUILayout.LabelField("Projectile Material:");
+        selectedProjectileMaterial =
+            (Material) EditorGUILayout.ObjectField(selectedProjectileMaterial, typeof(Material), false);
+    }
+
+    void NewProjectileBehaviourSettings(){
+        EditorGUILayout.LabelField("New Projectile Settings", EditorStyles.boldLabel);
+
         if (isSticky = EditorGUILayout.Toggle("Can Stick?", isSticky)){
             isBouncy = false;
         }
@@ -214,6 +295,16 @@ public class GunCreationTool : EditorWindow
         if (isBouncy = EditorGUILayout.Toggle("Can Bounce?", isBouncy)){
             isSticky = false;
         }
+    }
+
+    void NewProjectileDataSettings(){
+        if (isHitscan) return;
+        
+        projectileSpeed = EditorGUILayout.Slider("Projectile Speed: ", projectileSpeed, 1, 25);
+        projectileSpeed = (float) System.Math.Round(projectileSpeed, 2);
+            
+        maxProjectileTravel = EditorGUILayout.Slider("Max Projectile Distance: ", maxProjectileTravel, 1, 100);
+        maxProjectileTravel = (float) System.Math.Round(maxProjectileTravel, 2);
     }
 
     void InitializeProjectile(GameObject projectile){
@@ -240,32 +331,13 @@ public class GunCreationTool : EditorWindow
 
     void BuildGunAndProjectile(){
         using (new EditorGUI.DisabledScope((!CanUseExistingProjectile && !CanCreateNewProjectile) ||
-                                           !CanCreateNewGun)){
+                                           !GunExists)){
             if (GUILayout.Button("Build Gun")){
-                // Create gun
-                if (createdGun != null) DestroyImmediate(createdGun);
-
-                createdGun = Instantiate(selectedGunModel, Vector3.zero, Quaternion.identity);
-                createdGun.name = gunName;
-
-                if (selectedGunMaterial != null){
-                    MeshRenderer[] childMeshes = createdGun.GetComponentsInChildren<MeshRenderer>();
-                    foreach (var child in childMeshes){
-                        child.material = selectedGunMaterial;
-                    }
-                }
-
                 if (useExistingGunData){
                     InitializeGun(createdGun);
                 }
                 else{
                     if (!useExistingProjectile){
-                        // Create projectile
-                        if (createdProjectile != null) DestroyImmediate(createdProjectile);
-
-                        createdProjectile = Instantiate(selectedProjectileModel, Vector3.zero, Quaternion.identity);
-                        createdProjectile.name = projectileName;
-
                         if (selectedProjectileMaterial != null){
                             createdProjectile.GetComponent<MeshRenderer>().material = selectedProjectileMaterial;
                         }
@@ -291,7 +363,7 @@ public class GunCreationTool : EditorWindow
     }
 
     void CreateNewGunData(GameObject projectilePrefab){
-        GunData newGunData = ScriptableObject.CreateInstance(typeof(GunData)) as GunData;
+        GunData newGunData = CreateInstance(typeof(GunData)) as GunData;
         
         newGunData.InitialiseGunData(fireMode, ammoCategory, projectilePrefab, damage, magazineSize, roundsPerMinute, baseCritChance, baseCritMultiplier, baseStunChance);
         
@@ -299,5 +371,23 @@ public class GunCreationTool : EditorWindow
         AssetDatabase.SaveAssets();
 
         selectedGunData = newGunData;
+    }
+
+    void ApplyMaterial(GameObject obj, Material mat){
+        MeshRenderer rend = obj.GetComponent<MeshRenderer>();
+        
+        if (rend == null){
+            MeshRenderer[] childMeshes = createdGun.GetComponentsInChildren<MeshRenderer>();
+            foreach (var child in childMeshes){
+                child.material = mat;
+            }
+        }
+        else{
+            rend.material = mat;
+        }
+    }
+
+    void RemoveMaterial(GameObject obj){
+        
     }
 }

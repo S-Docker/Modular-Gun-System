@@ -73,20 +73,20 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
             fireComponent.Action(this, gunData);
         }
     }
-
-    public void Ability(){
-        if (reloadComponent.IsReloading()) return;
-        if (ability == null) return;
-        
-        ability.Action(this, gunData);
-    }
-
+    
     public void Reload(){
         int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
         
         if (bulletsInMagazine < magazineSizeAdjusted){
             reloadComponent.Action(this, gunData);
         }
+    }
+
+    public void Ability(){
+        if (reloadComponent.IsReloading()) return;
+        if (ability == null) return;
+        
+        ability.Action(this, gunData);
     }
 
     public void IncreaseMagazine(int amount){
