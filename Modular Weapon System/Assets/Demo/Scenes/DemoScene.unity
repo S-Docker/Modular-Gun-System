@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8546975765903760623, guid: 63f77325e1eab2f4fb6205968f57397a, type: 3}
+      propertyPath: abilityComponent
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63f77325e1eab2f4fb6205968f57397a, type: 3}
 --- !u!1 &537717816
@@ -527,6 +531,10 @@ PrefabInstance:
     - target: {fileID: 1701868865917179874, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222707270696849898, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
+      propertyPath: abilityComponent
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
@@ -871,6 +879,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4297096793453073403, guid: 7a1de40a808a75744a0b97c0bd866e96, type: 3}
+      propertyPath: abilityComponent
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a1de40a808a75744a0b97c0bd866e96, type: 3}
 --- !u!1 &1667768243
@@ -1047,6 +1059,10 @@ PrefabInstance:
       propertyPath: masksToIgnore.m_Bits
       value: 1536
       objectReference: {fileID: 0}
+    - target: {fileID: 4912248076444906449, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
+      propertyPath: abilityComponent
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1300875942242333761, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
     - {fileID: 103013511177375922, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
@@ -1059,6 +1075,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4201866381835939764, guid: a68b874a02e27b44aa85fd44fe9a98d3, type: 3}
+      propertyPath: abilityComponent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6388990592327188648, guid: a68b874a02e27b44aa85fd44fe9a98d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1136,6 +1156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2531185856949675137, guid: 0ecb8b8c36c41e44cad60a243d304102, type: 3}
+      propertyPath: abilityComponent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4264345279264573406, guid: 0ecb8b8c36c41e44cad60a243d304102, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1252,6 +1276,10 @@ PrefabInstance:
     - target: {fileID: 1495833626750918590, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
       propertyPath: m_Name
       value: BouncyRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912248076444906449, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
+      propertyPath: abilityComponent
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}

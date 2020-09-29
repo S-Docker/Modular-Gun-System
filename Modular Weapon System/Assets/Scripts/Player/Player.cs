@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0)){
             fireHeld = false;
         }
+        
+        if (Input.GetMouseButtonDown(1)){
+            heldGun.Ability();
+        }
 
         if (Input.GetKeyDown(KeyCode.R)){
             heldGun.Reload();

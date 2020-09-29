@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Reload Time Multiplier", menuName = "Gun Mods/Generic/ReloadTimeMultiplier")]
+[CreateAssetMenu(fileName = "New Reload Time Multiplier", menuName = "Gun Mods/Generic/Reload Time Multiplier")]
 public class ReloadTimeMultiplierMod : GunModifier
 {
     [Tooltip("Reload Time multiplier as a percentage in decimal form before modifiers.")]

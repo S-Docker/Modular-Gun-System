@@ -256,7 +256,6 @@ GameObject:
   - component: {fileID: 2531185856949675137}
   - component: {fileID: 3542828430770028827}
   - component: {fileID: 4833989857084666534}
-  - component: {fileID: 8432678299826597404}
   m_Layer: 10
   m_Name: HitscanPistol
   m_TagString: Untagged
@@ -323,7 +322,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 9f28dc94d3f4b284d9059cab08c8c723, type: 2}
   fireComponent: {fileID: 3542828430770028827}
   reloadComponent: {fileID: 4833989857084666534}
-  abilityComponent: {fileID: 8432678299826597404}
+  ability: {fileID: 11400000, guid: a4fe217e4365bfc45a3ffad82fbbcaea, type: 2}
   gunMuzzlePosition: {fileID: 7328972505774998201}
   bulletsInMagazine: 15
 --- !u!114 &3542828430770028827
@@ -353,19 +352,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
   reloadAnimClip: {fileID: 7400000, guid: 0294ff2cfed2bb246b6d2722ac89d331, type: 2}
---- !u!114 &8432678299826597404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4522165148204137533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f2b2872f1842c845b414679392cb43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentAudio: {fileID: 0}
 --- !u!1 &4632755768500378388
 GameObject:
   m_ObjectHideFlags: 0

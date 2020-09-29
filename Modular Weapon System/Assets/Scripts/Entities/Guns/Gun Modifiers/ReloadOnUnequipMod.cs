@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Reload On Unequip Modifier", menuName = "Gun Mods/ReloadOnUnequip")]
+[CreateAssetMenu(fileName = "New Reload On Unequip Modifier", menuName = "Gun Mods/Reload On Unequip")]
 public class ReloadOnUnequipMod : GunModifier
 {
     float elapsedTime;

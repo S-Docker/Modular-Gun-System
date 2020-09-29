@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Guaranteed Crit After Reload", menuName = "Gun Mods/GuaranteedCritAfterReload")]
+[CreateAssetMenu(fileName = "New Guaranteed Crit After Reload", menuName = "Gun Mods/Guaranteed Crit After Reload")]
 public class GuaranteedCritAfterReloadMod : GunModifier
 {
     int bulletCount;

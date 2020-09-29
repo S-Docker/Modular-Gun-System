@@ -38,4 +38,9 @@ public class ProjectileMoveComponent : ProjectileComponent
         // faster than Vector3.Distance and Mathf.Sqrt
         return (startPosition - transform.position).sqrMagnitude > maxDistance * maxDistance;
     }
+
+    public void InitialiseProjectileMove(float projectileSpeed, float maxProjectileTravel){
+        this.projectileSpeed = projectileSpeed;
+        this.maxProjectileTravel = maxProjectileTravel;
+    }
 }

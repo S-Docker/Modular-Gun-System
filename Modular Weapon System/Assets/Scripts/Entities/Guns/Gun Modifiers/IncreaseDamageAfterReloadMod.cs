@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Increase Damage After Reload", menuName = "Gun Mods/IncreaseDamageAfterReload")]
+[CreateAssetMenu(fileName = "New Increase Damage After Reload", menuName = "Gun Mods/Increase Damage After Reload")]
 public class IncreaseDamageAfterReloadMod : GunModifier
 {
     float elapsedTime;

@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 4201866381835939764}
   - component: {fileID: 8333513288239099935}
   - component: {fileID: 8516015598485923695}
-  - component: {fileID: 1621676690077608298}
   m_Layer: 10
   m_Name: Rifle
   m_TagString: Untagged
@@ -596,7 +595,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: e22c08866b4be7140b26e0826fdcd402, type: 2}
   fireComponent: {fileID: 8333513288239099935}
   reloadComponent: {fileID: 8516015598485923695}
-  abilityComponent: {fileID: 1621676690077608298}
+  ability: {fileID: 11400000, guid: a4fe217e4365bfc45a3ffad82fbbcaea, type: 2}
   gunMuzzlePosition: {fileID: 2034166035830665319}
   bulletsInMagazine: 30
 --- !u!114 &8333513288239099935
@@ -626,19 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentAudio: {fileID: 8300000, guid: 22d9dd7aebf329d4b8d893dddc0789be, type: 3}
   reloadAnimClip: {fileID: 7400000, guid: d5294b4d207d4fb43abb667226a4c268, type: 2}
---- !u!114 &1621676690077608298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6721142343288732491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f2b2872f1842c845b414679392cb43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentAudio: {fileID: 0}
 --- !u!1 &7227351525974844838
 GameObject:
   m_ObjectHideFlags: 0

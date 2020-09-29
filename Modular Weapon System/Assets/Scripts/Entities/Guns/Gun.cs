@@ -6,11 +6,12 @@ public delegate void OnGunAction(Gun target);
 [DisallowMultipleComponent][RequireComponent(typeof(Animator))]
 public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 {
+    Animator animator;
+    
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
-    Animator animator;
     [Header("Type of Gun")]
-    [SerializeField] private GunType gunType; public GunType GunType => gunType;
+    [SerializeField] private GunType gunType = GunType.Projectile; public GunType GunType => gunType;
     
     [Header("Player Ammo Storage Script")]
     [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
@@ -25,7 +26,9 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     [Header("Gun Components")]
     [SerializeField] GunFireComponent fireComponent; public GunFireComponent FireComponent => fireComponent;
     [SerializeField] GunReloadComponent reloadComponent; public GunReloadComponent ReloadComponent => reloadComponent;
-    [SerializeField] GunAbilityComponent abilityComponent; public GunAbilityComponent AbilityComponent => abilityComponent;
+    
+    [Header("Gun Ability")]
+    [SerializeField] GunAbility ability;
 
     [Header("Gun Object Settings")]
     [Tooltip("Assign a GameObject to represent the gun muzzle position of the gun model.")]
@@ -70,13 +73,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
             fireComponent.Action(this, gunData);
         }
     }
-
-    public void Ability(){
-        if (reloadComponent.IsReloading()) return;
-        
-        abilityComponent.Action(this, gunData);
-    }
-
+    
     public void Reload(){
         int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
         
@@ -85,12 +82,42 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         }
     }
 
+    public void Ability(){
+        if (reloadComponent.IsReloading()) return;
+        if (ability == null) return;
+        
+        ability.Action(this, gunData);
+    }
+
     public void IncreaseMagazine(int amount){
         bulletsInMagazine += amount;
     }
 
     public void DecrementMagazine(){
         bulletsInMagazine--;
+    }
+    
+    /**
+     * used to initialise new gun prefabs created within the gun creator tool
+     */
+    public void InitializeGun(GunData gunData, bool isHitscan, GunAbility ability){
+        InitializeGunComponents();
+        this.gunData = gunData;
+        
+        if (isHitscan){
+            gunType = GunType.Hitscan;
+        }
+        
+        if (ability == null) return;
+        this.ability = ability;
+    }
+    
+    /**
+     * used to initialise new gun prefabs created within the gun creator tool
+     */
+    void InitializeGunComponents(){
+        fireComponent = GetComponent<GunFireComponent>();
+        reloadComponent = GetComponent<GunReloadComponent>();
     }
 
     public void AddMod(GunModifier mod){
@@ -104,7 +131,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         mods.Remove(mod);
         mod.RemoveFrom(this);
     }
-    
+
     void InitializeAttachedMods(){
         if(mods == null) { 
             mods = new List<GunModifier>(); 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Crit Multiplier", menuName = "Gun Mods/Generic/CritMultiplier")]
+[CreateAssetMenu(fileName = "New Crit Multiplier", menuName = "Gun Mods/Generic/Crit Multiplier")]
 public class CritMultiplierMod : GunModifier
 {
     [Tooltip("Crit multiplier as a percentage in decimal form before modifiers.")]

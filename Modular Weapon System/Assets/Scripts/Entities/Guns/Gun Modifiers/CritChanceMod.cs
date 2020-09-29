@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Crit Chance Modifier", menuName = "Gun Mods/Generic/CritChanceModifier")]
+[CreateAssetMenu(fileName = "New Crit Chance Modifier", menuName = "Gun Mods/Generic/Crit Chance Modifier")]
 public class CritChanceMod : GunModifier
 {
     [Tooltip("Crit chance as a percentage in value form before modifiers.")]
