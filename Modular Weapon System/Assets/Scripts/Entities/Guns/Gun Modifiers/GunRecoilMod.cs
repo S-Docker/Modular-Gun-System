@@ -6,43 +6,50 @@ public class GunRecoilMod : GunModifier
     Transform gunHolderTransform;
     
     Quaternion originalRotation; // default gun rotation
-    Quaternion endRotation; // rotation after recoil application
+    
+    Quaternion startingRotation; // Rotation before applying new recoil
+    Quaternion targetRotation; // Target rotation after full recoil application
+    Quaternion endRotation; // rotation after each lerped recoil application
     
     float elapsedTimeSinceShot;
     [SerializeField] float waitDurationBeforeReset;
 
     float elapsedTimeSinceStartReset;
-    [SerializeField] float TimeToResetTransform;
-    
-    Vector3 targetRecoilAmount;
+    [SerializeField] float TimeTakenToResetTransform;
+
+    [SerializeField] float horizontalRecoilAmount;
+    [SerializeField] float verticalRecoilAmount;
 
     void AddRecoil(Gun target){
         elapsedTimeSinceShot = 0;
         elapsedTimeSinceStartReset = 0;
-        
-        targetRecoilAmount = new Vector3(-0.5f, Random.Range(-2.5f, 2.5f), 0);
-        gunHolderTransform.Rotate(targetRecoilAmount);
-        
-        endRotation = gunHolderTransform.rotation;
+
+        startingRotation = gunHolderTransform.rotation;
+        Vector3 targetRecoilAmount = new Vector3(-horizontalRecoilAmount, Random.Range(-verticalRecoilAmount, verticalRecoilAmount), 0);
+        targetRotation = startingRotation * Quaternion.Euler(targetRecoilAmount);
     }
 
     void OnUpdate(Gun target){
         // if still in recoil stage
-         if (elapsedTimeSinceShot < waitDurationBeforeReset){
-             elapsedTimeSinceShot += Time.deltaTime;
+        if (elapsedTimeSinceShot < waitDurationBeforeReset){
+
+            gunHolderTransform.rotation = Quaternion.Lerp(startingRotation, targetRotation, elapsedTimeSinceShot);
+
+            endRotation = gunHolderTransform.rotation;
+            elapsedTimeSinceShot += Time.deltaTime;
         }
         else{
-            if (originalRotation == endRotation) return;
+            if (endRotation == originalRotation) return;
 
-            ResetTransform(target, TimeToResetTransform);
+            ResetTransform(target, TimeTakenToResetTransform);
         }
     }
 
     void ResetTransform(Gun target, float timeTakenToReset){
-        Debug.Log("Attempting Reset");
         elapsedTimeSinceStartReset += Time.deltaTime;
 
-        if (elapsedTimeSinceStartReset < TimeToResetTransform){
+        if (elapsedTimeSinceStartReset < timeTakenToReset){
+            Debug.Log("rotate here");
             float rotationProgress = elapsedTimeSinceStartReset / timeTakenToReset;
             
             gunHolderTransform.rotation = Quaternion.Slerp(endRotation, originalRotation, rotationProgress);
