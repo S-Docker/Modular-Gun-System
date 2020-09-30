@@ -9,13 +9,13 @@ public class GunRecoilMod : GunModifier
     
     Quaternion startingRotation; // Rotation before applying new recoil
     Quaternion targetRotation; // Target rotation after full recoil application
-    Quaternion endRotation; // rotation after each lerped recoil application
+    Quaternion currentRotation; // rotation after each lerped recoil application
     
     float elapsedTimeSinceShot;
     [SerializeField] float waitDurationBeforeReset;
 
     float elapsedTimeSinceStartReset;
-    [SerializeField] float TimeTakenToResetTransform;
+    [SerializeField] float maxTimeToResetTransform;
 
     [SerializeField] float horizontalRecoilAmount;
     [SerializeField] float verticalRecoilAmount;
@@ -35,13 +35,13 @@ public class GunRecoilMod : GunModifier
 
             gunHolderTransform.rotation = Quaternion.Lerp(startingRotation, targetRotation, elapsedTimeSinceShot);
 
-            endRotation = gunHolderTransform.rotation;
+            currentRotation = gunHolderTransform.rotation;
             elapsedTimeSinceShot += Time.deltaTime;
         }
         else{
-            if (endRotation == originalRotation) return;
+            if (currentRotation == originalRotation) return;
 
-            ResetTransform(target, TimeTakenToResetTransform);
+            ResetTransform(target, maxTimeToResetTransform);
         }
     }
 
@@ -50,9 +50,9 @@ public class GunRecoilMod : GunModifier
 
         if (elapsedTimeSinceStartReset < timeTakenToReset){
             Debug.Log("rotate here");
-            float rotationProgress = elapsedTimeSinceStartReset / timeTakenToReset;
+            float rotationProgress = elapsedTimeSinceStartReset / Mathf.Min(timeTakenToReset);
             
-            gunHolderTransform.rotation = Quaternion.Slerp(endRotation, originalRotation, rotationProgress);
+            gunHolderTransform.rotation = Quaternion.Slerp(currentRotation, originalRotation, rotationProgress);
         }
     }
     
@@ -61,7 +61,7 @@ public class GunRecoilMod : GunModifier
         gunHolderTransform = target.transform.parent;
 
         originalRotation = gunHolderTransform.rotation;
-        endRotation = gunHolderTransform.rotation;
+        currentRotation = originalRotation;
         elapsedTimeSinceShot = waitDurationBeforeReset;
         
         
