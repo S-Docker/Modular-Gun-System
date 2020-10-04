@@ -11,8 +11,10 @@ public class GunRecoilMod : GunModifier
     Quaternion startingRotation; // Rotation before applying new recoil
     Quaternion targetRotation; // Target rotation after full recoil application
     Quaternion currentRotation; // rotation after each lerped recoil application
-    
+
     [Header("Rotation Reset Timers")]
+    [Tooltip("Should gun reset transform back to original position after delay period.")]
+    [SerializeField] bool canResetTransform = false;
     [Tooltip("Wait time before transform resets back to original rotation after player stops shooting.")]
     [SerializeField] float transformResetDelay;
     [Tooltip("Total time in seconds taken to reset gun from current rotation to its original rotation.")]
@@ -48,7 +50,9 @@ public class GunRecoilMod : GunModifier
         else{
             if (currentRotation == originalRotation) return;
 
-            ResetTransform();
+            if (canResetTransform){
+                ResetTransform();
+            }
         }
     }
 
