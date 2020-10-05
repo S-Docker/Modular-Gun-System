@@ -100,7 +100,8 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
      * used to initialise new gun prefabs created within the gun creator tool
      */
     public void InitializeGun(GunData gunData, bool isHitscan, GunAbility ability){
-        InitializeGunComponents();
+        fireComponent = GetComponent<GunFireComponent>();
+        reloadComponent = GetComponent<GunReloadComponent>();
         this.gunData = gunData;
         
         if (isHitscan){
@@ -109,14 +110,6 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         
         if (ability == null) return;
         this.ability = ability;
-    }
-    
-    /**
-     * used to initialise new gun prefabs created within the gun creator tool
-     */
-    void InitializeGunComponents(){
-        fireComponent = GetComponent<GunFireComponent>();
-        reloadComponent = GetComponent<GunReloadComponent>();
     }
 
     public void AddMod(GunModifier mod){

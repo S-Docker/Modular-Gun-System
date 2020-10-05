@@ -18,6 +18,9 @@ public class GunData : ScriptableObject {
 
     [Tooltip("Guns RPM as a value before modifiers.")]
     [SerializeField][MinAttribute(1)] int roundsPerMinute; public int RoundsPerMinute => roundsPerMinute;
+    
+    [Tooltip("The random deviation of bullets within a set radius")]
+    [SerializeField][MinAttribute(0)] float spreadRadius = 0; public float SpreadRadius => spreadRadius;
 
     [Tooltip("Guns crit chance as a percentage before modifiers.")]
     [SerializeField][MinAttribute(0)] int baseCritChance;
@@ -27,6 +30,7 @@ public class GunData : ScriptableObject {
 
     [Tooltip("Guns stun chance as a percentage before modifiers.")]
     [SerializeField][MinAttribute(0)] int baseStunChance;
+
 #pragma warning restore 0649
     
     [Header("Modifiable Attributes")]
@@ -52,13 +56,14 @@ public class GunData : ScriptableObject {
     /**
      * used to initialise new GunData assets created within the gun creator tool
      */
-    public void InitialiseGunData(FireMode fireMode, AmmoCategory ammoCategory, GameObject projectilePrefab, int damage, int magazineSize, int roundsPerMinute, int baseCritChance, float baseCritMultiplier, int baseStunChance){
+    public void InitialiseGunData(FireMode fireMode, AmmoCategory ammoCategory, GameObject projectilePrefab, int damage, int magazineSize, int roundsPerMinute, float spreadRadius, int baseCritChance, float baseCritMultiplier, int baseStunChance){
         this.fireMode = fireMode;
         this.ammoCategory = ammoCategory;
         this.projectilePrefab = projectilePrefab;
         this.damage = damage;
         this.magazineSize = magazineSize;
         this.roundsPerMinute = roundsPerMinute;
+        this.spreadRadius = spreadRadius;
         this.baseCritChance = baseCritChance;
         this.baseCritMultiplier = baseCritMultiplier;
         this.baseStunChance = baseStunChance;

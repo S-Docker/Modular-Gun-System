@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec8617e3831d6ed4bbf1abb1453d33b4, type: 3}
-  m_Name: New Gun Recoil Modifier
+  m_Name: Test Gun Recoil Modifier
   m_EditorClassIdentifier: 
-  transformResetDelay: 0
-  transformResetDuration: 0
-  horizontalRecoilAmount: 0
-  verticalRecoilAmount: 0
-  recoilSpeed: 0
+  canResetTransform: 1
+  transformResetDelay: 0.2
+  transformResetDuration: 0.5
+  horizontalRecoilAmount: 0.5
+  verticalRecoilAmount: 1
+  recoilSpeed: 8

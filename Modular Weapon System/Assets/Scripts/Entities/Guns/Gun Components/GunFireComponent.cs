@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 [DisallowMultipleComponent]
 public class GunFireComponent : GunComponent
@@ -26,10 +28,10 @@ public class GunFireComponent : GunComponent
 
         switch (gun.GunType){
             case GunType.Projectile:
-                ProjectileMoveTypeHandler(muzzlePosition, projectile);
+                ProjectileMoveTypeHandler(muzzlePosition, gunData.SpreadRadius, projectile);
                 break;
             case GunType.Hitscan:
-                ProjectileHitscanTypeHandler(projectile);
+                ProjectileHitscanTypeHandler(gunData.SpreadRadius, projectile);
                 break;
         }
         
@@ -54,15 +56,15 @@ public class GunFireComponent : GunComponent
         return Random.Range(1, 100) <= critChance;
     }
 
-    void ProjectileMoveTypeHandler(Vector3 muzzlePosition, GameObject projectile){
+    void ProjectileMoveTypeHandler(Vector3 muzzlePosition, float spreadRadius, GameObject projectile){
         ProjectileMoveComponent projectileMove = projectile.GetComponent<ProjectileMoveComponent>();
         float maxProjectileDistance = projectileMove.MaxProjectileTravel;
-        projectileMove?.InitialiseMovement(GetProjectileDir(maxProjectileDistance) - muzzlePosition);
+        projectileMove.InitialiseMovement(GetProjectileDir(spreadRadius, maxProjectileDistance) - muzzlePosition);
     }
 
-    void ProjectileHitscanTypeHandler(GameObject projectile){
+    void ProjectileHitscanTypeHandler(float spreadRadius, GameObject projectile){
         ProjectileHitscanComponent projectileHitscan = projectile.GetComponent<ProjectileHitscanComponent>();
-        projectileHitscan?.InitialiseHitscan(GetProjectileDir(999f));
+        projectileHitscan.InitialiseHitscan(GetProjectileDir(spreadRadius, 999f));
     }
     
     void ProjectileDamageComponentHandler(GunData gunData, GameObject projectile){
@@ -73,9 +75,12 @@ public class GunFireComponent : GunComponent
         projectileDamageComponent.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
     }
     
-    Vector3 GetProjectileDir(float maxDistance){
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+    Vector3 GetProjectileDir(float spreadRadius, float maxDistance){
         RaycastHit hit;
+        
+        Vector3 spreadDeviation = Random.insideUnitCircle * spreadRadius;
+        // spreadDeviation / maxDistance provides the inverse of the circle radius based on the cameras current position
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, cam.nearClipPlane) + (spreadDeviation / maxDistance));
         
         return Physics.Raycast(ray, out hit, maxDistance, masksToIgnore) ? hit.point : ray.GetPoint(maxDistance);
     }
