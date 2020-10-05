@@ -87,7 +87,7 @@ public class GunCreationTool : EditorWindow
             GunDataSettings();
         }
 
-        if (!useExistingProjectile){
+        if (!useExistingProjectile && selectedProjectileModel != null){
             NewProjectileBehaviourSettings();
             NewProjectileDataSettings();
         }
