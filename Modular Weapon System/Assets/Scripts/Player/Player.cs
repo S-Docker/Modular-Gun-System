@@ -6,10 +6,6 @@ public class Player : MonoBehaviour
     public Gun heldGun;
     bool fireHeld;
 
-    void Start() {
-
-    }
-
     void Update() {
         Test();
     }

@@ -15,7 +15,7 @@ public class ProjectileMoveComponent : ProjectileComponent
     [SerializeField] GameObject maxDistReachedEffect = null;
     
     public void InitialiseMovement(Vector3 dir){
-        startPosition = this.transform.position;
+        startPosition = transform.position;
         transform.LookAt(dir);
         
         Rigidbody rb = this.GetComponent<Rigidbody>();

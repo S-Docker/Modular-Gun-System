@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 [DisallowMultipleComponent]
 public class GunFireComponent : GunComponent
 {
+    [SerializeField] float spreadRadius = 0f;
     Camera cam;
     int masksToIgnore;
 
@@ -57,12 +60,12 @@ public class GunFireComponent : GunComponent
     void ProjectileMoveTypeHandler(Vector3 muzzlePosition, GameObject projectile){
         ProjectileMoveComponent projectileMove = projectile.GetComponent<ProjectileMoveComponent>();
         float maxProjectileDistance = projectileMove.MaxProjectileTravel;
-        projectileMove?.InitialiseMovement(GetProjectileDir(maxProjectileDistance) - muzzlePosition);
+        projectileMove.InitialiseMovement(GetProjectileDir(maxProjectileDistance) - muzzlePosition);
     }
 
     void ProjectileHitscanTypeHandler(GameObject projectile){
         ProjectileHitscanComponent projectileHitscan = projectile.GetComponent<ProjectileHitscanComponent>();
-        projectileHitscan?.InitialiseHitscan(GetProjectileDir(999f));
+        projectileHitscan.InitialiseHitscan(GetProjectileDir(999f));
     }
     
     void ProjectileDamageComponentHandler(GunData gunData, GameObject projectile){
@@ -74,8 +77,11 @@ public class GunFireComponent : GunComponent
     }
     
     Vector3 GetProjectileDir(float maxDistance){
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
+        
+        Vector3 spread = Random.insideUnitCircle * spreadRadius;
+        // spread / maxDistance provides the inverse of the circle radius based on the cameras current position
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, cam.nearClipPlane) + (spread / maxDistance));
         
         return Physics.Raycast(ray, out hit, maxDistance, masksToIgnore) ? hit.point : ray.GetPoint(maxDistance);
     }
