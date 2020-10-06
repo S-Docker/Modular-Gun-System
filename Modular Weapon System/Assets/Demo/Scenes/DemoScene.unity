@@ -1063,6 +1063,10 @@ PrefabInstance:
       propertyPath: abilityComponent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4912248076444906449, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
+      propertyPath: gunData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5493e8e1faea6cc4da93cbb4295e322c, type: 2}
     m_RemovedComponents:
     - {fileID: 1300875942242333761, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}
     - {fileID: 103013511177375922, guid: 29b41ac60eed1934a966394aac21ef36, type: 3}

@@ -18,6 +18,7 @@ MonoBehaviour:
   damage: 40
   magazineSize: 15
   roundsPerMinute: 360
+  spreadRadius: 0
   baseCritChance: 0
   baseCritMultiplier: 0
   baseStunChance: 0

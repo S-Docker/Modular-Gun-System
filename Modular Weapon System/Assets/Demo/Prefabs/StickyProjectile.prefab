@@ -5086,10 +5086,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52403a6fe3785247a3d0b3c3647cbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
   projectileSpeed: 20
   maxProjectileTravel: 100
-  hasMaxOnReachedEffect: 0
-  maxDistReachedEffect: {fileID: 0}
 --- !u!114 &3447294792383272199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5102,16 +5102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955947f10d4bf4143ae17b121a2f3882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCollisions: 1
-  canBounce: 0
-  hasOnHitEffect: 0
-  onHitEffect: {fileID: 0}
+  hasEffect: 1
+  effect: {fileID: 4370626556364457845, guid: 1a0067fd39bec1f4cbb545bb492136d8, type: 3}
   explodeOnTouchLayers:
     serializedVersion: 2
     m_Bits: 2048
   maxRadiusForDetection: 5
   maxLifetimeOnEnvironment: 3
-  onExplosionEffect: {fileID: 0}
 --- !u!114 &8445012175732369183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,3 +5121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420cd80fd7158548b49423fbac96427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
