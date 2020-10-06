@@ -13,7 +13,7 @@ public class ProjectileStandardCollisionComponent : ProjectileCollisionComponent
         if (canBounce && CheckIfGroundCollision(collision)) return; // if can bounce and hit the ground, no action needed
 
         if (hasEffect){
-            InitialiseEffect(effect, collision.contacts[0].point);
+            InitialiseEffect(collision.contacts[0].point);
         }
         
         damageComponent.ApplyDamage(collision.gameObject);

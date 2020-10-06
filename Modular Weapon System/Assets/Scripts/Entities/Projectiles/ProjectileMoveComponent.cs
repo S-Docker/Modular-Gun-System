@@ -9,11 +9,7 @@ public class ProjectileMoveComponent : ProjectileComponent
     [SerializeField] float projectileSpeed = default;
     [Range(1, 100)]
     [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
-    
-    [Header("Projectile Effect Settings")]
-    [SerializeField] bool hasMaxOnReachedEffect = false;
-    [SerializeField] GameObject maxDistReachedEffect = null;
-    
+
     public void InitialiseMovement(Vector3 dir){
         startPosition = transform.position;
         transform.LookAt(dir);
@@ -24,8 +20,8 @@ public class ProjectileMoveComponent : ProjectileComponent
     
     void FixedUpdate(){
         if (MaxDistanceTravelled()){
-            if (hasMaxOnReachedEffect){
-                InitialiseEffect(maxDistReachedEffect, transform.position);
+            if (hasEffect){
+                InitialiseEffect(transform.position);
             }
             
             Destroy(gameObject);

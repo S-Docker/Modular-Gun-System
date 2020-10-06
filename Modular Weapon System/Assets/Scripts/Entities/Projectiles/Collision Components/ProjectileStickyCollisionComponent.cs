@@ -62,7 +62,7 @@ public class ProjectileStickyCollisionComponent : ProjectileCollisionComponent
 
     void DestroyProjectile(){
         if (hasEffect){
-            InitialiseEffect(effect, transform.position);
+            InitialiseEffect(transform.position);
         }
 
         StopAllCoroutines();

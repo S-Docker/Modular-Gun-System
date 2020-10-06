@@ -5,10 +5,6 @@ public abstract class ProjectileCollisionComponent : ProjectileComponent
 {
     protected ProjectileDamageComponent damageComponent;
 
-    [Header("Projectile Effect Settings")]
-    [SerializeField] protected bool hasEffect = false;
-    [SerializeField] protected GameObject effect = null;
-
     void Start(){
         damageComponent = this.GetComponent<ProjectileDamageComponent>();
     }
