@@ -14,7 +14,7 @@ public class ProjectileMoveComponent : ProjectileComponent
         startPosition = transform.position;
         transform.LookAt(dir);
         
-        Rigidbody rb = this.GetComponent<Rigidbody>();
+        Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = dir.normalized * projectileSpeed;
     }
     
