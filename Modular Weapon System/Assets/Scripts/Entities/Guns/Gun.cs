@@ -11,10 +11,10 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
     [Header("Type of Gun")]
-    [SerializeField] private GunType gunType = GunType.Projectile; public GunType GunType => gunType;
+    [SerializeField] GunType gunType = GunType.Projectile; public GunType GunType => gunType;
     
     [Header("Player Ammo Storage Script")]
-    [SerializeField] private AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
+    [SerializeField] AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
 
     [Header("Gun Modifiers")]
     [SerializeField] List<GunModifier> mods; 
@@ -94,6 +94,19 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     public void DecrementMagazine(){
         bulletsInMagazine--;
+    }
+    
+    public void EnableCrosshair(GameObject crosshair){
+        crosshair.SetActive(true);
+        RectTransform[] children = crosshair.GetComponentsInChildren<RectTransform>();
+        float crosshairRadius = gunData.SpreadRadius;
+        float projectileSize = gunData.ProjectilePrefab.GetComponent<SphereCollider>().radius * 2;
+
+        // 0 is parent and 1 is center that should not be offset
+        for (int i = 2; i < children.Length; i++){
+            float offset = children[i].sizeDelta.y + crosshairRadius;
+            children[i].localPosition += children[i].up * (offset + projectileSize);
+        }
     }
     
     /**

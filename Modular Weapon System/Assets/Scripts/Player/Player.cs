@@ -3,6 +3,7 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] GameObject gunHoldPosition;
+    [SerializeField] GameObject crosshair;
     public Gun heldGun;
     bool fireHeld;
 
@@ -15,11 +16,13 @@ public class Player : MonoBehaviour
             heldGun.transform.parent = gunHoldPosition.transform;
             heldGun.transform.localPosition = Vector3.zero;
             heldGun.OnEquipped();
+            heldGun.EnableCrosshair(crosshair);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)){
             heldGun.transform.parent = null;
             heldGun.OnUnequipped();
+            crosshair.SetActive(false);
         }
 
         if (Input.GetMouseButtonDown(0)){
@@ -45,5 +48,4 @@ public class Player : MonoBehaviour
             heldGun.Fire();
         }
     }
-
 }
