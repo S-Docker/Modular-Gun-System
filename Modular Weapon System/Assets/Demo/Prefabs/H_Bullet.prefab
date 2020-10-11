@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6134922475009630578}
   - component: {fileID: 7762394856009065142}
   - component: {fileID: 1150379613387024933}
+  - component: {fileID: 2568896177628976792}
   m_Layer: 10
   m_Name: H_Bullet
   m_TagString: Untagged
@@ -128,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52403a6fe3785247a3d0b3c3647cbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
   projectileSpeed: 20
   maxProjectileTravel: 100
-  hasMaxOnReachedEffect: 0
-  maxDistReachedEffect: {fileID: 0}
 --- !u!114 &7762394856009065142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +161,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420cd80fd7158548b49423fbac96427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEffect: 0
+  effect: {fileID: 0}
+--- !u!135 &2568896177628976792
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818119452171187687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}

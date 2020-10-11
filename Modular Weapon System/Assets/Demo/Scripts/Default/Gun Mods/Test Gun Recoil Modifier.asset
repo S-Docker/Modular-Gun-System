@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test Gun Recoil Modifier
   m_EditorClassIdentifier: 
   canResetTransform: 1
-  transformResetDelay: 0.2
+  transformResetDelay: 0.25
   transformResetDuration: 0.5
   horizontalRecoilAmount: 0.5
   verticalRecoilAmount: 1

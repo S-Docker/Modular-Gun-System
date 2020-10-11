@@ -42,7 +42,7 @@ public class GunRecoilMod : GunModifier
     void OnUpdate(Gun target){
         // if still in recoil stage
         if (elapsedTimeSinceShot < transformResetDelay){
-            gunHolderTransform.rotation = Quaternion.Lerp(startingRotation, targetRotation, recoilSpeed * elapsedTimeSinceShot);
+            gunHolderTransform.rotation = Quaternion.Slerp(startingRotation, targetRotation, recoilSpeed * elapsedTimeSinceShot);
 
             currentRotation = gunHolderTransform.rotation;
             elapsedTimeSinceShot += Time.deltaTime;

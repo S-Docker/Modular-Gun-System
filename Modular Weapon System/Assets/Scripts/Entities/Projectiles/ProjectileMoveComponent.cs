@@ -5,17 +5,19 @@ public class ProjectileMoveComponent : ProjectileComponent
 {
     [Header("Projectile Movement Settings")]
     Vector3 startPosition;
-    [Range(1, 25)]
+    [Range(1, 50)]
     [SerializeField] float projectileSpeed = default;
     [Range(1, 100)]
     [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
 
     public void InitialiseMovement(Vector3 dir){
         startPosition = transform.position;
-        transform.LookAt(dir);
+        transform.LookAt(dir * maxProjectileTravel);
         
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = dir.normalized * projectileSpeed;
+        
+        Debug.DrawLine(startPosition, dir * maxProjectileTravel, Color.blue, 5f);
     }
     
     void FixedUpdate(){
