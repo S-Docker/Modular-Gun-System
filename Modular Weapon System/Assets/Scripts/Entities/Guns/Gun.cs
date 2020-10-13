@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void OnEquipped(){
+        gameObject.SetActive(true);
         InitializeAttachedMods();
         onEquip?.Invoke(this);
     }
@@ -99,16 +100,15 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void EnableCrosshair(GameObject crosshair){
         crosshair.SetActive(true);
         RectTransform[] children = crosshair.GetComponentsInChildren<RectTransform>();
-        float crosshairRadius = gunData.SpreadRadius;
-        float projectileSize = gunData.ProjectilePrefab.GetComponent<SphereCollider>().radius * 2;
+        float crosshairSpreadRadius = gunData.SpreadRadius;
 
         // 0 is parent and 1 is center that should not be offset
         for (int i = 2; i < children.Length; i++){
-            float offset = children[i].sizeDelta.y + crosshairRadius;
-            children[i].localPosition += children[i].up * (offset + projectileSize);
+            // radius * 20 gives a fair visual representation of spread
+            children[i].localPosition += children[i].up * (crosshairSpreadRadius * 20);
         }
     }
-    
+
     /**
      * used to initialise new gun prefabs created within the gun creator tool
      */

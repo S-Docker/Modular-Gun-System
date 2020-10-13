@@ -5,7 +5,7 @@ public class ProjectileMoveComponent : ProjectileComponent
 {
     [Header("Projectile Movement Settings")]
     Vector3 startPosition;
-    [Range(1, 50)]
+    [Range(1, 100)]
     [SerializeField] float projectileSpeed = default;
     [Range(1, 100)]
     [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;

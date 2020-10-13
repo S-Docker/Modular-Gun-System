@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasEffect: 0
   effect: {fileID: 0}
-  projectileSpeed: 20
+  projectileSpeed: 100
   maxProjectileTravel: 100
 --- !u!114 &7762394856009065142
 MonoBehaviour:
