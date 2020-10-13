@@ -27,7 +27,7 @@ public class GunCreationTool : EditorWindow
     int damage;
     int magazineSize;
     int roundsPerMinute;
-    float spreadRadius;
+    float baseSpreadRadius;
     int baseCritChance;
     float baseCritMultiplier;
     int baseStunChance;
@@ -224,8 +224,8 @@ public class GunCreationTool : EditorWindow
         damage = EditorGUILayout.IntSlider("Damage: ", damage, 1, 1000);
         magazineSize = EditorGUILayout.IntSlider("Magazine Size: ", magazineSize, 1, 100);
         roundsPerMinute = EditorGUILayout.IntSlider("Rounds Per Minute: ", roundsPerMinute, 1, 500);
-        spreadRadius = EditorGUILayout.Slider("Spread Radius: ", spreadRadius, 0, 10);
-        spreadRadius = (float) System.Math.Round(spreadRadius, 2);
+        baseSpreadRadius = EditorGUILayout.Slider("Spread Radius: ", baseSpreadRadius, 0, 10);
+        baseSpreadRadius = (float) System.Math.Round(baseSpreadRadius, 2);
         baseCritChance = EditorGUILayout.IntSlider("Base Crit Chance: ", baseCritChance, 0, 100);
         baseCritMultiplier = EditorGUILayout.Slider("Base Crit Multiplier: ", baseCritMultiplier, 0, 3);
         baseCritMultiplier = (float) System.Math.Round(baseCritMultiplier, 2);
@@ -371,7 +371,7 @@ public class GunCreationTool : EditorWindow
     void CreateNewGunData(GameObject projectilePrefab){
         GunData newGunData = CreateInstance(typeof(GunData)) as GunData;
         
-        newGunData.InitialiseGunData(fireMode, ammoCategory, projectilePrefab, damage, magazineSize, roundsPerMinute, spreadRadius, baseCritChance, baseCritMultiplier, baseStunChance);
+        newGunData.InitialiseGunData(fireMode, ammoCategory, projectilePrefab, damage, magazineSize, roundsPerMinute, baseSpreadRadius, baseCritChance, baseCritMultiplier, baseStunChance);
         
         AssetDatabase.CreateAsset(newGunData, gunPrefabPath + gunName + "Data.asset");
         AssetDatabase.SaveAssets();

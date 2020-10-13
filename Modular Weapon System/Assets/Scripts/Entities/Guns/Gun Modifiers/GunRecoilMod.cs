@@ -16,19 +16,19 @@ public class GunRecoilMod : GunModifier
     [Tooltip("Should gun reset transform back to original position after delay period.")]
     [SerializeField] bool canResetTransform = false;
     [Tooltip("Wait time before transform resets back to original rotation after player stops shooting.")]
-    [SerializeField] float transformResetDelay;
+    [SerializeField][MinAttribute(0)] float transformResetDelay;
     [Tooltip("Total time in seconds taken to reset gun from current rotation to its original rotation.")]
-    [SerializeField] float transformResetDuration;
+    [SerializeField][MinAttribute(0)] float transformResetDuration;
     float elapsedTimeSinceShot;
     float elapsedTimeSinceResetStart;
 
     [Header("Recoil Settings")]
     [Tooltip("Horizontal recoil amount in degrees.")]
-    [SerializeField] float horizontalRecoilAmount;
+    [SerializeField][MinAttribute(0)] float horizontalRecoilAmount;
     [Tooltip("Vertical recoil amount in degrees.")]
-    [SerializeField] float verticalRecoilAmount;
+    [SerializeField][MinAttribute(0)] float verticalRecoilAmount;
     [Tooltip("How quick the gun goes from current rotation to target rotation after shooting.")]
-    [SerializeField] float recoilSpeed;
+    [SerializeField][MinAttribute(0)] float recoilSpeed;
 
     void CalculateRecoil(Gun target){
         elapsedTimeSinceShot = 0;
@@ -72,8 +72,7 @@ public class GunRecoilMod : GunModifier
         originalRotation = gunHolderTransform.rotation;
         currentRotation = originalRotation;
         elapsedTimeSinceShot = transformResetDelay;
-        
-        
+
         target.FireComponent.onFire += CalculateRecoil;
         target.onUpdate += OnUpdate;
     }

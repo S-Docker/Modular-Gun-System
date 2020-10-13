@@ -19,8 +19,8 @@ public class GunData : ScriptableObject {
     [Tooltip("Guns RPM as a value before modifiers.")]
     [SerializeField][MinAttribute(1)] int roundsPerMinute; public int RoundsPerMinute => roundsPerMinute;
     
-    [Tooltip("The random deviation of bullets within a set radius")]
-    [SerializeField][MinAttribute(0)] float spreadRadius = 0; public float SpreadRadius => spreadRadius;
+    [Tooltip("The random deviation of bullets within a set radius before modifiers")]
+    [SerializeField][MinAttribute(0)] float baseSpreadRadius = 0; 
 
     [Tooltip("Guns crit chance as a percentage before modifiers.")]
     [SerializeField][MinAttribute(0)] int baseCritChance;
@@ -39,6 +39,7 @@ public class GunData : ScriptableObject {
     ModifiableAttribute<float> reloadTimeMultiplier; public ModifiableAttribute<float> ReloadTimeMultiplier => reloadTimeMultiplier;
     ModifiableAttribute<float> critMultiplier; public ModifiableAttribute<float> CritMultiplier => critMultiplier;
     ModifiableAttribute<float> roundsPerMinuteMultiplier; public ModifiableAttribute<float> RoundsPerMinuteMultiplier => roundsPerMinuteMultiplier;
+    ModifiableAttribute<float> spreadRadiusModified; public ModifiableAttribute<float> SpreadRadius => spreadRadiusModified;
     ModifiableAttribute<int> critChance; public ModifiableAttribute<int> CritChance => critChance;
     ModifiableAttribute<int> stunChance; public ModifiableAttribute<int> StunChance => stunChance;
 
@@ -48,6 +49,7 @@ public class GunData : ScriptableObject {
         magazineSizeMultiplier = new ModifiableAttribute<float>(1f);
         reloadTimeMultiplier = new ModifiableAttribute<float>(1f);
         roundsPerMinuteMultiplier = new ModifiableAttribute<float>(1f);
+        spreadRadiusModified = new ModifiableAttribute<float>(baseSpreadRadius);
         critChance = new ModifiableAttribute<int>(baseCritChance);
         critMultiplier = new ModifiableAttribute<float>(baseCritMultiplier);
         stunChance = new ModifiableAttribute<int>(baseStunChance);
@@ -56,14 +58,14 @@ public class GunData : ScriptableObject {
     /**
      * used to initialise new GunData assets created within the gun creator tool
      */
-    public void InitialiseGunData(FireMode fireMode, AmmoCategory ammoCategory, GameObject projectilePrefab, int damage, int magazineSize, int roundsPerMinute, float spreadRadius, int baseCritChance, float baseCritMultiplier, int baseStunChance){
+    public void InitialiseGunData(FireMode fireMode, AmmoCategory ammoCategory, GameObject projectilePrefab, int damage, int magazineSize, int roundsPerMinute, float baseSpreadRadius, int baseCritChance, float baseCritMultiplier, int baseStunChance){
         this.fireMode = fireMode;
         this.ammoCategory = ammoCategory;
         this.projectilePrefab = projectilePrefab;
         this.damage = damage;
         this.magazineSize = magazineSize;
         this.roundsPerMinute = roundsPerMinute;
-        this.spreadRadius = spreadRadius;
+        this.baseSpreadRadius = baseSpreadRadius;
         this.baseCritChance = baseCritChance;
         this.baseCritMultiplier = baseCritMultiplier;
         this.baseStunChance = baseStunChance;
