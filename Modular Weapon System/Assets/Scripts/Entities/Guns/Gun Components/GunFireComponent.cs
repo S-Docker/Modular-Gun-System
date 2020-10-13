@@ -25,13 +25,16 @@ public class GunFireComponent : GunComponent
 
         Vector3 muzzlePosition = gun.GunMuzzlePosition.transform.position;
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, muzzlePosition, Quaternion.identity);
-
+        
+        // ensure spread is not a negative value
+        float spreadRadius = Mathf.Max(0, gunData.SpreadRadius.Value);
+        
         switch (gun.GunType){
             case GunType.Projectile:
-                ProjectileMoveTypeHandler(muzzlePosition, gunData.SpreadRadius, projectile);
+                ProjectileMoveTypeHandler(muzzlePosition, spreadRadius, projectile);
                 break;
             case GunType.Hitscan:
-                ProjectileHitscanTypeHandler(gunData.SpreadRadius, projectile);
+                ProjectileHitscanTypeHandler(spreadRadius, projectile);
                 break;
         }
         
@@ -64,13 +67,16 @@ public class GunFireComponent : GunComponent
 
     void ProjectileHitscanTypeHandler(float spreadRadius, GameObject projectile){
         ProjectileHitscanComponent projectileHitscan = projectile.GetComponent<ProjectileHitscanComponent>();
-        projectileHitscan.InitialiseHitscan(GetProjectileDir(spreadRadius, 999f));
+        float maxHitscanDistance = projectileHitscan.MaxHitscanDistance;
+        projectileHitscan.InitialiseHitscan(GetProjectileDir(spreadRadius, maxHitscanDistance));
     }
     
     void ProjectileDamageComponentHandler(GunData gunData, GameObject projectile){
         ProjectileDamageComponent projectileDamageComponent = projectile.GetComponent<ProjectileDamageComponent>();
         
-        float damage = gunData.Damage * gunData.DamageMultiplier.Value;
+        // ensure damage is always 0 or greater to avoid edge cases when applying damage to enemies
+        float damage = Mathf.Max(0,gunData.Damage * gunData.DamageMultiplier.Value); 
+        
         bool isCrit = IsCrit(gunData);
         projectileDamageComponent.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
     }

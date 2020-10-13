@@ -100,7 +100,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void EnableCrosshair(GameObject crosshair){
         crosshair.SetActive(true);
         RectTransform[] children = crosshair.GetComponentsInChildren<RectTransform>();
-        float crosshairSpreadRadius = gunData.SpreadRadius;
+        float crosshairSpreadRadius = gunData.SpreadRadius.Value;
 
         // 0 is parent and 1 is center that should not be offset
         for (int i = 2; i < children.Length; i++){
