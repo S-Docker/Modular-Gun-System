@@ -10,9 +10,6 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     
 // Remove value is never used warning from inspector
 #pragma warning disable 0649
-    [Header("Type of Gun")]
-    [SerializeField] GunType gunType = GunType.Projectile; public GunType GunType => gunType;
-    
     [Header("Player Ammo Storage Script")]
     [SerializeField] AmmoStorage playerAmmoStorage; public AmmoStorage PlayerAmmoStorage => playerAmmoStorage;
 
@@ -112,15 +109,11 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     /**
      * used to initialise new gun prefabs created within the gun creator tool
      */
-    public void InitializeGun(GunData gunData, bool isHitscan, GunAbility ability){
+    public void InitializeGun(GunData gunData, GunAbility ability){
         fireComponent = GetComponent<GunFireComponent>();
         reloadComponent = GetComponent<GunReloadComponent>();
         this.gunData = gunData;
-        
-        if (isHitscan){
-            gunType = GunType.Hitscan;
-        }
-        
+
         if (ability == null) return;
         this.ability = ability;
     }

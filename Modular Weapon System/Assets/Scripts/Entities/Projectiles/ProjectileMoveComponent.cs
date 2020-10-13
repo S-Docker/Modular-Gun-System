@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 
 [DisallowMultipleComponent]
-public class ProjectileMoveComponent : ProjectileComponent
+public class ProjectileMoveComponent : ProjectileTypeComponent
 {
     [Header("Projectile Movement Settings")]
     Vector3 startPosition;
     [Range(1, 100)]
     [SerializeField] float projectileSpeed = default;
-    [Range(1, 100)]
-    [SerializeField] float maxProjectileTravel = default; public float MaxProjectileTravel => maxProjectileTravel;
 
-    public void InitialiseMovement(Vector3 dir){
+    public override void InitialiseMovement(Vector3 pointOfImpact){
         startPosition = transform.position;
-        transform.LookAt(dir * maxProjectileTravel);
+        transform.LookAt(pointOfImpact);
         
         Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = dir.normalized * projectileSpeed;
+        rb.velocity = pointOfImpact.normalized * projectileSpeed;
         
-        Debug.DrawLine(startPosition, dir * maxProjectileTravel, Color.blue, 5f);
+        Debug.DrawLine(startPosition, pointOfImpact * maxProjectileTravel, Color.blue, 5f);
     }
     
     void FixedUpdate(){
@@ -37,7 +35,8 @@ public class ProjectileMoveComponent : ProjectileComponent
         return (startPosition - transform.position).sqrMagnitude > maxDistance * maxDistance;
     }
 
-    public void InitialiseProjectileMove(float projectileSpeed, float maxProjectileTravel){
+    // Used by gun creation tool for setting up initial values
+    public void SetUpProjectileMoveComponent(float projectileSpeed, float maxProjectileTravel){
         this.projectileSpeed = projectileSpeed;
         this.maxProjectileTravel = maxProjectileTravel;
     }

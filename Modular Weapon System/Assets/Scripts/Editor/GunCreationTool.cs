@@ -237,7 +237,7 @@ public class GunCreationTool : EditorWindow
         gun.AddComponent<GunFireComponent>();
         gun.AddComponent<GunReloadComponent>();
         
-        gunScript.InitializeGun(selectedGunData, isHitscan, selectedAbility);
+        gunScript.InitializeGun(selectedGunData, selectedAbility);
     }
 
     #endregion
@@ -303,22 +303,23 @@ public class GunCreationTool : EditorWindow
     }
 
     void NewProjectileDataSettings(){
-        if (isHitscan) return;
-        
-        projectileSpeed = EditorGUILayout.Slider("Projectile Speed: ", projectileSpeed, 1, 25);
-        projectileSpeed = (float) System.Math.Round(projectileSpeed, 2);
-            
         maxProjectileTravel = EditorGUILayout.Slider("Max Projectile Distance: ", maxProjectileTravel, 1, 100);
         maxProjectileTravel = (float) System.Math.Round(maxProjectileTravel, 2);
+        
+        if (isHitscan) return;
+        
+        projectileSpeed = EditorGUILayout.Slider("Projectile Speed: ", projectileSpeed, 1, 100);
+        projectileSpeed = (float) System.Math.Round(projectileSpeed, 2);
     }
 
     void InitializeProjectile(GameObject projectile){
         if (isHitscan){
-            projectile.AddComponent<ProjectileHitscanComponent>();
+            var hitscanComponent = projectile.AddComponent<ProjectileHitscanComponent>();
+            hitscanComponent.SetUpProjectileHitscanComponent(maxProjectileTravel);
         }
         else{
             var moveComponent = projectile.AddComponent<ProjectileMoveComponent>();
-            moveComponent.InitialiseProjectileMove(projectileSpeed, maxProjectileTravel);
+            moveComponent.SetUpProjectileMoveComponent(projectileSpeed, maxProjectileTravel);
         }
         if (isSticky){
             projectile.AddComponent<ProjectileStickyCollisionComponent>();
