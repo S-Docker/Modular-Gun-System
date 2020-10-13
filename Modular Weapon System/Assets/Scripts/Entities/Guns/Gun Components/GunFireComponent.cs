@@ -27,7 +27,7 @@ public class GunFireComponent : GunComponent
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, muzzlePosition, Quaternion.identity);
         
         SetProjectileDamage(gunData, projectile);
-        MoveProjectile(projectile, gunData.SpreadRadius, muzzlePosition);
+        MoveProjectile(projectile, gunData.SpreadRadius.Value, muzzlePosition);
 
         animator.SetTrigger("IsFire");
         PlayAudio();
