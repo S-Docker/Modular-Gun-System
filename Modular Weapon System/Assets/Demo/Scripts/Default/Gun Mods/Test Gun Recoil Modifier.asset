@@ -17,4 +17,4 @@ MonoBehaviour:
   transformResetDuration: 0.5
   horizontalRecoilAmount: 0.5
   verticalRecoilAmount: 1
-  recoilSpeed: 8
+  recoilSpeed: 16

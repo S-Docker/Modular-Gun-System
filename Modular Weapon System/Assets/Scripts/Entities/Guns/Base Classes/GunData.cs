@@ -42,9 +42,8 @@ public class GunData : ScriptableObject {
     ModifiableAttribute<float> spreadRadiusModified; public ModifiableAttribute<float> SpreadRadius => spreadRadiusModified;
     ModifiableAttribute<int> critChance; public ModifiableAttribute<int> CritChance => critChance;
     ModifiableAttribute<int> stunChance; public ModifiableAttribute<int> StunChance => stunChance;
-
-
-    void Awake(){
+    
+    void OnEnable(){
         damageMultiplier = new ModifiableAttribute<float>(1f);
         magazineSizeMultiplier = new ModifiableAttribute<float>(1f);
         reloadTimeMultiplier = new ModifiableAttribute<float>(1f);
