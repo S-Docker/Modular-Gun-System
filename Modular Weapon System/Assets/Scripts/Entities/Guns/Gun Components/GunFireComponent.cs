@@ -7,6 +7,8 @@ public class GunFireComponent : GunComponent
 {
     Camera cam;
     int masksToIgnore;
+    
+    [SerializeField] protected AudioClip gunfireAudio;
 
     [Header("Fire Delegates")]
     public OnGunAction onFire;
@@ -35,11 +37,11 @@ public class GunFireComponent : GunComponent
 
         onFire?.Invoke(gun);
     }
-
-    protected override void PlayAudio(){
-        if (componentAudio.Equals(null)) return;
+    
+    void PlayAudio(){
+        if (gunfireAudio == null) return;
         
-        audioSource.PlayOneShot(componentAudio);
+        audioSource.PlayOneShot(gunfireAudio);
     }
 
     static bool IsCrit(GunData gunData){

@@ -10,6 +10,11 @@ public class GunReloadComponent : GunComponent
     float reloadTime;
     Coroutine reloadCoroutine;
 
+    [Header("Audio Files")]
+    [SerializeField] protected AudioClip startReloadAudio;
+    [SerializeField] protected AudioClip endReloadAudio;
+    float endReloadAudioLength;
+    
     [Header("Reload Delegates")]
     public OnGunAction onReload;
 
@@ -17,6 +22,10 @@ public class GunReloadComponent : GunComponent
         base.Start();
         if (reloadAnimClip != null){
             reloadTime = reloadAnimClip.length;
+        }
+
+        if (endReloadAudio != null){
+            endReloadAudioLength = endReloadAudio.length;
         }
     }
 
@@ -38,10 +47,14 @@ public class GunReloadComponent : GunComponent
     }
 
     IEnumerator ReloadGun(Gun gun, GunData gunData, AmmoCategory category, int availableAmmo, float reloadTime){
-        PlayAudio();
+        PlayAudio(startReloadAudio);
         animator.SetTrigger("IsReload");
-        yield return new WaitForSeconds(reloadTime); // do not reload gun until it has been completed
-
+        
+        // Start playing audio x seconds before full reload time where x is the length of the end reload audio length
+        yield return new WaitForSeconds(reloadTime - endReloadAudioLength);
+        PlayAudio(endReloadAudio);
+        
+        yield return new WaitForSeconds(endReloadAudioLength);
         // round magazine size to highest int and ensure magazine can hold at least 1 bullet after modifiers
         int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
         magazineSizeAdjusted = Mathf.Max(1, magazineSizeAdjusted);
@@ -67,5 +80,10 @@ public class GunReloadComponent : GunComponent
         if (audioSource.isPlaying){
             audioSource.Stop();
         }
+    }
+
+    void PlayAudio(AudioClip audio){
+        audioSource.clip = audio;
+        audioSource.Play();
     }
 }

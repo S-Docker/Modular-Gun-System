@@ -5,7 +5,6 @@ public class ReloadOnUnequipMod : GunModifier
 {
     float elapsedTime;
     [SerializeField] float maxTimeBetweenBulletReloadInSeconds;
-    bool isEquipped = false;
 
     void OnUpdate(Gun target){
         elapsedTime += Time.deltaTime;
@@ -28,7 +27,6 @@ public class ReloadOnUnequipMod : GunModifier
     }
 
     void OnEquip(Gun target){
-        isEquipped = true;
         target.onUpdate -= OnUpdate;
     }
 
