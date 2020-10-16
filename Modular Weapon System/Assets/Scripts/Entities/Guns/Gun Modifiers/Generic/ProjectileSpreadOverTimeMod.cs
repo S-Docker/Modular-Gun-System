@@ -9,13 +9,10 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     float currentModifierPercentage;
     float elapsedTimeSinceShot;
 
-    float ProjectileSpreadRadiusModifier(float currentValue){
-        float newValue = currentValue + currentModifierPercentage;
-        return newValue <= 1 ? newValue : 1;
-    }
-
     void OnFire(Gun target){
         currentModifierPercentage += spreadIncreasePerShot;
+        target.FireComponent.ProjectileSpreadIncrementValue = Mathf.Min(currentModifierPercentage,1);
+        
         elapsedTimeSinceShot = 0f;
         target.SetCrosshairSize();
     }
@@ -23,27 +20,21 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     void OnUpdate(Gun target){
         if (elapsedTimeSinceShot > delayBeforeSpreadReset){
             if (currentModifierPercentage > 0){
-                currentModifierPercentage -= spreadIncreasePerShot;
+                target.FireComponent.ProjectileSpreadIncrementValue = Mathf.Max(0, currentModifierPercentage -= spreadIncreasePerShot);
                 target.SetCrosshairSize();
-            } 
-            
-            if (currentModifierPercentage < 0){
-                currentModifierPercentage = 0; // zero out to fix precision errors
             }
         }
-        
+
         elapsedTimeSinceShot += Time.deltaTime;
     }
 
     public override void ApplyTo(Gun target){
         target.FireComponent.onFire += OnFire;
         target.onUpdate += OnUpdate;
-        target.GunData.SpreadRadiusModifier.AddMod(this.GetInstanceID(), ProjectileSpreadRadiusModifier);
     }
 
     public override void RemoveFrom(Gun target){
         target.FireComponent.onFire -= OnFire;
         target.onUpdate -= OnUpdate;
-        target.GunData.SpreadRadiusModifier.RemoveMod(this.GetInstanceID());
     }
 }

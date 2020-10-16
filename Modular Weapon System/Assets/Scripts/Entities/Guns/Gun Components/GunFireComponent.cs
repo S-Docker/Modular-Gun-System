@@ -7,7 +7,7 @@ public class GunFireComponent : GunComponent
 {
     Camera cam;
     int masksToIgnore;
-    
+    float projectileSpreadIncrementValue = 1f; public float ProjectileSpreadIncrementValue { set => projectileSpreadIncrementValue = value; }
     [SerializeField] protected AudioClip gunfireAudio;
 
     [Header("Fire Delegates")]
@@ -30,7 +30,7 @@ public class GunFireComponent : GunComponent
         
         SetProjectileDamage(gunData, projectile);
         
-        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
+        float spreadValue = (gunData.SpreadRadius.Value * gunData.SpreadRadiusMultiplier.Value) * projectileSpreadIncrementValue;
         MoveProjectile(projectile, spreadValue, muzzlePosition);
 
         animator.SetTrigger("IsFire");
