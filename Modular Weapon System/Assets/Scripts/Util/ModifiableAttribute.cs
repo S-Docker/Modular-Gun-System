@@ -11,7 +11,7 @@ public class ModifiableAttribute<T>
     public T Value{
         get {
             var modifiedValue = baseValue;
-
+            
             //For each mod, take the current modifier value and return the updated value
             foreach (var mod in modifiers){
                 modifiedValue = mod.Value.Invoke(modifiedValue);
@@ -31,7 +31,8 @@ public class ModifiableAttribute<T>
             modifiers.Add(modID, func);
         }
     }
-    public void RemoveMod(int modID){ 
+    
+    public void RemoveMod(int modID){
         modifiers.Remove(modID);
     }
 

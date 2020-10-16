@@ -15,7 +15,7 @@ public class GuaranteedCritAfterReloadMod : GunModifier
         return critChance += 100;
     }
 
-    void OnFire(Gun gun){
+    void OnFire(Gun target){
         bulletCount++;
     }
 

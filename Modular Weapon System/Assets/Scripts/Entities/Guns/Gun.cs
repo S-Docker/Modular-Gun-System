@@ -43,7 +43,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     void Start(){
         // Make instance of gun data so runtime changes are unique per-gun application
         gunData = Instantiate(gunData);
-
+        InitializeAttachedMods();
         animator = GetComponent<Animator>();
     }
 
@@ -53,7 +53,6 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     public void OnEquipped(){
         gameObject.SetActive(true);
-        InitializeAttachedMods();
         onEquip?.Invoke(this);
     }
 
@@ -97,12 +96,12 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public void EnableCrosshair(GameObject crosshair){
         crosshair.SetActive(true);
         RectTransform[] children = crosshair.GetComponentsInChildren<RectTransform>();
-        float crosshairSpreadRadius = gunData.SpreadRadius.Value;
+        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
 
         // 0 is parent and 1 is center that should not be offset
         for (int i = 2; i < children.Length; i++){
             // radius * 20 gives a fair visual representation of spread
-            children[i].localPosition += children[i].up * (crosshairSpreadRadius * 20);
+            children[i].localPosition += children[i].up * (spreadValue * 20);
         }
     }
 
@@ -120,7 +119,6 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     public void AddMod(GunModifier mod){
         if (mods.Contains(mod)) return;
-        
         mods.Add(mod);
         mod.ApplyTo(this);
     }
@@ -131,13 +129,12 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     void InitializeAttachedMods(){
-        if(mods == null) { 
+        if(mods == null) {
             mods = new List<GunModifier>(); 
         } else {
             for(int i = 0; i < mods.Count; i++){
                 // Make instance of mod so runtime changes are unique per-mod application
                 mods[i] = ScriptableObject.Instantiate<GunModifier>(mods[i]);
-
                 mods[i].ApplyTo(this);
             }
         }

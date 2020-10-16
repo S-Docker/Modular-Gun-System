@@ -29,7 +29,9 @@ public class GunFireComponent : GunComponent
         GameObject projectile = Instantiate(gunData.ProjectilePrefab, muzzlePosition, Quaternion.identity);
         
         SetProjectileDamage(gunData, projectile);
-        MoveProjectile(projectile, gunData.SpreadRadius.Value, muzzlePosition);
+        
+        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
+        MoveProjectile(projectile, spreadValue, muzzlePosition);
 
         animator.SetTrigger("IsFire");
         PlayAudio();
@@ -46,8 +48,15 @@ public class GunFireComponent : GunComponent
 
     static bool IsCrit(GunData gunData){
         int critChance = gunData.CritChance.Value;
-
         return Random.Range(1, 100) <= critChance;
+    }
+    
+    void SetProjectileDamage(GunData gunData, GameObject projectile){
+        ProjectileDamageComponent projectileDamageComponent = projectile.GetComponent<ProjectileDamageComponent>();
+        
+        float damage = gunData.Damage * gunData.DamageMultiplier.Value;
+        bool isCrit = IsCrit(gunData);
+        projectileDamageComponent.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
     }
 
     void MoveProjectile(GameObject projectile, float spreadRadius, Vector3 muzzlePosition){
@@ -64,14 +73,6 @@ public class GunFireComponent : GunComponent
         typeComponent.InitialiseMovement(projectileDir);
     }
 
-    void SetProjectileDamage(GunData gunData, GameObject projectile){
-        ProjectileDamageComponent projectileDamageComponent = projectile.GetComponent<ProjectileDamageComponent>();
-        
-        float damage = gunData.Damage * gunData.DamageMultiplier.Value;
-        bool isCrit = IsCrit(gunData);
-        projectileDamageComponent.ProjectileDamage = (isCrit ? gunData.CritMultiplier.Value : 1) * damage;
-    }
-    
     Vector3 GetProjectileDir(float spreadRadius, float maxDistance){
         RaycastHit hit;
         
