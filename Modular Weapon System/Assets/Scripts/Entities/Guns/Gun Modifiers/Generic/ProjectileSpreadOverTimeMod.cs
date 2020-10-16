@@ -17,12 +17,14 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     void OnFire(Gun target){
         currentModifierPercentage += spreadIncreasePerShot;
         elapsedTimeSinceShot = 0f;
+        target.SetCrosshairSize();
     }
 
     void OnUpdate(Gun target){
         if (elapsedTimeSinceShot > delayBeforeSpreadReset){
             if (currentModifierPercentage > 0){
                 currentModifierPercentage -= spreadIncreasePerShot;
+                target.SetCrosshairSize();
             } 
             
             if (currentModifierPercentage < 0){

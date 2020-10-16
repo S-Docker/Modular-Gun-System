@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using System.Collections.Generic;
 
 public delegate void OnGunAction(Gun target);
@@ -34,7 +35,10 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     [Tooltip("Number of bullets contained inside the gun magazine at creation.")]
     [SerializeField] int bulletsInMagazine; public int BulletsInMagazine => bulletsInMagazine;
 #pragma warning restore 0649
-    
+
+    [Header("Crosshair Settings")]
+    RectTransform[] crosshairChildren;
+
     [Header("Gun Action Delegates")]
     public OnGunAction onUpdate;
     public OnGunAction onEquip;
@@ -95,13 +99,17 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     
     public void EnableCrosshair(GameObject crosshair){
         crosshair.SetActive(true);
-        RectTransform[] children = crosshair.GetComponentsInChildren<RectTransform>();
-        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
+        crosshairChildren = crosshair.GetComponentsInChildren<RectTransform>();
+        SetCrosshairSize();
+    }
 
+    public void SetCrosshairSize(){
+        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
+        
         // 0 is parent and 1 is center that should not be offset
-        for (int i = 2; i < children.Length; i++){
+        for (int i = 2; i < crosshairChildren.Length; i++){
             // radius * 20 gives a fair visual representation of spread
-            children[i].localPosition += children[i].up * (spreadValue * 20);
+            crosshairChildren[i].localPosition = crosshairChildren[i].up * (spreadValue * 20);
         }
     }
 
