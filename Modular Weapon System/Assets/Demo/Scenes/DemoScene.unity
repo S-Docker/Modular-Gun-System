@@ -543,9 +543,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3222707270696849898, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
+      propertyPath: mods.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222707270696849898, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
       propertyPath: abilityComponent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3222707270696849898, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
+      propertyPath: mods.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8982da60428eed84287c7969cdae0a71, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a83bfc30e3333a4fb98c1861d9f4a49, type: 3}
 --- !u!1 &865632756

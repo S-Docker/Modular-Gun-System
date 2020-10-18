@@ -7,6 +7,8 @@ public abstract class ProjectileComponent : MonoBehaviour
     [SerializeField] GameObject effect = null;
 
     protected void InitialiseEffect(Vector3 position){
-        Instantiate(effect, position, Quaternion.identity);
+        if (hasEffect){
+            Instantiate(effect, position, Quaternion.identity);
+        }
     }
 }
