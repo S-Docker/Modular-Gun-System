@@ -2,7 +2,7 @@
 
 public class GunAbility : ScriptableObject
 {
-    public virtual void Action(Gun gun, GunData gunData){
+    public virtual void Perform(Gun gun, GunData gunData){
         
     }
 }

@@ -20,7 +20,7 @@ public class GunFireComponent : GunComponent
         masksToIgnore = ~(1 << 9 |1 << 10); // ignore player, weapons and projectile layers
     }
 
-    public override void Action(Gun gun, GunData gunData){
+    public override void Perform(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
         cooldown.StartCooldownTimer(60 / (gunData.RoundsPerMinute * gunData.RoundsPerMinuteMultiplier.Value));

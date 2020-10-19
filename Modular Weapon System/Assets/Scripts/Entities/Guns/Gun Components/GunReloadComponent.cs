@@ -29,7 +29,7 @@ public class GunReloadComponent : GunComponent
         }
     }
 
-    public override void Action(Gun gun, GunData gunData){
+    public override void Perform(Gun gun, GunData gunData){
         if (cooldown.IsCooldown) return;
 
         AmmoCategory category = gunData.AmmoCategory;

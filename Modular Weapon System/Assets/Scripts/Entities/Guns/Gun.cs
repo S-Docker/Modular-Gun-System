@@ -70,7 +70,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         if (reloadComponent.IsReloading()) return;
         
         if (bulletsInMagazine > 0){
-            fireComponent.Action(this, gunData);
+            fireComponent.Perform(this, gunData);
         }
     }
     
@@ -78,15 +78,15 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
         int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
         
         if (bulletsInMagazine < magazineSizeAdjusted){
-            reloadComponent.Action(this, gunData);
+            reloadComponent.Perform(this, gunData);
         }
     }
 
-    public void Ability(){
+    public void PerformAbility(){
         if (reloadComponent.IsReloading()) return;
         if (ability == null) return;
         
-        ability.Action(this, gunData);
+        ability.Perform(this, gunData);
     }
 
     public void IncreaseMagazine(int amount){

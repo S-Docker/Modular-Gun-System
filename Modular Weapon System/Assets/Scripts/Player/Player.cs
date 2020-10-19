@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         }
         
         if (Input.GetMouseButtonDown(1)){
-            heldGun.Ability();
+            heldGun.PerformAbility();
         }
 
         if (Input.GetKeyDown(KeyCode.R)){

@@ -7,7 +7,7 @@ public abstract class GunComponent : MonoBehaviour
 
     protected readonly Cooldown cooldown = new Cooldown();
 
-    public abstract void Action(Gun gun, GunData gunData);
+    public abstract void Perform(Gun gun, GunData gunData);
 
     protected virtual void Start(){
         audioSource = gameObject.AddComponent<AudioSource>();
