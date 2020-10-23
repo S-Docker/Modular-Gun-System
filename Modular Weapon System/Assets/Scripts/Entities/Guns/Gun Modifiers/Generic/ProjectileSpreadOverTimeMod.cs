@@ -6,12 +6,12 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     [Tooltip("Projectile spread increase amount per shot as a percentage in decimal form before modifiers")]
     [SerializeField] float spreadIncreasePerShot;
     [SerializeField] float delayBeforeSpreadReset = 1f;
-    float currentModifierPercentage;
+    float currentPercentageModifier;
     float elapsedTimeSinceShot;
 
     void OnFire(Gun target){
-        currentModifierPercentage += spreadIncreasePerShot;
-        target.FireComponent.ProjectileSpreadIncrementValue = currentModifierPercentage;
+        currentPercentageModifier += spreadIncreasePerShot;
+        target.FireComponent.ProjectileSpreadPercentage = currentPercentageModifier;
         
         elapsedTimeSinceShot = 0f;
         target.SetCrosshairSize();
@@ -19,8 +19,8 @@ public class ProjectileSpreadOverTimeMod : GunModifier
 
     void OnUpdate(Gun target){
         if (elapsedTimeSinceShot > delayBeforeSpreadReset){
-            if (currentModifierPercentage > 0){
-                target.FireComponent.ProjectileSpreadIncrementValue = currentModifierPercentage -= spreadIncreasePerShot;
+            if (currentPercentageModifier > 0){
+                target.FireComponent.ProjectileSpreadPercentage = currentPercentageModifier -= spreadIncreasePerShot;
                 target.SetCrosshairSize();
             }
         }
@@ -32,7 +32,7 @@ public class ProjectileSpreadOverTimeMod : GunModifier
         target.FireComponent.onFire += OnFire;
         target.onUpdate += OnUpdate;
 
-        target.FireComponent.ProjectileSpreadIncrementValue = 0f;
+        target.FireComponent.ProjectileSpreadPercentage = 0f;
     }
 
     public override void RemoveFrom(Gun target){

@@ -109,7 +109,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void SetCrosshairSize(){
-        float spreadValue = (gunData.SpreadRadius.Value * fireComponent.ProjectileSpreadIncrementValue) * gunData.SpreadRadiusMultiplier.Value;
+        float spreadValue = (gunData.SpreadRadius.Value * fireComponent.ProjectileSpreadPercentage) * gunData.SpreadRadiusMultiplier.Value;
         
         // 0 is parent and 1 is center that should not be offset
         for (int i = 2; i < crosshairChildren.Length; i++){
