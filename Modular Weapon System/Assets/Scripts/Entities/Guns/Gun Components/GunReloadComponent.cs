@@ -55,6 +55,7 @@ public class GunReloadComponent : GunComponent
         PlayAudio(endReloadAudio);
         
         yield return new WaitForSeconds(endReloadAudioLength);
+        
         // round magazine size to highest int and ensure magazine can hold at least 1 bullet after modifiers
         int magazineSizeAdjusted = (int)Mathf.Ceil(gunData.MagazineSize * gunData.MagazineSizeMultiplier.Value);
         magazineSizeAdjusted = Mathf.Max(1, magazineSizeAdjusted);

@@ -31,6 +31,8 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     public override void ApplyTo(Gun target){
         target.FireComponent.onFire += OnFire;
         target.onUpdate += OnUpdate;
+
+        target.FireComponent.ProjectileSpreadIncrementValue = 0f;
     }
 
     public override void RemoveFrom(Gun target){

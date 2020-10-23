@@ -40,7 +40,6 @@ public class GunData : ScriptableObject {
     ModifiableAttribute<float> critMultiplier; public ModifiableAttribute<float> CritMultiplier => critMultiplier;
     ModifiableAttribute<float> roundsPerMinuteMultiplier; public ModifiableAttribute<float> RoundsPerMinuteMultiplier => roundsPerMinuteMultiplier;
     ModifiableAttribute<float> spreadRadiusModified; public ModifiableAttribute<float> SpreadRadius => spreadRadiusModified;
-    ModifiableAttribute<float> spreadRadiusModifier; public ModifiableAttribute<float> SpreadRadiusModifier => spreadRadiusModifier;
     ModifiableAttribute<float> spreadRadiusMultiplier; public ModifiableAttribute<float> SpreadRadiusMultiplier => spreadRadiusMultiplier;
     ModifiableAttribute<int> critChance; public ModifiableAttribute<int> CritChance => critChance;
     ModifiableAttribute<int> stunChance; public ModifiableAttribute<int> StunChance => stunChance;
@@ -51,7 +50,6 @@ public class GunData : ScriptableObject {
         reloadTimeMultiplier = new ModifiableAttribute<float>(1f);
         roundsPerMinuteMultiplier = new ModifiableAttribute<float>(1f);
         spreadRadiusModified = new ModifiableAttribute<float>(baseSpreadRadius);
-        spreadRadiusModifier = new ModifiableAttribute<float>(0f);
         spreadRadiusMultiplier  = new ModifiableAttribute<float>(1f);
         critChance = new ModifiableAttribute<int>(baseCritChance);
         critMultiplier = new ModifiableAttribute<float>(baseCritMultiplier);

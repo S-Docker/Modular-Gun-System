@@ -7,7 +7,10 @@ public class GunFireComponent : GunComponent
 {
     Camera cam;
     int masksToIgnore;
-    float projectileSpreadIncrementValue = 1f; public float ProjectileSpreadIncrementValue { set => projectileSpreadIncrementValue = value; }
+    
+    float projectileSpreadIncrementValue = 1f;
+    public float ProjectileSpreadIncrementValue{ get => projectileSpreadIncrementValue; set => projectileSpreadIncrementValue = value; }
+    
     [SerializeField] protected AudioClip gunfireAudio;
 
     [Header("Fire Delegates")]

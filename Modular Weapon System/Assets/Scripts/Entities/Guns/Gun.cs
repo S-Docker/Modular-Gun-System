@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -44,10 +45,13 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public OnGunAction onEquip;
     public OnGunAction onUnequip;
 
+    void Awake(){
+        InitializeAttachedMods();
+    }
+
     void Start(){
         // Make instance of gun data so runtime changes are unique per-gun application
         gunData = Instantiate(gunData);
-        InitializeAttachedMods();
         animator = GetComponent<Animator>();
     }
 
@@ -84,9 +88,10 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
 
     public void PerformAbility(){
         if (reloadComponent.IsReloading()) return;
-        if (ability == null) return;
-        
-        ability.Perform(this, gunData);
+
+        if (ability != null){
+            ability.Perform(this, gunData);
+        }
     }
 
     public void IncreaseMagazine(int amount){
@@ -104,7 +109,7 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     }
 
     public void SetCrosshairSize(){
-        float spreadValue = gunData.SpreadRadius.Value * gunData.SpreadRadiusModifier.Value;
+        float spreadValue = (gunData.SpreadRadius.Value * fireComponent.ProjectileSpreadIncrementValue) * gunData.SpreadRadiusMultiplier.Value;
         
         // 0 is parent and 1 is center that should not be offset
         for (int i = 2; i < crosshairChildren.Length; i++){
