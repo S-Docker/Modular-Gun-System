@@ -11,7 +11,7 @@ public class ProjectileSpreadOverTimeMod : GunModifier
 
     void OnFire(Gun target){
         currentModifierPercentage += spreadIncreasePerShot;
-        target.FireComponent.ProjectileSpreadIncrementValue = Mathf.Min(currentModifierPercentage,1);
+        target.FireComponent.ProjectileSpreadIncrementValue = currentModifierPercentage;
         
         elapsedTimeSinceShot = 0f;
         target.SetCrosshairSize();
@@ -20,7 +20,7 @@ public class ProjectileSpreadOverTimeMod : GunModifier
     void OnUpdate(Gun target){
         if (elapsedTimeSinceShot > delayBeforeSpreadReset){
             if (currentModifierPercentage > 0){
-                target.FireComponent.ProjectileSpreadIncrementValue = Mathf.Max(0, currentModifierPercentage -= spreadIncreasePerShot);
+                target.FireComponent.ProjectileSpreadIncrementValue = currentModifierPercentage -= spreadIncreasePerShot;
                 target.SetCrosshairSize();
             }
         }

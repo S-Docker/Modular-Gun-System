@@ -9,7 +9,10 @@ public class GunFireComponent : GunComponent
     int masksToIgnore;
     
     float projectileSpreadIncrementValue = 1f;
-    public float ProjectileSpreadIncrementValue{ get => projectileSpreadIncrementValue; set => projectileSpreadIncrementValue = value; }
+    public float ProjectileSpreadIncrementValue{
+        get => projectileSpreadIncrementValue; 
+        set => projectileSpreadIncrementValue = Mathf.Clamp(value, 0, 1);
+    }
     
     [SerializeField] protected AudioClip gunfireAudio;
 
