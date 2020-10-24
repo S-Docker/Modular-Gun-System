@@ -4,7 +4,7 @@
 public class ProjectileSpreadMod : GunModifier
 {
     [Tooltip("Bullet spread adjustment as a value before additional modifiers.")]
-    [SerializeField] int projectileSpreadValue;
+    [SerializeField] float projectileSpreadValue;
 
     float ProjectileSpreadRadius(float currentValue){
         return currentValue + projectileSpreadValue;
