@@ -37,7 +37,7 @@ public class GunReloadComponent : GunComponent
 
         if (availableAmmo > 0){
             float reloadMultiplier = gunData.ReloadTimeMultiplier.Value;
-            float reloadTimeAdjusted = reloadTime / reloadMultiplier;
+            float reloadTimeAdjusted = reloadTime * reloadMultiplier;
 
             animator.SetFloat("reloadTimeMultiplier", reloadMultiplier);
 

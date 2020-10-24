@@ -46,12 +46,12 @@ public class Gun : MonoBehaviour, IEquippable, IModdable<GunModifier>
     public OnGunAction onUnequip;
 
     void Awake(){
+        gunData = Instantiate(gunData);
         InitializeAttachedMods();
     }
 
     void Start(){
         // Make instance of gun data so runtime changes are unique per-gun application
-        gunData = Instantiate(gunData);
         animator = GetComponent<Animator>();
     }
 
